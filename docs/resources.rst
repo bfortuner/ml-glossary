@@ -30,7 +30,7 @@ Papers
 
 Be the first to contribute!
 
-Libraries and Frameworks
+Libraries and frameworks
 ========================
 
 Be the first to contribute!

@@ -1,17 +1,14 @@
-.. _algorithms:
+.. _basics:
 
-===============================
-Algorithms
-===============================
-
-.. toctree::
-  :maxdepth: 1
+======
+Basics
+======
 
 Fundamental machine learning algorithms and concepts
 
 
-Linear Regression
-===================
+Linear regression
+=================
 
 When a model's predicted output is continuous and has a constant slope.
 At its most basic, it takes the form of:
@@ -52,15 +49,8 @@ References:
 * <https://en.wikipedia.org/wiki/Linear_regression>
 
 
-Logistic Regression
+Logistic regression
 ===================
 
-The bread and butter of neural networks is *affine transformations*: a
-vector is received as input and is multiplied with a matrix to produce an
-output (to which a bias vector is usually added before passing the result
-through a nonlinearity). This is applicable to any type of input, be it an
-image, a sound clip or an unordered collection of features: whatever their
-dimensionality, their representation can always be flattened into a vector
-before the transformation.
-
+Be the first to contribute!
 

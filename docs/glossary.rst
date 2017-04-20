@@ -1,8 +1,8 @@
-.. _terms:
+.. _glossary:
 
-===========
-Terminology
-===========
+========
+Glossary
+========
 
 Definitions of common machine learning terms
 

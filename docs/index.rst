@@ -13,8 +13,8 @@ Topics
 .. toctree::
   :maxdepth: 2
 
-  terms
-  algorithms
+  glossary
+  basics
   math
   nn
   deep_learning
@@ -23,7 +23,7 @@ Topics
 Contributing
 ============
 
-Join the team! Check out our `github <http://github.com/bfortuner/ml-glossary/>`_ for more information.
+Join the team! Check out our `github <http://github.com/bfortuner/ml-cheatsheet/>`_ for more information.
 
 Indices and tables
 ==================

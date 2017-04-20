@@ -1,7 +1,7 @@
 .. _deep_learning:
 
 =============
-Deep Learning
+Deep learning
 =============
 
 .. toctree::

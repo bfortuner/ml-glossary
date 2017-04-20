@@ -1,7 +1,7 @@
 .. _linear_algebra:
 
 ==============
-Linear Algebra
+Linear algebra
 ==============
 
 .. toctree::

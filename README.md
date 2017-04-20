@@ -1,6 +1,6 @@
 # Machine Learning Cheatsheet
 
-[Visit The Glossary!](http://ml-glossary.readthedocs.io/en/latest/)
+[View The Cheatsheet](http://ml-glossary.readthedocs.io/en/latest/)
 
 ## How To Contribute
 
@@ -43,6 +43,7 @@ Excellent entries will also include:
 
 The goal of the cheatsheet is to present content in the most accessible way possible, with a heavy emphasis on visuals and interactive diagrams. That said, in the spirit of rapid prototyping, it's okay to to submit a "rough draft" without visuals or code. We expect other readers will enhance your submission over time.
 
+
 ## Top Contributors
 
 We're big fans of [Distill](http://distill.pub/prize) and we like their idea of offering prizes for high-quality submissions. We don't have as much money as they do, but we'd still like to reward contributors in some way for contributing to the glossary. In that spirit, we plan to publish a running table of top authors based on number and quality of original submissions:
@@ -63,6 +64,7 @@ We're big fans of [Distill](http://distill.pub/prize) and we like their idea of 
 
 We'd also like to publish top entries to our Medium Blog, for even more visibility. But in the end, this is an open-source project and we hope contributing to a repository of concise, accessible, machine learning knowledge is enough incentive on its own!
 
+
 ## Tips and Tricks
 
 * [Adding equations](http://www.sphinx-doc.org/en/stable/ext/math.html)
@@ -70,6 +72,7 @@ We'd also like to publish top entries to our Medium Blog, for even more visibili
 * Graphs and charts
 * Importing images
 * Linking to code
+
 
 ## Resources
 

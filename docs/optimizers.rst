@@ -44,7 +44,9 @@ Be the first to contribute!
 SGD
 ===
 
-Be the first to contribute!
+.. literalinclude:: ../code/optimizers.py
+    :language: python
+    :pyobject: SGD
 
 
 **References**

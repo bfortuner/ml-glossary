@@ -13,4 +13,5 @@ Math prerequisites for machine learning.
   linear_algebra
   probability
   statistics
+  math_notation
 

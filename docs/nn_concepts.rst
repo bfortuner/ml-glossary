@@ -10,6 +10,7 @@ Concepts
 
 Basic concepts in neural networks
 
+
 Neuron
 ======
 
@@ -20,10 +21,14 @@ A neuron takes a group of weighted inputs, applies an activation function, and r
 
 Inputs to a neuron can either be features from a training set or outputs from a previous layer’s neurons. Weights are applied to the inputs as they travel along synapses to reach the neuron. The neuron then applies an activation function to the “sum of weighted inputs” from each incoming synapse and passes the result on to all the neurons in the next layer.
 
+
+
 Synapse
 =======
 
 Synapses are like roads in a neural network. They connect inputs to neurons, neurons to neurons, and neurons to outputs. In order to get from one neuron to another, you have to travel along the synapse paying the “toll” (weight) along the way. Each connection between two neurons has a unique synapse with a unique weight attached to it. When we talk about updating weights in a network, we’re really talking about adjusting the weights on these synapses.
+
+
 
 Parameters
 ==========
@@ -31,6 +36,7 @@ Parameters
   * **Weights** - Explanation of weights and biases(parameters)
 
   * **Bias** - Bias terms are additional constants attached to neurons and added to the weighted input before the activation function is applied. A more detailed explanation of :ref:`bias_term` is available in the glossary.
+
 
 
 Layers
@@ -50,6 +56,7 @@ Sits between the input and output layers and applies an activation function befo
 .. rubric:: Output Layer
 
 The final layer in a network. It receives input from the previous hidden layer, optionally applies an activation function, and returns an output representing your model’s prediction.
+
 
 
 Weighted Input
@@ -74,6 +81,8 @@ A neuron’s input equals the sum of weighted outputs from all neurons in the pr
 
 Notice, it’s exactly the same equation we use with linear regression! In fact, a neural network with a single neuron is the same as linear regression! The only difference is the neural network post-processes the weighted input with an activation function.
 
+
+
 Activation Functions
 ====================
 
@@ -88,10 +97,12 @@ Activation functions typically have the following properties:
   * **Fixed Range** — Activation functions typically squash the input data into a narrow range that makes training the model more stable and efficient.
 
 
+
 Loss Functions
 ==============
 
 Be the first to contribute!
+
 
 
 Forwardprop
@@ -111,8 +122,8 @@ Where :math:`A` is an activation function like :ref:`relu`, :math:`X` is the inp
 First, we calculate the input to the hidden layer by multiplying :math:`X` by the hidden weight :math:`W_h`. Next, we apply the activation function and pass the result to the final layer, where the process is repeated except this time :math:`X` is replaced by the hidden layer's output, :math:`H`.
 
 
-.. rubric:: Feed forward code
-
+Code example
+------------
 Let’s write a method feed_forward() to propagate input data through our simple network of 1 hidden layer. The output of this method represents our model’s prediction.
 
 .. literalinclude:: ../code/nn_simple.py
@@ -124,12 +135,15 @@ Let’s write a method feed_forward() to propagate input data through our simple
 ..    :pyobject: MyClass   #Target a specific class.function in a file
 
 
+
+
 Backprop
 ========
-
 The goals of backpropagation are straightforward: adjust each weight in the network in proportion to how much it contributes to overall error. If we iteratively reduce each weight's error, eventually we’ll have a series of weights the produce good predictions.
 
-.. rubric:: Chain rule basics
+
+Chain rule basics
+-----------------
 
 As seen above, foward propagation can be viewed as a long series of nested equations. If you think of feed forward this way, then backpropagation is merely an application the :ref:`chain_rule` to find the :ref:`derivative` of cost with respect to any variable in the nested equation. Given a forward propagation function:
 
@@ -152,7 +166,9 @@ How about the derivative with respect to B? To find the derivative with respect 
 This simple technique extends to any variable within a function and allows us to precisely pinpoint the exact impact each variable has on the total output.
 
 
-.. rubric::  Applying the chain rule
+
+Applying the chain rule
+-----------------------
 
 Let's use the chain rule to calculate the derivative of cost with respect to any weight in the network. The chain rule will help us identify how much each weight contributes to our overall error and the direction to update each weight to reduce our error. Here are the equations we need to make a prediction and calculate total error, or cost:
 
@@ -197,9 +213,12 @@ And just for fun, what if our network had 10 hidden layers. What is the derivati
 
   C'(w_1) = \frac{dC}{dO} \cdot \frac{dO}{dZ_{11}} \cdot \frac{dZ_{11}}{dH_{10}} \cdot \\ \frac{dH_{10}}{dZ_{10}} \cdot \frac{dZ_{10}}{dH_9} \cdot \frac{dH_9}{dZ_9} \cdot \frac{dZ_9}{dH_8} \cdot \frac{dH_8}{dZ_8} \cdot \frac{dZ_8}{dH_7} \cdot \frac{dH_7}{dZ_7} \cdot \\ \frac{dZ_7}{dH_6} \cdot \frac{dH_6}{dZ_6} \cdot \frac{dZ_6}{dH_5} \cdot \frac{dH_5}{dZ_5} \cdot \frac{dZ_5}{dH_4} \cdot \frac{dH_4}{dZ_4} \cdot \frac{dZ_4}{dH_3} \cdot \\ \frac{dH_3}{dZ_3} \cdot \frac{dZ_3}{dH_2} \cdot \frac{dH_2}{dZ_2} \cdot \frac{dZ_2}{dH_1} \cdot \frac{dH_1}{dZ_1} \cdot \frac{dZ_1}{dW_1}
 
-See the pattern? The number of calculations required to compute cost derivatives increases as our network grows deeper. Notice also the redundancy in our derivative calculations. Each layer's cost derivative appends two new terms to the terms that have already been calculated by the layers above it.
+See the pattern? The number of calculations required to compute cost derivatives increases as our network grows deeper. Notice also the redundancy in our derivative calculations. Each layer's cost derivative appends two new terms to the terms that have already been calculated by the layers above it. What if there was a way to save our work somehow and avoid these duplicate calculations?
 
-.. rubric:: Saving work with Memoization
+
+
+Memoization
+-----------
 
 Memoization is a computer science term which simply means: don’t recompute the same thing over and over. In memoization we store previously computed results to avoid recalculating the same function. It's handy for speeding up recursive functions of which backpropagation is one. Notice the pattern in the derivative equations below.
 
@@ -284,7 +303,8 @@ Here is the process visualized using our toy neural network example above.
 .. image:: images/backprop_visually.png
     :align: center
 
-.. rubric:: Backpropagation code
+Code example
+------------
 
 .. literalinclude:: ../code/nn_simple.py
     :language: python

@@ -46,9 +46,17 @@ Be the first to contribute!
 Mean Squared Error
 ==================
 
-Be the first to contribute!
+Description of MSE.
 
+.. literalinclude:: ../code/loss_functions.py
+    :language: python
+    :pyobject: MSE
 
+**Derivative**
+
+.. literalinclude:: ../code/loss_functions.py
+    :language: python
+    :pyobject: MSE_prime
 
 
 **References**

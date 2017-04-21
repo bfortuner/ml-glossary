@@ -197,7 +197,7 @@ And just for fun, what if our network had 10 hidden layers. What is the derivati
 
   C'(w_1) = \frac{dC}{dO} \cdot \frac{dO}{dZ_{11}} \cdot \frac{dZ_{11}}{dH_{10}} \cdot \\ \frac{dH_{10}}{dZ_{10}} \cdot \frac{dZ_{10}}{dH_9} \cdot \frac{dH_9}{dZ_9} \cdot \frac{dZ_9}{dH_8} \cdot \frac{dH_8}{dZ_8} \cdot \frac{dZ_8}{dH_7} \cdot \frac{dH_7}{dZ_7} \cdot \\ \frac{dZ_7}{dH_6} \cdot \frac{dH_6}{dZ_6} \cdot \frac{dZ_6}{dH_5} \cdot \frac{dH_5}{dZ_5} \cdot \frac{dZ_5}{dH_4} \cdot \frac{dH_4}{dZ_4} \cdot \frac{dZ_4}{dH_3} \cdot \\ \frac{dH_3}{dZ_3} \cdot \frac{dZ_3}{dH_2} \cdot \frac{dH_2}{dZ_2} \cdot \frac{dZ_2}{dH_1} \cdot \frac{dH_1}{dZ_1} \cdot \frac{dZ_1}{dW_1}
 
-See the pattern? The number of calculations required to compute cost derivatives increases as our network grows deeper. Notice also the redundancy in our derivative calculations. Each layer's cost derivative appends two new terms to the terms that have already been calculated by hte layers above it.
+See the pattern? The number of calculations required to compute cost derivatives increases as our network grows deeper. Notice also the redundancy in our derivative calculations. Each layer's cost derivative appends two new terms to the terms that have already been calculated by the layers above it.
 
 .. rubric:: Saving work with Memoization
 
@@ -262,7 +262,7 @@ We know we can replace the first part with our equation for output layer error :
 
   C'(W_o) = E_o \cdot H
 
-So to find the derivative of cost with respect to any weight in our network, we simply multiply the cooresponding layer's error times its input (the previous layer's output).
+So to find the derivative of cost with respect to any weight in our network, we simply multiply the corresponding layer's error times its input (the previous layer's output).
 
 .. math::
 
@@ -272,7 +272,14 @@ So to find the derivative of cost with respect to any weight in our network, we 
 
   *Input* refers to the activation from the previous layer, not the weighted input, Z.
 
-So to summarize, here is the backpropagation process for our toy neural network.
+.. rubric:: Summary
+
+Here are the final 3 equations that together form the foundation of backpropagation.
+
+.. image:: images/backprop_final_3_deriv_equations.png
+    :align: center
+
+Here is the process visualized using our toy neural network example above.
 
 .. image:: images/backprop_visually.png
     :align: center

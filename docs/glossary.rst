@@ -30,7 +30,7 @@ Bias Metric
 
   - **High bias** (with low variance) suggests your model may be underfitting and you're using the wrong architecture for the job.
 
-.. _bias_term:
+.. _ bias_term:
 
 Bias Term
   Allow models to represent patterns that do not pass through the origin. For example, if all my features were 0, would my output also be zero? Is it possible there is some base value upon which my features have an effect? Bias terms typically accompany weights and are attached to neurons or filters.

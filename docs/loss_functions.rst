@@ -4,6 +4,8 @@
 Loss functions
 ==============
 
+Metrics used to quantify how "good" or "bad" our model is at making predictions. The smaller the loss, the better our model (unless we overfit).
+
 
 Cross-Entropy Loss
 ==================

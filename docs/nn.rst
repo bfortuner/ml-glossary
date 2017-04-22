@@ -18,6 +18,8 @@ Neural networks are trained iteratively using optimization techniques like gradi
   :titlesonly:
 
   nn_concepts
+  forwardpropagation
+  backpropagation
   activation_functions
   loss_functions
   optimizers

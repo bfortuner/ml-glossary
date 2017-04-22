@@ -87,7 +87,7 @@ The size of these steps is called the *learning rate*. With a high learning rate
 
 
 Cost Function
--------------
+=============
 
 A cost function is a wrapper around our model function that tells us "how good" our model is at making predictions for a given set of parameters. The cost function has its own curve and its own gradients. The slope of this curve tells us how to change our parameters to make the model more accurate! We use the model to make predictions. We use the cost function to update our parameters. Our cost function can take a variety of forms as there are many different cost functions available. Popular cost functions include: Mean Squared Error, Root Mean Squared Error, and [[Log Loss]].
 

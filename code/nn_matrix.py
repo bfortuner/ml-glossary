@@ -3,7 +3,7 @@ import numpy as np
 
 # Neural Network w Matrices
 
-'''
+**
 X  - Input matrix from training set
 Zh - Hidden layer weighted input matrix
 Zo - Output layer weighted input matrix
@@ -11,7 +11,7 @@ Bh - Hidden layer bias matrix
 Bo - Output layer bias matrix
 H  - Hidden layer activation matrix
 yHat  - Output layer predictions
-'''
+**
 
 # Initialize Weights
 Wh = np.random.randn(inputLayerSize, hiddenLayerSize) * \
@@ -39,13 +39,13 @@ def feed_forward(X):
     return yHat
 
 def relu_prime(Z):
-    '''
+    **
     Z - weighted input matrix
     Returns the gradient of the
     Z matrix where all negative
     values are switched to 0 and
     all positive values switched to 1
-    '''
+    **
     Z[Z < 0] = 0
     Z[Z > 0] = 1
     return Z

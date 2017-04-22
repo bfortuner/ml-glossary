@@ -4,23 +4,25 @@
 Linear regression
 =================
 
-.. toctree::
-  :maxdepth: 1
-  :titlesonly:
+.. contents:: :local:
+
+
+Overview
+========
 
 Linear Regression is a supervised machine learning algorithm where the predicted output is continuous and has a constant slope. Is used to predict values within a continuous range. (e.g. sales, price, height) rather than trying to classify them into categories (e.g. cat, dog, chipmunk).
 
-Simple linear regression
-========================
+**1. Simple linear regression**
 
-Simple linear regression uses traditional slope-intercept form, where <math>m and <math>b are the variables our algorithm will try to "learn" to produce the most accurate predictions. <math>x represents our input data and <math>y represents our prediction.
+Simple linear regression uses traditional slope-intercept form, where :math:`m` and :math:`b` are the variables our algorithm will try to "learn" to produce the most accurate predictions. :math:`x` represents our input data and :math:`y` represents our prediction.
 
 .. math::
 
   y = mx + b
 
-**Multiple Linear Regression**<br>
-A more complex, multi-variable linear equation might look like this, where <math>W's represent the coefficients, or weights, our model will try to learn.
+**2. Multivariate linear regression**
+
+A more complex, multi-variable linear equation might look like this, where :math:`W` represents the coefficients, or weights, our model will try to learn.
 
 .. math::
 
@@ -32,33 +34,27 @@ The variables :math:`x, y, z` represent the attributes, or distinct pieces of in
 
   Sales = W_1 Radio + W_2 TV + W_3 News
 
-Walk-through example
---------------------
+**Vectorized linear regression**
 
-Let’s say we are given a [http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv dataset] with the following columns (features): how much a company spends on Radio advertising each year and its annual Sales in terms of units sold. We are trying to develop an equation that will let us to predict units sold based on how much a company spends on radio advertising. The rows (observations) represent companies.
+Vectorized linear regression stores weights and baises in matrices and uses linear algebra operations to perform calculations.
 
-{| class="wikitable"
-! style="font-weight: bold;" | Company
-! style="font-weight: bold;" | Radio ($)
-! style="font-weight: bold;" | Sales (units)
-|-
-| Amazon
-| 37.8
-| 22.1
-|-
-| Google
-| 39.3
-| 10.4
-|-
-| Facebook
-| 45.9
-| 18.3
-|-
-| Apple
-| 41.3
-| 18.5
-|}
 
+Simple linear regression
+========================
+
+Let’s say we are given a `dataset <http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv>`_ with the following columns (features): how much a company spends on Radio advertising each year and its annual Sales in terms of units sold. We are trying to develop an equation that will let us to predict units sold based on how much a company spends on radio advertising. The rows (observations) represent companies.
+
++--------------+---------------+-----------+
+| **Company**  | **Radio ($)** | **Sales** |
++--------------+---------------+-----------+
+| Amazon       | 37.8          | 22.1      |
++--------------+---------------+-----------+
+| Google       | 39.3          | 10.4      |
++--------------+---------------+-----------+
+| Facebook     | 45.9          | 18.3      |
++--------------+---------------+-----------+
+| Apple        | 41.3          | 18.5      |
++--------------+---------------+-----------+
 
 Predict function
 ----------------
@@ -78,14 +74,13 @@ Bias
 Radio
   the independent variable. In machine learning we call these variables *features*.
 
-Our algorithm will try to "learn" the correct values for Weight and Bias. By the end of our training, our equation will approximate the *line of best fit*.
+Our algorithm will try to *learn* the correct values for Weight and Bias. By the end of our training, our equation will approximate the *line of best fit*.
 
-.. image:: linear_regression_line_intro.png
+.. image:: images/linear_regression_line_intro.png
     :align: center
 
 
-Code
-----
+**Code**
 
 ::
 
@@ -114,10 +109,9 @@ We can calculate MSE as:
 
 * :math:`N` is the total number of observations (data points)
 * :math:`\frac{1}{N} \sum_{i=1}^{n}` is the mean
-* :math:`y_i` is the actual value of an observation and <math>(mx_i + b) is our prediction
+* :math:`y_i` is the actual value of an observation and :math:`(mx_i + b) is our prediction
 
-Code
-----
+**Code**
 
 ::
 
@@ -130,22 +124,21 @@ Code
 
 
 Gradient descent
-================
+----------------
 
 To minimize MSE we use `Gradient Descent`_ to calculate the gradient of our cost function.
 
-Now let's run gradient descent for our Radio vs Sales example.
+**Math**
 
-**Math**<br>
-There are two `parameters`_ (link to glossary) (i.e. coefficients) in our cost function we can control: weight (m) and bias (b). Since we need to consider the impact each one has on the final prediction, we use partial derivatives. To find the partial derivatives, we use the chain rule. We need the chain rule because :math:`(y - (mx + b))^2` is really 2 nested functions, inner :math:`y - mx + b` and outer :math:`x^2`. An explanation of the math behind this can be found [https://www.youtube.com/watch?v=WnqQrPNYz5Q here]. An overview of the chain rule more generally can be found on our [http://wiki.fast.ai/index.php/Calculus_for_Deep_Learning#Chain_Rule wiki].
+There are two `parameters`_ (link to glossary) (i.e. coefficients) in our cost function we can control: weight :math:`m` and bias :math:`b`. Since we need to consider the impact each one has on the final prediction, we use partial derivatives. To find the partial derivatives, we use the `Chain rule`_. We need the chain rule because :math:`(y - (mx + b))^2` is really 2 nested functions, inner :math:`y - mx + b` and outer :math:`x^2`.
 
-Given the cost function:
+Returning to our cost function:
 
 .. math:
 
     f(m,b) =  \frac{1}{N} \sum_{i=1}^{n} (y_i - (mx_i + b))^2
 
-The gradient of this cost function equals:
+We can calculate the gradient of this cost function as:
 
 .. math::
 
@@ -161,8 +154,7 @@ The gradient of this cost function equals:
       \end{bmatrix}
 
 
-Code
-----
+**Code**
 
 To solve for the gradient, we iterate through our data points using our new weight and bias values and take the average of the partial derivatives. The resulting gradient tells us the slope of our cost function at our current position (i.e. weight and bias) and the direction we should update to reduce our cost function (we move in the direction opposite the gradient). The size of our update is controlled by the `Learning rate`_ (link to gradient descent).
 
@@ -189,14 +181,13 @@ To solve for the gradient, we iterate through our data points using our new weig
 
 
 Training
-========
+--------
 
 Training a model is the process of iteratively improving your prediction equation by looping through the dataset multiple times, each time updating the weight and bias values in the direction indicated by the slope of the cost function (gradient). Training is complete when we reach an acceptable error threshold, or when subsequent training iterations fail to reduce our cost.
 
 Before training we need to initializing our weights (set default values), set our `hyperparameters`_ (link to glossary) (learning rate and number of iterations), and prepare to log our progress over each iteration.
 
-Code
-----
+**Code**
 
 ::
 
@@ -218,11 +209,13 @@ Code
 
 
 Model evaluation
-================
+----------------
 
 If our model is working, we should see our cost decrease after every iteration.
 
 **Logging**
+
+::
 
   iter=1     weight=.03    bias=.0014    cost=197.25
   iter=10    weight=.28    bias=.0116    cost=74.65
@@ -267,39 +260,20 @@ How would our model perform in the real world? I’ll let you think about it :)
 
 Multivariate linear regression
 ==============================
+
 Let’s say we are given `data <http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv>`_ on TV, radio, and newspaper advertising spend for a list of companies, and our goal is to predict sales in terms of units sold.
 
-{| class="wikitable"
-! style="font-weight: bold;" | Company
-! style="font-weight: bold;" | TV
-! style="font-weight: bold;" | Radio
-! style="font-weight: bold;" | Newspaper
-! style="font-weight: bold;" | Sales
-|-
-| Amazon
-| 230.1
-| 37.8
-| 69.2
-| 22.1
-|-
-| Google
-| 44.5
-| 10.4
-| 23.1
-| 10.4
-|-
-| Facebook
-| 17.2
-| 18.3
-| 34.7
-| 9.3
-|-
-| Apple
-| 151.5
-| 18.5
-| 13.2
-| 28.2
-|}
++----------+-------+-------+------+-------+
+| Company  | TV    | Radio | News | Units |
++----------+-------+-------+------+-------+
+| Amazon   | 230.1 | 37.8  | 69.1 | 22.1  |
++----------+-------+-------+------+-------+
+| Google   | 44.5  | 39.3  | 23.1 | 10.4  |
++----------+-------+-------+------+-------+
+| Facebook | 17.2  | 45.9  | 34.7 | 18.3  |
++----------+-------+-------+------+-------+
+| Apple    | 151.5 | 41.3  | 13.2 | 18.5  |
++----------+-------+-------+------+-------+
 
 
 Growing complexity
@@ -317,8 +291,9 @@ Normalization
 
 As the number of features grows, calculating gradient takes longer to compute. We can speed this up by "normalizing" our input data to ensure all values are within the same range. This is especially important for datasets with high standard deviations or differences in the ranges of the attributes. Our goal now will be to normalize our features so they are all in the range -1 to 1.
 
-Code
-----
+**Code**
+
+::
 
   For each feature column {
       #1 Subtract the mean of the column (mean normalization)
@@ -350,16 +325,9 @@ Our input is a 200 x 3 matrix containing TV, Radio, and Newspaper data. Our outp
 
       return features
 
-
-**Further reading**
-
-  - https://en.wikipedia.org/wiki/Feature_scaling
-  - https://en.wikipedia.org/wiki/Normalization_(statistics)
-  - http://www.holehouse.org/mlclass/04_Linear_Regression_with_multiple_variables.html
-
 .. note:: Matrix Math
 
-  Before we continue, it's helpful to understand how basic matrix operations work in Numpy. For example, Numpy dot product [https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html numpy.dot()] can be used on both 1D and 2D arrays. Our `Linear algebra`_ page is a good place to start.
+  Before we continue, it's important to understand basic `Linear algebra`_ concepts as well as numpy functions like `numpy.dot() <https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html>`_.
 
 
 Predict function
@@ -369,7 +337,7 @@ Our predict function outputs an estimate of sales given our current weights (coe
 
 .. math::
 
-  Sales= W_1 TV + W_2 Radio + W_3 Newspaper
+  Sales = W_1 TV + W_2 Radio + W_3 Newspaper
 
 ::
 
@@ -386,6 +354,7 @@ Initialize weights
 ------------------
 
 ::
+
   W1 = 0.0
   W2 = 0.0
   W3 = 0.0
@@ -473,8 +442,8 @@ Again using the `Chain rule`_ we can compute the gradient--a vector of partial d
 And that's it! Multivariate linear regression.
 
 
-Vectorized gradient descent
-===========================
+Vectorized linear regression
+============================
 
 The gradient descent code above has a lot of duplication. Can we improve it somehow? One way to refactor would be to loop through our features and weights--allowing our function handle any number of features. However there is another even better technique: *vectorized gradient descent*.
 
@@ -543,7 +512,8 @@ Replace :math:`x_1, x_2, x_3` with our new features matrix.
 
 
 Add bias
---------
+-------
+
 Our train function is the same as for simple linear regression, however we're going to make one final tweak before running: add a `bias term`_ to our feature matrix.
 
 In our example, it's very unlikely that sales would be zero if companies stopped advertising. Possible reasons for this might include past advertising, existing customer relationships, retail locations, and salespeople. A bias term will help us capture this base case.

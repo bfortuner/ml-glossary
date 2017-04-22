@@ -8,9 +8,7 @@ Linear algebra
   :maxdepth: 1
   :titlesonly:
 
-Linear algebra is a mathematical toolbox that offers helpful techniques for manipulating groups of numbers simultaneously. It provides structures like vectors and matrices (spreadsheets) to hold these numbers and new rules for how to add, subtract, multiply, and divide them.
-
-Content republished with permission from bfortuner's `blog <https://medium.com/p/cd67aba4526c>`_.
+Linear algebra is a mathematical toolbox that offers helpful techniques for manipulating groups of numbers simultaneously. It provides structures like vectors and matrices (spreadsheets) to hold these numbers and new rules for how to add, subtract, multiply, and divide them. Some of the content below is from my linear algebra `post <https://medium.com/p/cd67aba4526c>`_ on Medium.
 
 Vectors
 =======

@@ -8,7 +8,6 @@ Logistic regression
   :maxdepth: 1
   :titlesonly:
 
-
 Logistic regression is a classification algorithm, used to estimate probabilities (Binary values like 0/1, yes/no, true/false) based on given set of independent variable(s). Its output values lies between 0 and 1. Prior to building a model, the features values are transformed using the logistic function (Sigmoid) to produce probability values that can be mapped to two or more classes.
 
 **Linear vs logistic regression**
@@ -59,7 +58,7 @@ Say we're given `data <http://scilab.io/wp-content/uploads/2016/07/data_classifi
 
 Graphically we could represent our data with a scatter plot.
 
-.. image:: logistic_regression_exam_scores_scatter.png
+.. image:: images/logistic_regression_exam_scores_scatter.png
     :align: center
 
 Sigmoid activation function
@@ -82,7 +81,7 @@ In order to map predicted values to probabilities, we use the `Sigmoid`_ functio
 
 **Visualizing sigmoid**
 
-.. image:: logistic_regression_sigmoid_w_threshold.png
+.. image:: images/logistic_regression_sigmoid_w_threshold.png
     :align: center
 
 .. math::
@@ -106,7 +105,7 @@ A decision boundary is a pretty simple concept. Logistic regression is a classif
 
 For example, if our threshold was .5 and our prediction function returned .7, we would classify this observation as positive. If our prediction was .2 we would classify the observation as negative. For logistic regression with multiple classes we could select the class with the highest predicted probability.
 
-.. image:: logistic_regression_exam_scores_scatter.png
+.. image:: images/logistic_regression_exam_scores_scatter.png
     :align: center
 
 
@@ -153,26 +152,26 @@ Unfortunately we can't (or at least shouldn't) use the same cost function `Mean 
 
 Instead of Mean Squared Error, we use a cost function called Cross-entropy loss, also known as Log Loss. Cross-entropy loss can be divided into two separate cost functions, one for :math:`y=1` and one for :math:`y=0`.
 
-.. image:: ng_cost_function_logistic.png
+.. image:: images/ng_cost_function_logistic.png
     :align: center
 
 The benefits of taking the logarithm reveal themselves when you look at the cost function graphs for y=1 and y=0. These smooth `monotonic functions <https://en.wikipedia.org/wiki/Monotonic_function>`_ (always increasing or always decreasing) make it easy to calculate the gradient and minimize cost [#]_.  Source].
 
-.. image:: y1andy2_logistic_function.png
+.. image:: images/y1andy2_logistic_function.png
     :align: center
 
 The key thing to note is the cost function penalizes confident and wrong predictions more than it rewards confident and right predictions! The corollary is increasing prediction accuracy (closer to 0 or 1) has diminishing returns on reducing cost due to the logistic nature of our cost function.
 
 **The above functions compressed into one:**
 
-.. image:: logistic_cost_function_joined.png
+.. image:: images/logistic_cost_function_joined.png
     :align: center
 
 Multiplying by :math:`y` and :math:`(1-y)` in the above equation is a sneaky trick that let's us use the same equation to solve for both y=1 and y=0 cases. If y=0, the first side cancels out. If y=1, the second side cancels out. In both cases we only perform the operation we need to perform.
 
 **Vectorized cost function**
 
-.. image:: logistic_cost_function_vectorized.png
+.. image:: images/logistic_cost_function_vectorized.png
     :align: center
 
 **Code**
@@ -347,7 +346,7 @@ If our model is working, we should see our cost decrease after every iteration.
 
 **Loss**
 
-.. image:: logistic_regression_loss_history.png
+.. image:: images/logistic_regression_loss_history.png
     :align: center
 
 **Accuracy**
@@ -365,7 +364,7 @@ Decision boundary
 
 We can also visualize our models performance by graphically comparing our probability estimates to the actual labels. This involves splitting our observations by class (0 and 1) and assigning each observation its predicted probability.
 
-.. image:: logistic_regression_final_decision_boundary.png
+.. image:: images/logistic_regression_final_decision_boundary.png
     :align: center
 
 ::

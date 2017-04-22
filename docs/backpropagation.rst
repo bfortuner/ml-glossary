@@ -7,8 +7,8 @@ Backpropagation
 The goals of backpropagation are straightforward: adjust each weight in the network in proportion to how much it contributes to overall error. If we iteratively reduce each weight's error, eventually we’ll have a series of weights the produce good predictions.
 
 
-Chain rule review
-=================
+Chain rule refresher
+====================
 
 As seen above, foward propagation can be viewed as a long series of nested equations. If you think of feed forward this way, then backpropagation is merely an application the :ref:`chain_rule` to find the :ref:`derivative` of cost with respect to any variable in the nested equation. Given a forward propagation function:
 
@@ -82,8 +82,8 @@ See the pattern? The number of calculations required to compute cost derivatives
 
 
 
-Memoization
-===========
+Saving work with memoization
+============================
 
 Memoization is a computer science term which simply means: don’t recompute the same thing over and over. In memoization we store previously computed results to avoid recalculating the same function. It's handy for speeding up recursive functions of which backpropagation is one. Notice the pattern in the derivative equations below.
 

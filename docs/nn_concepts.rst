@@ -29,7 +29,6 @@ Synapse
 Synapses are like roads in a neural network. They connect inputs to neurons, neurons to neurons, and neurons to outputs. In order to get from one neuron to another, you have to travel along the synapse paying the “toll” (weight) along the way. Each connection between two neurons has a unique synapse with a unique weight attached to it. When we talk about updating weights in a network, we’re really talking about adjusting the weights on these synapses.
 
 
-
 Weights
 =======
 
@@ -39,7 +38,7 @@ Explanation of weights (parameters)
 Bias
 ====
 
-Bias terms are additional constants attached to neurons and added to the weighted input before the activation function is applied. A more detailed explanation of :ref:`bias_term` is available in the glossary.
+Bias terms are additional constants attached to neurons and added to the weighted input before the activation function is applied. Bias terms help models represent patterns that do not necessarily pass through the origin. For example, if all your features were 0, would your output also be zero? Is it possible there is some base value upon which your features have an effect? Bias terms typically accompany weights and must also be learned by your model.
 
 
 Layers
@@ -98,13 +97,6 @@ Activation functions typically have the following properties:
   * **Continuously differentiable** — To improve our model with gradient descent, we need our output to have a nice slope so we can compute error derivatives with respect to weights. If our neuron instead outputted 0 or 1 (perceptron), we wouldn’t know in which direction to update our weights to reduce our error.
 
   * **Fixed Range** — Activation functions typically squash the input data into a narrow range that makes training the model more stable and efficient.
-
-
-
-Loss Functions
-==============
-
-Be the first to contribute!
 
 
 

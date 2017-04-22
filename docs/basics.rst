@@ -48,6 +48,17 @@ References:
 * <http://people.duke.edu/~rnau/regintro.htm>
 * <https://en.wikipedia.org/wiki/Linear_regression>
 
+Logistic Regression
+===================
+
+Be the first to contribute!
+
+
+Cost Functions
+==============
+
+Be the first to contribute!
+
 
 Gradient Descent
 ================

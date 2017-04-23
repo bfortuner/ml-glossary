@@ -21,8 +21,8 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
 
     calculus
     linear_algebra
-    probability
-    statistics
+    probability (todo) <probability>
+    statistics (todo) <statistics>
     math_notation
 
 
@@ -40,7 +40,7 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
 
 .. toctree::
     :maxdepth: 1
-    :caption: Deep learning
+    :caption: Deep learning (TODO)
 
     cnn
     rnn
@@ -55,7 +55,7 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
     datasets
     libraries
     papers
-    repos
+    Other <other_content>
 
 .. toctree::
     :maxdepth: 1

@@ -21,8 +21,8 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
 
     calculus
     linear_algebra
-    probability (todo) <probability>
-    statistics (todo) <statistics>
+    Probability (empty) <probability>
+    Statistics (empty) <statistics>
     math_notation
 
 
@@ -40,11 +40,11 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
 
 .. toctree::
     :maxdepth: 1
-    :caption: Deep learning (TODO)
+    :caption: Deep learning
 
-    cnn
-    rnn
-    gan
+    CNNs (empty) <cnn>
+    RNNs (empty) <rnn>
+    GANs (empty) <gan>
 
 
 .. toctree::

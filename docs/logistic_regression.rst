@@ -27,12 +27,6 @@ Types of logistic regression
   - Multi (Cats, Dogs, Sheep)
   - Ordinal (Low, Medium, High)
 
-Pros/cons
----------
-
-  - **Pros:** Easy to implement, fast to train, returns probability scores
-  - **Cons:** Bad when too many features or too many classifications
-
 
 
 Binary logistic regression

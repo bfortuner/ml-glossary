@@ -58,7 +58,7 @@ Let’s say we are given a `dataset <http://www-bcf.usc.edu/~gareth/ISL/Advertis
 Making predictions
 ------------------
 
-Our prediction function outputs an estimate of sales given a company's radio advertising spend and our current values for ''Weight'' and ''Bias''.
+Our prediction function outputs an estimate of sales given a company's radio advertising spend and our current values for *Weight* and *Bias*.
 
 .. math::
 

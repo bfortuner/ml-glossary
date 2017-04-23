@@ -6,23 +6,18 @@ Loss Functions
 
 .. contents:: :local:
 
-Introduction
-============
-
-A loss function, or cost function, is a wrapper around our model's predict function that tells us "how good" the model is at making predictions for a given set of parameters. The loss function has its own curve and its own derivatives. The slope of this curve tells us how to change our parameters to make the model more accurate! We use the model to make predictions. We use the cost function to update our parameters. Our cost function can take a variety of forms as there are many different cost functions available. Popular loss functions include: :ref:`mse` and :ref:`Cross-entropy Loss <loss_cross_entropy>`.
-
 
 .. _loss_cross_entropy:
 
-Cross-Entropy Loss
-==================
+Cross-Entropy
+=============
 
-Cross-entropy loss, or Log Loss, measures the performance of a classification model whose output is a probability value between 0 and 1. Cross-entropy loss increases as the predicted probability diverges from the actual label. So predicting a probability of .012 when the actual observation label is 1 would be bad and result in a high loss value. A perfect model would have a log loss of 0.
-
-The graph below shows the range of possible loss values given a true observation (isDog = 1). As the predicted probability approaches 1, log loss slowly decreases. As the predicted probability decreases, however, the log loss increases rapidly. Log loss penalizes both types of errors, but especially those predications that are confident and wrong!
+Cross-entropy loss, or log loss, measures the performance of a classification model whose output is a probability value between 0 and 1. Cross-entropy loss increases as the predicted probability diverges from the actual label. So predicting a probability of .012 when the actual observation label is 1 would be bad and result in a high loss value. A perfect model would have a log loss of 0.
 
 .. image:: images/cross_entropy.png
     :align: center
+
+The graph above shows the range of possible loss values given a true observation (isDog = 1). As the predicted probability approaches 1, log loss slowly decreases. As the predicted probability decreases, however, the log loss increases rapidly. Log loss penalizes both types of errors, but especially those predications that are confident and wrong!
 
 .. note::
 
@@ -38,24 +33,15 @@ The graph below shows the range of possible loss values given a true observation
       else:
           return -log(1 - prediction)
 
-.. rubric:: Binary classification (M=2)
+.. rubric:: Math
+
+In binary classification, where the number of classes :math:`M` equals 2, cross-entropy can be calculated as:
 
 .. math::
 
   -{(y\log(p) + (1 - y)\log(1 - p))}
 
-.. note::
-
-  - N - number of observations
-  - M - number of possible class labels (dog, cat, fish)
-  - log - the natural logarithm
-  - y - a binary indicator (0 or 1) of whether class label :math:`c` is the correct classification for observation :math:`o`
-  - p - the model's predicted probability that observation :math:`o` is of class :math:`c`
-
-
-.. rubric:: Multi-class cross-entropy
-
-In multi-class classification (M>2), we take the sum of loss values for each class prediction in the observation.
+If :math:`M > 2` (i.e. multiclass classification), we calculate a separate loss for each class label per observation and sum the result.
 
 .. math::
 
@@ -63,33 +49,31 @@ In multi-class classification (M>2), we take the sum of loss values for each cla
 
 .. note::
 
-  Why the Negative Sign?
-
-  Cross-entropy takes the negative log to provide an easy metric for comparison. It takes this approach because the positive log of numbers < 1 returns negative values, which is confusing to work with when comparing the performance of two models.
-
-  .. image:: images/log_vs_neglog.gif
-        :align: center
+  - M - number of classes (dog, cat, fish)
+  - log - the natural log
+  - y - binary indicator (0 or 1) if class label :math:`c` is the correct classification for observation :math:`o`
+  - p - predicted probability observation :math:`o` is of class :math:`c`
 
 
 .. _hinge_loss:
 
-Hinge Loss
-==========
+Hinge
+=====
 
 Be the first to contribute!
 
 
 .. _kl_divergence:
 
-Kullback-Leibler divergence
-===========================
+Kullback-Leibler
+================
 
 Be the first to contribute!
 
 
 .. _l1_loss:
 
-L1 Loss
+L1
 =======
 
 Be the first to contribute!
@@ -97,8 +81,8 @@ Be the first to contribute!
 
 .. _l2_loss:
 
-L2 Loss
-=======
+L2
+==
 
 Be the first to contribute!
 
@@ -121,8 +105,6 @@ Description of MSE...
 .. literalinclude:: ../code/loss_functions.py
     :language: python
     :pyobject: MSE
-
-**Derivative**
 
 .. literalinclude:: ../code/loss_functions.py
     :language: python

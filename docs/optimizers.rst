@@ -4,6 +4,8 @@
 Optimizers
 ==========
 
+.. contents:: :local:
+
 
 Adadelta
 ========

@@ -13,9 +13,6 @@ A loss function, or cost function, is a wrapper around our model's predict funct
 
 [[File:linear_line_w_cost_function.png]]
 
-[#]_
-
-
 Let's take an example from linear regression where our model is :math:`f(x) = mx + b`, where :math:`m` and :math:`b` are the parameters we can tweak.
 
 If we use Mean Squared Error as our cost function, we can calculate total cost of our predictions like this:
@@ -46,6 +43,7 @@ If we use Mean Squared Error as our cost function, we can calculate total cost o
       return total_error / N
 
 
+.. _loss_cross_entropy:
 
 Cross-Entropy Loss
 ==================

@@ -54,7 +54,7 @@ The derivative of relu...
     :pyobject: relu_prime
 
 
-.. _sigmoid:
+.. _activation_sigmoid:
 
 Sigmoid
 =======

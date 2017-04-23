@@ -16,7 +16,7 @@ Accuracy
 .. _glossary_algorithm:
 
 Algorithm
-  A method, function, or series of instructions used to generate a machine learning glossary_model_. Examples include linear regression, decision trees, support vector machines, and neural networks.
+  A method, function, or series of instructions used to generate a machine learning :ref:`model <glossary_model>`. Examples include linear regression, decision trees, support vector machines, and neural networks.
 
 .. _glossary_attribute:
 
@@ -100,7 +100,7 @@ Extrapolation
 .. _glossary_feature:
 
 Feature
-  With respect to a dataset, a feature represents an glossary_attribute_ and value combination. Color is an attribute. "Color is blue" is a feature. In Excel terms, features are similar to cells. The term feature has other definitions in different contexts.
+  With respect to a dataset, a feature represents an :ref:`attribute <glossary_attribute>` and value combination. Color is an attribute. "Color is blue" is a feature. In Excel terms, features are similar to cells. The term feature has other definitions in different contexts.
 
 .. _glossary_feature_selection:
 
@@ -125,7 +125,7 @@ Induction
 .. _glossary_instance:
 
 Instance
-  A data point, row, or sample in a dataset. Another term for glossary_observation_.
+  A data point, row, or sample in a dataset. Another term for :ref:`observation <glossary_observation>`.
 
 .. _glossary_learning_rate:
 
@@ -165,7 +165,7 @@ Null Accuracy
 .. _glossary_observation:
 
 Observation
-  A data point, row, or sample in a dataset. Another term for glossary_instance_.
+  A data point, row, or sample in a dataset. Another term for :ref:`instance <glossary_instance>`.
 
 .. _glossary_overfitting:
 

@@ -22,6 +22,7 @@ Adam
 
 Be the first to contribute!
 
+.. _optimizers_lbfgs:
 
 L-BFGS
 ======

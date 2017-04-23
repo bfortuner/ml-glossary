@@ -177,6 +177,8 @@ To solve for the gradient, we iterate through our data points using our new weig
       return weight, bias
 
 
+.. _simple_linear_regression_training:
+
 Training
 --------
 
@@ -325,6 +327,7 @@ Our input is a 200 x 3 matrix containing TV, Radio, and Newspaper data. Our outp
 
   **Matrix math**. Before we continue, it's important to understand basic :doc:`linear_algebra` concepts as well as numpy functions like `numpy.dot() <https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html>`_.
 
+.. _multiple_linear_regression_predict:
 
 Making predictions
 ------------------

@@ -508,8 +508,12 @@ Test yourself
   \end{bmatrix}
 
 
-Numpy dot product
------------------
+
+Numpy
+=====
+
+Dot product
+-----------
 Numpy uses the function np.dot(A,B) for both vector and matrix multiplication. It has some other interesting features and gotchas so I encourage you to read the documentation here before use.
 
 ::
@@ -530,8 +534,8 @@ Numpy uses the function np.dot(A,B) for both vector and matrix multiplication. I
   mm.shape == (1,2)
 
 
-Numpy broadcasting
-------------------
+Broadcasting
+------------
 In numpy the dimension requirements for elementwise operations are relaxed via a mechanism called broadcasting. Two matrices are compatible if the corresponding dimensions in each matrix (rows vs rows, columns vs columns) meet the following requirements:
 
   1. The dimensions are equal, or

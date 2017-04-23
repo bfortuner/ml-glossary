@@ -7,7 +7,7 @@ Gradient Descent
 Gradient descent is an optimization algorithm used to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the :ref:`parameters <glossary_parameters>` of our model. Parameters refer to coefficients in :doc:`linear_regression` and :ref:`weights <nn_weights>` in neural networks.
 
 
-How it works
+Introduction
 ============
 
 Consider the 3-dimensional graph below in the context of a cost function. Our goal is to move from the mountain in the top right corner (high cost) to the dark blue sea in the bottom left (low cost). The arrows represent the direction of steepest descent (negative gradient) from any given point--the direction that decreases the cost function as quickly as possible. `Source <http://www.adalta.it/Pages/-GoldenSoftware-Surfer-010.asp>`_
@@ -20,27 +20,24 @@ Starting at the top of the mountain, we take our first step downhill in the dire
 .. image:: images/gradient_descent_demystified.png
     :align: center
 
-.. _
-
 Learning rate
--------------
+=============
 
 The size of these steps is called the *learning rate*. With a high learning rate we can cover more ground each step, but we risk overshooting the lowest point since the slope of the hill is constantly changing. With a very low learning rate, we can confidently move in the direction of the negative gradient since we are recalculating it so frequently. A low learning rate is more precise, but calculating the gradient is time-consuming, so it will take us a very long time to get to the bottom.
 
 
 Cost function
--------------
+=============
 
 A :ref:`cost_function` tells us "how good" our model is at making predictions for a given set of parameters. The cost function has its own curve and its own gradients. The slope of this curve tells us how to update our parameters to make the model more accurate.
 
 
-Algorithm
----------
+Step-by-step
+============
 
 Now let's run gradient descent using our new cost function. There are two parameters in our cost function we can control: :math:`m` (weight) and :math:`b` (bias). Since we need to consider the impact each one has on the final prediction, we need to use partial derivatives. We calculate the partial derivatives of the cost function with respect to each parameter and store the results in a gradient.
 
-Math
-----
+.. rubric:: Math
 
 Given the cost function:
 
@@ -66,8 +63,7 @@ The gradient can be calculated as:
 To solve for the gradient, we iterate through our data points using our new :math:`m` and :math:`n` values and compute the partial derivatives. This new gradient tells us the slope of our cost function at our current position (current parameter values) and the direction we should move to update our parameters. The size of our update is controlled by the learning rate.
 
 
-Code
-----
+.. rubric:: Code
 
 ::
 

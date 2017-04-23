@@ -3,7 +3,7 @@
 Machine learning cheatsheet
 ===========================
 
-Quick visual explanations of machine learning concepts with diagrams, code examples and links to resources for learning more.
+Brief visual explanations of machine learning concepts with diagrams, code examples and links to resources for learning more.
 
 .. toctree::
     :caption: Basics

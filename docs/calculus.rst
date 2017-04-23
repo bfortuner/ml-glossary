@@ -6,6 +6,7 @@ Calculus
 
 .. contents:: :local:
 
+
 .. _derivative:
 
 Derivatives
@@ -19,8 +20,8 @@ A derivative can be defined in two ways:
 Both represent the same principle, but for our purposes it’s easier to explain using the geometric definition.
 
 
-Definition
-----------
+Geometric definition
+--------------------
 
 In geometry slope represents the steepness of a line. It answers the question: how much does :math:`y` or :math:`f(x)` change given a specific change in :math:`x`?
 
@@ -32,8 +33,8 @@ Using this definition we can easily calculate the slope between two points. But 
 A derivative outputs an expression we can use to calculate the *instantaneous rate of change*, or slope, at a single point on a line. After solving for the derivative you can use it to calculate the slope at every other point on the line.
 
 
-Calculating the derivative
---------------------------
+Taking the derivative
+---------------------
 
 Consider the graph below, where :math:`f(x) = x^2 + 3`.
 
@@ -44,11 +45,7 @@ The slope between (1,4) and (3,12) would be:
 
 .. math::
 
-  \begin{align}
-  slope &= \frac{y2-y1}{x2-x1} \\
-        &= \frac{12-4}{3-1} \\
-        &= 4
-  \end{align}
+  slope = \frac{y2-y1}{x2-x1} = \frac{12-4}{3-1} = 4
 
 But how do we calculate the slope at point (1,4) to reveal the change in slope at that specific point?
 
@@ -59,8 +56,8 @@ In this way, derivatives help us answer the question: how does :math:`f(x)` chan
 In math language we represent this infinitesimally small increase using a limit. A limit is defined as the output value a function approaches as the input value approaches another value. In our case the target value is the specific point at which we want to calculate slope.
 
 
-Walk Through Example
---------------------
+Step-by-step
+------------
 
 Calculating the derivative is the same as calculating normal slope, however in this case we calculate the slope between our point and a point infinitesimally close to it. We use the variable :math:`h` to represent this infinitesimally distance. Here are the steps:
 
@@ -103,8 +100,8 @@ So what does this mean? It means for the function :math:`f(x) = x^2`, the slope 
   \lim_{h\to0}\frac{f(x+h) - f(x)}{h}
 
 
-Code
-----
+.. rubric:: Code
+
 
 Let's write code to calculate the derivative for :math:`f(x) = x^2`. We know the derivative should be :math:`2x`.
 
@@ -121,16 +118,11 @@ Let's write code to calculate the derivative for :math:`f(x) = x^2`. We know the
   derivative, actual = 6.0001, 6
 
 
-Derivatives in Machine Learning
--------------------------------
+Machine learning use cases
+--------------------------
 
 Machine learning uses derivatives to find optimal solutions to problems. It's useful in optimization functions like Gradient Descent because it helps us decide whether to increase or decrease our weights in order to maximize or minimize some metrics (e.g. loss). It also helps us model nonlinear functions as linear functions (tangent lines), which have constant slopes. With a constant slope we can decide whether to move up or down the slope (increase or decrease our weights) to get closer to the target value (class label).
 
-
-Tutorials
----------
-
-* `Excellent Explanation starting at 1:05 <https://youtu.be/pHMzNW8Agq4?t=1m5s>`_
 
 
 .. _gradient:
@@ -141,14 +133,14 @@ Gradients
 A gradient is a vector that stores the partial derivatives of multivariable functions. It helps us calculate the slope at a specific point on a curve for functions with multiple independent variables. In order to calculate this more complex slope, we need to isolate each variable to determine how it impacts the output on its own. To do this we iterate through each of the variables and calculate the derivative of the function after holding all other variables constant. Each iteration produces a partial derivative which we store in the gradient.
 
 
-Partial Derivatives
+Partial derivatives
 -------------------
 
 In functions with 2 or more variables, the partial derivative is the derivative of one variable with respect to the others. If we change :math:`x`, but hold all other variables constant, how does :math:`f(x,z)` change? That's one partial derivative. The next variable is :math:`z`. If we change :math:`z` but hold :math:`x` constant, how does :math:`f(x,z)` change? We store partial derivatives in a gradient, which represents the full derivative of the multivariable function.
 
 
-Walk-Through Example
---------------------
+Step-by-step
+------------
 
 Here are the steps to calculate the gradient for a multivariable function:
 
@@ -218,7 +210,7 @@ As :math:`h —> 0`...
       \end{bmatrix}
 
 
-Directional Derivatives
+Directional derivatives
 -----------------------
 
 Another important concept is directional derivatives. When calculating the partial derivatives of multivariable functions we use our old technique of analyzing the impact of infinitesimally small increases to each of our independent variables. By increasing each variable we alter the function output in the direction of the slope.
@@ -226,12 +218,11 @@ Another important concept is directional derivatives. When calculating the parti
 But what if we want to change directions? For example, imagine we’re traveling north through mountainous terrain on a 3-dimensional plane. The gradient we calculated above tells us we’re traveling north at our current location. But what if we wanted to travel southwest? How can we determine the steepness of the hills in the southwest direction? Directional derivatives help us find the slope if we move in a direction different from the one specified by the gradient.
 
 
-Calculation
------------
+.. rubric:: Math
 
-The directional derivative is computed by taking the `dot product <https://en.wikipedia.org/wiki/Dot_product>`_ of the gradient of :math:`f` and a unit vector :math:`\vec{v}` of "tiny nudges" representing the direction. The unit vector describes the proportions we want to move in each direction. The output of this calculation is a scalar number representing how much :math:`f` will change if the current input moves with vector :math:`\vec{v}`.
+The directional derivative is computed by taking the dot product [11]_ of the gradient of :math:`f` and a unit vector :math:`\vec{v}` of "tiny nudges" representing the direction. The unit vector describes the proportions we want to move in each direction. The output of this calculation is a scalar number representing how much :math:`f` will change if the current input moves with vector :math:`\vec{v}`.
 
-Let's say you have the function :math:`f(x,y,z)` and you want to compute its directional derivative along the following vector [#]_:
+Let's say you have the function :math:`f(x,y,z)` and you want to compute its directional derivative along the following vector [2]_:
 
 .. math::
 
@@ -268,13 +259,14 @@ We can rewrite the dot product as:
 This should make sense because a tiny nudge along :math:`\vec{v}` can be broken down into two tiny nudges in the x-direction, three tiny nudges in the y-direction, and a tiny nudge backwards, by −1 in the z-direction.
 
 
-Properties of Gradients
------------------------
+Useful properties
+-----------------
 
 There are two additional properties of gradients that are especially useful in deep learning. The gradient of a function:
 
   #. Always points in the direction of greatest increase of a function (`explained here <https://betterexplained.com/articles/understanding-pythagorean-distance-and-the-gradient>`_)
   #. Is zero at a local maximum or local minimum
+
 
 
 .. _chain_rule:
@@ -283,7 +275,6 @@ Chain rule
 ==========
 
 The chain rule is a formula for calculating the derivatives of composite functions. Composite functions are functions composed of functions inside other function(s).
-
 
 How It Works
 ------------
@@ -307,8 +298,8 @@ The chain rule tells us that the derivative of :math:`f(x)` equals:
   \frac{df}{dx} = \frac{dh}{dg} \cdot \frac{dg}{dx}
 
 
-Walk-Through Example
---------------------
+Step-by-step
+------------
 
 Say :math:`f(x)` is composed of two functions :math:`h(x) = x^3` and :math:`g(x) = x^2`. And that:
 
@@ -329,8 +320,7 @@ The derivative of :math:`f(x)` would equal:
   \end{align}
 
 
-Steps
------
+.. rubric:: Steps
 
 1. Solve for the inner derivative of :math:`g(x) = x^2`
 
@@ -378,8 +368,9 @@ We can also write this derivative equation :math:`f'` notation:
 
   f' = A'(B(C(x)) \cdot B'(C(x)) \cdot C'(x)
 
-Walk-through example
---------------------
+
+.. rubric:: Steps
+
 
 Given the function :math:`f(x) = A(B(C(x)))`, lets assume:
 
@@ -430,4 +421,6 @@ We then input the derivatives and simplify the expression:
 .. [7] http://tutorial.math.lamar.edu/Classes/CalcI/DefnOfDerivative.aspx
 .. [8] https://www.khanacademy.org/math/calculus-home/taking-derivatives-calc/chain-rule-calc/v/chain-rule-introduction
 .. [9] http://tutorial.math.lamar.edu/Classes/CalcI/ChainRule.aspx
+.. [10] https://youtu.be/pHMzNW8Agq4?t=1m5s
+.. [11] https://en.wikipedia.org/wiki/Dot_product
 

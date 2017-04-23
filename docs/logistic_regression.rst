@@ -1,96 +1,92 @@
 .. _logistic_regression:
 
 ===================
-Logistic regression
+Logistic Regression
 ===================
 
-.. toctree::
-  :maxdepth: 1
-  :titlesonly:
+.. contents::
+    :local:
+    :depth: 2
 
 Logistic regression is a classification algorithm, used to estimate probabilities (Binary values like 0/1, yes/no, true/false) based on given set of independent variable(s). Its output values lies between 0 and 1. Prior to building a model, the features values are transformed using the logistic function (Sigmoid) to produce probability values that can be mapped to two or more classes.
 
-**Linear vs logistic regression**
+
+Overview
+========
+
+Linear vs logistic regression
+-----------------------------
+
 Given data on time spent studying and exam scores. `Linear regression`_ and logistic regression can predict different things:
 
   - **Linear Regression** could help us predict the student's test score on a scale of 0 - 100. Linear regression predictions are continuous (numbers in a range).
 
   - **Logistic Regression** could help use predict whether the student passed or failed. Logistic regression predictions are discrete (only specific values or categories are allowed). We can also view probability scores underlying the model's classifications.
 
-**Types of logistic regression**
+Types of logistic regression
+----------------------------
 
   - Binary (Pass/Fail)
   - Multi (Cats, Dogs, Sheep)
   - Ordinal (Low, Medium, High)
 
-**Pros/cons**
+Pros/cons
+---------
 
   - **Pros:** Easy to implement, fast to train, returns probability scores
   - **Cons:** Bad when too many features or too many classifications
 
 
-Binary classification
-=====================
+
+Binary logistic regression
+==========================
 
 Say we're given `data <http://scilab.io/wp-content/uploads/2016/07/data_classification.csv>`_ on student exam results and our goal is to predict whether a student will pass or fail based on number of hours slept and hours spent studying. We have two features (hours slept, hours studied) and two classes: passed (1) and failed (0).
 
-{| class="wikitable"
-! style="font-weight: bold;" | Studied
-! style="font-weight: bold;" | Slept
-! style="font-weight: bold;" | Passed
-|-
-| 4.85
-| 9.63
-| 1
-|-
-| 8.62
-| 3.23
-| 0
-|-
-| 5.43
-| 8.23
-| 1
-|-
-| 9.21
-| 6.34
-| 0
-|}
+
++--------------+-------------+-------------+
+| **Studied**  | **Slept**   | **Passed**  |
++--------------+-------------+-------------+
+| 4.85         | 9.63        | 1           |
++--------------+-------------+-------------+
+| 8.62         | 3.23        | 0           |
++--------------+-------------+-------------+
+| 5.43         | 8.23        | 1           |
++--------------+-------------+-------------+
+| 9.21         | 6.34        | 0           |
++--------------+-------------+-------------+
 
 Graphically we could represent our data with a scatter plot.
 
 .. image:: images/logistic_regression_exam_scores_scatter.png
     :align: center
 
-Sigmoid activation function
----------------------------
+
+Sigmoid activation
+------------------
 
 In order to map predicted values to probabilities, we use the `Sigmoid`_ function. The function maps any real value into another value between 0 and 1. In machine learning, we use Sigmoid to map predictions to probabilities.
-
-**Math**
-
-.. math::
-
-  \begin{align}
-  z & = w_0 + w_1 x_1 + w_2 x_2 \\
-  s(z) & = \frac{1} {1 + e^{-z}}
-  \end{align}
-
-  - :math:`s(z)` = output between 0 and 1 (probability estimate)
-  - :math:`z` = input to the function (your algorithm's prediction e.g. mx + b)
-  - :math:`e` = base of natural log ([https://en.wikipedia.org/wiki/E_(mathematical_constant) wikipedia])
-
-**Visualizing sigmoid**
-
-.. image:: images/logistic_regression_sigmoid_w_threshold.png
-    :align: center
 
 .. math::
 
   S(z) = \frac{1} {1 + e^{-z}}
 
+- :math:`s(z)` = output between 0 and 1 (probability estimate)
+- :math:`z` = input to the function (your algorithm's prediction e.g. mx + b)
+- :math:`e` = base of natural log ([https://en.wikipedia.org/wiki/E_(mathematical_constant) wikipedia])
+
+Code
+^^^^
+
 .. literalinclude:: ../code/activation_functions.py
     :language: python
     :pyobject: sigmoid
+
+Graph
+^^^^^
+
+.. image:: images/logistic_regression_sigmoid_w_threshold.png
+    :align: center
 
 
 Decision boundary
@@ -109,11 +105,13 @@ For example, if our threshold was .5 and our prediction function returned .7, we
     :align: center
 
 
-Prediction function
--------------------
+Making predictions
+------------------
+
 Using our knowledge of sigmoid functions and decision boundaries, we can now write a prediction function. A prediction function in logistic regression returns the probability of our observation being positive, True, or "Yes". We call this class 1 and its notation is :math:`P(class=1)`. As the probability gets closer to 1, our model is more confident that the observation is in class 1.
 
-**Math**
+Math
+^^^^
 
 Let's use the same multiple linear equation from our `Linear regression`_ wiki.
 
@@ -129,7 +127,8 @@ This time however we will transform the output using the sigmoid function to ret
 
 If the model returns .4 it believes there is only a 40% chance of passing. If our decision boundary was .5, we would categorize this observation as "Fail.""
 
-**Code**
+Code
+^^^^
 
 We wrap the sigmoid function over the same prediction function we used in `Linear regression`_
 
@@ -148,33 +147,35 @@ Cost function
 
 Unfortunately we can't (or at least shouldn't) use the same cost function `Mean Squared Error`_ as we did for linear regression. Why? There is a great math explanation `here <http://neuralnetworksanddeeplearning.com/chap3.html>`_ and `here <http://stackoverflow.com/questions/32986123/why-the-cost-function-of-logistic-regression-has-a-logarithmic-expression>`_, but for now I'll simply say it's because our prediction function is non-linear (due to sigmoid transform). Squaring this prediction as we do in MSE results in a non-convex function with many local minimums. If our cost function has many local minimums, gradient descent may not find the optimal global minimum.
 
-**Math**
+Math
+^^^^
 
 Instead of Mean Squared Error, we use a cost function called Cross-entropy loss, also known as Log Loss. Cross-entropy loss can be divided into two separate cost functions, one for :math:`y=1` and one for :math:`y=0`.
 
 .. image:: images/ng_cost_function_logistic.png
     :align: center
 
-The benefits of taking the logarithm reveal themselves when you look at the cost function graphs for y=1 and y=0. These smooth `monotonic functions <https://en.wikipedia.org/wiki/Monotonic_function>`_ (always increasing or always decreasing) make it easy to calculate the gradient and minimize cost [#]_.  Source].
+The benefits of taking the logarithm reveal themselves when you look at the cost function graphs for y=1 and y=0. These smooth `monotonic functions <https://en.wikipedia.org/wiki/Monotonic_function>`_ (always increasing or always decreasing) make it easy to calculate the gradient and minimize cost. Image from `Andrew Ng's slides on logistic regression`_.
 
 .. image:: images/y1andy2_logistic_function.png
     :align: center
 
 The key thing to note is the cost function penalizes confident and wrong predictions more than it rewards confident and right predictions! The corollary is increasing prediction accuracy (closer to 0 or 1) has diminishing returns on reducing cost due to the logistic nature of our cost function.
 
-**The above functions compressed into one:**
+Above functions compressed into one
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: images/logistic_cost_function_joined.png
     :align: center
 
 Multiplying by :math:`y` and :math:`(1-y)` in the above equation is a sneaky trick that let's us use the same equation to solve for both y=1 and y=0 cases. If y=0, the first side cancels out. If y=1, the second side cancels out. In both cases we only perform the operation we need to perform.
 
-**Vectorized cost function**
+
+Vectorized cost function
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: images/logistic_cost_function_vectorized.png
     :align: center
-
-**Code**
 
 ::
 
@@ -207,11 +208,12 @@ Multiplying by :math:`y` and :math:`(1-y)` in the above equation is a sneaky tri
 
 
 Gradient descent
-================
+----------------
 
 To minimize our cost, we use `Gradient Descent`_ just like before in `Linear Regression`_. There are other more sophisticated optimization algorithms out there such as conjugate gradient like `BFGS`_, but you don't have to worry about these. Machine learning libraries like Scikit-learn hide their implementations so you can focus on more interesting things!
 
-**Math**
+Math
+^^^^
 
 One of the neat properties of the sigmoid function is its derivative is easy to calculate. You can find a walk-through of the derivation `here <http://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x>`_ and a more detailed overview `here <http://neuralnetworksanddeeplearning.com/chap3.html>`_
 
@@ -236,16 +238,16 @@ This leads to an equally beautiful and convenient derivative:
 
 Notice how this gradient is the same as the Mean Squared Error gradient in `Linear Regression`_ The only difference is the hypothesis function.
 
-**Steps**
+Procedure
+^^^^^^^^^
 
   #. Calculate gradient average
   #. Multiply by learning rate
   #. Subtract from weights
   #. Repeat
 
-**Code**
-
-Include math?
+Code
+^^^^
 
 ::
 
@@ -283,8 +285,8 @@ Include math?
       return weights
 
 
-Classify
---------
+Probabilities to labels
+-----------------------
 
 The final step is to convert assign predicted probabilities into class labels (0 or 1).
 
@@ -294,14 +296,14 @@ The final step is to convert assign predicted probabilities into class labels (0
       return 1 if prob >= .5 else 0
 
   def classify(preds):
-      **
+      '''
       preds = N element array of predictions between 0 and 1
       returns N element array of 0s (False) and 1s (True)
-      **
+      '''
       decision_boundary = np.vectorize(decision_boundary)  #vectorized function
       return decision_boundary(predictions).flatten()
 
-  #Example
+  # Example
   Probabilities = [ 0.967  0.448   0.015  0.780  0.978  0.004]
   Classifications = [1 0 0 1 1 0]
 
@@ -344,16 +346,19 @@ If our model is working, we should see our cost decrease after every iteration.
   - **Final Cost:** 0.2487
   - **Final Weights:** [-8.197, .921, .738]
 
-**Loss**
+Loss
+^^^^
 
 .. image:: images/logistic_regression_loss_history.png
     :align: center
 
-**Accuracy**
+Accuracy
+^^^^^^^^
 
-Also referred to as a "score."
+`Accuracy`_ measures how correct our predictions were.
 
 ::
+
   def accuracy(predicted_labels, actual_labels):
       diff = predicted_labels - actual_labels
       return 1.0 - (float(np.count_nonzero(diff)) / len(diff))
@@ -386,13 +391,14 @@ We can also visualize our models performance by graphically comparing our probab
       plt.show()
 
 
-Multiclass classification
-=========================
+
+Multiclass logistic regression
+==============================
 
 Instead of :math:`y = {0,1}1 we will expand our definition so that :math:`y = {0,1...n}`. Basically we re-run binary classification multiple times, once for each class.
 
-Steps
------
+Procedure
+---------
 
   #. Divide the problem into n+1 binary classification problems (+1 because the index starts at 0?).
   #. For each class...
@@ -401,14 +407,20 @@ Steps
 
 For each sub-problem, we select one class (YES) and lump all the others into a second class (NO). Then we take the class with the highest predicted value.
 
-Code
-----
 
-**Scikit-learn**
+Softmax activation
+------------------
+
+something about softmax here...
+
+
+Scipy example
+-------------
 
 Let's compare our performance to the LogisticRegression model provided by `scikit-learn <http://scikit-learn.org/stable/modules/linear_model.html#logistic-regression>`_.
 
 ::
+
   import sklearn
   from sklearn.linear_model import LogisticRegression
   from sklearn.cross_validation import train_test_split
@@ -445,18 +457,8 @@ Let's compare our performance to the LogisticRegression model provided by `sciki
 .. rubric:: References
 
 .. [1] http://www.holehouse.org/mlclass/06_Logistic_Regression.html
-
-* https://www.coursera.org/learn/machine-learning/resources/Zi29t
-* http://machinelearningmastery.com/logistic-regression-tutorial-for-machine-learning/
-* https://scilab.io/machine-learning-logistic-regression-tutorial/
-* http://www.ritchieng.com/logistic-regression/
-* [http://scilab.io/wp-content/uploads/2016/07/data_classification.csv dataset]
-* https://www.hackerearth.com/practice/machine-learning/binary-classification-for-continuous-variables/logistic-regression/tutorial/
-* https://www.dezyre.com/data-science-in-r-programming-tutorial/logistic-regression-tutorial
-* http://machinelearningmastery.com/logistic-regression-for-machine-learning/
-* https://github.com/perborgen/LogisticRegression/blob/master/logistic.py
-* https://www.coursera.org/learn/ml-classification/home/week/2
-* http://peterroelants.github.io/posts/neural_network_implementation_part02
-* http://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x
-* http://neuralnetworksanddeeplearning.com/chap3.html
-* https://ayearofai.com/rohan-1-when-would-i-even-use-a-quadratic-equation-in-the-real-world-13f379edab3b#.vs3qgfo42
+.. [2] http://machinelearningmastery.com/logistic-regression-tutorial-for-machine-learning
+.. [3] https://scilab.io/machine-learning-logistic-regression-tutorial/
+.. [4] https://github.com/perborgen/LogisticRegression/blob/master/logistic.py
+.. [5] http://neuralnetworksanddeeplearning.com/chap3.html
+.. [6] http://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x

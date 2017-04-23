@@ -1,12 +1,10 @@
 .. _activation_functions:
 
 ====================
-Activation functions
+Activation Functions
 ====================
 
-.. toctree::
-  :maxdepth: 1
-  :titlesonly:
+.. contents:: :local:
 
 ELU
 ===
@@ -95,3 +93,8 @@ Tanh
 ====
 
 Be the first to contribute!
+
+
+.. rubric:: References
+
+.. [1] Example

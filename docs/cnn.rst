@@ -4,8 +4,10 @@
 CNNs
 ====
 
+.. contents:: :local:
+
 Intro to CNNs
 
-.. toctree::
-  :maxdepth: 2
+.. rubric:: References
 
+.. [1] Example

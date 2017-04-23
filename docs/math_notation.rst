@@ -6,6 +6,8 @@ Notation
 
 Commonly used math symbols in machine learning texts.
 
+.. contents:: :local:
+
 .. note::
 
   Use the `table generator <http://www.tablesgenerator.com/text_tables>`_ to quickly add new symbols.
@@ -117,7 +119,6 @@ Statistics
 
 .. rubric:: References
 
-* http://www.tablesgenerator.com/text_tables
-* http://www.rapidtables.com/math/symbols/Basic_Math_Symbols.htm
-
+.. [1] http://www.tablesgenerator.com/text_tables
+.. [2] http://www.rapidtables.com/math/symbols/Basic_Math_Symbols.htm
 

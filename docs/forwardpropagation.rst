@@ -4,6 +4,11 @@
 Forwardpropagation
 ==================
 
+.. contents:: :local:
+
+Overview
+========
+
 .. image:: images/neural_network_simple.png
     :align: center
 
@@ -33,7 +38,8 @@ Let’s write a method feed_forward() to propagate input data through our simple
 
 ..    :pyobject: MyClass   #Target a specific class.function in a file
 
+
 .. rubric:: References
 
-- Reference1
+.. [1] Example
 

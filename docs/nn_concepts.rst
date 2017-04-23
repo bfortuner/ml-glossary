@@ -4,11 +4,7 @@
 Concepts
 ========
 
-Basic terms and concepts in neural networks
-
-.. toctree::
-  :maxdepth: 1
-  :titlesonly:
+.. contents:: :local:
 
 
 Neural Network
@@ -39,6 +35,7 @@ Synapse
 
 Synapses are like roads in a neural network. They connect inputs to neurons, neurons to neurons, and neurons to outputs. In order to get from one neuron to another, you have to travel along the synapse paying the “toll” (weight) along the way. Each connection between two neurons has a unique synapse with a unique weight attached to it. When we talk about updating weights in a network, we’re really talking about adjusting the weights on these synapses.
 
+.. _nn_weights:
 
 Weights
 =======
@@ -115,7 +112,7 @@ Activation functions typically have the following properties:
 
 .. rubric:: References
 
-- ref 1
+.. [1] http://sebastianruder.com/optimizing-gradient-descent/
 
 
 

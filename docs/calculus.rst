@@ -4,7 +4,7 @@
 Calculus
 ========
 
-Brief overview of derivatives, gradients and the chain rule.
+.. contents:: :local:
 
 .. _derivative:
 
@@ -279,7 +279,7 @@ There are two additional properties of gradients that are especially useful in d
 
 .. _chain_rule:
 
-Chain Rule
+Chain rule
 ==========
 
 The chain rule is a formula for calculating the derivatives of composite functions. Composite functions are functions composed of functions inside other function(s).
@@ -418,35 +418,16 @@ We then input the derivatives and simplify the expression:
   \end{align}
 
 
+
 .. rubric:: References
 
-.. [#] `Khan Academy Derivatives Introduction <https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/partial-derivative-and-gradient-articles/a/directional-derivative-introduction>`_
-
-  * https://en.wikipedia.org/wiki/Derivative
-
-  * https://en.wikipedia.org/wiki/Partial_derivative
-
-  * https://en.wikipedia.org/wiki/Gradient
-
-  * https://betterexplained.com/articles/vector-calculus-understanding-the-gradient/ Understanding
-
-  * https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/partial-derivative-and-gradient-articles/a/the-gradient
-
-  * https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/gradient-and-directional-derivatives/v/gradient-and-contour-maps
-
-  * https://www.mathsisfun.com/calculus/derivatives-introduction.html
-
-  * http://tutorial.math.lamar.edu/Classes/CalcI/DefnOfDerivative.aspx
-
-  * http://www.algebrahelp.com/lessons/simplifying/foilmethod/pg2.htm
-
-  * http://www.sosmath.com/calculus/diff/der00/der00.html
-
-  * http://csrgxtu.github.io/2015/03/20/Writing-Mathematic-Fomulars-in-Markdown/
-
-  * https://en.wikipedia.org/wiki/Chain_rule#Higher_dimensions
-
-  * https://www.khanacademy.org/math/calculus-home/taking-derivatives-calc/chain-rule-calc/v/chain-rule-introduction
-
-  * http://tutorial.math.lamar.edu/Classes/CalcI/ChainRule.aspx
+.. [1] https://en.wikipedia.org/wiki/Derivative
+.. [2] https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/partial-derivative-and-gradient-articles/a/directional-derivative-introduction
+.. [3] https://en.wikipedia.org/wiki/Partial_derivative
+.. [4] https://en.wikipedia.org/wiki/Gradient
+.. [5] https://betterexplained.com/articles/vector-calculus-understanding-the-gradient
+.. [6] https://www.mathsisfun.com/calculus/derivatives-introduction.html
+.. [7] http://tutorial.math.lamar.edu/Classes/CalcI/DefnOfDerivative.aspx
+.. [8] https://www.khanacademy.org/math/calculus-home/taking-derivatives-calc/chain-rule-calc/v/chain-rule-introduction
+.. [9] http://tutorial.math.lamar.edu/Classes/CalcI/ChainRule.aspx
 

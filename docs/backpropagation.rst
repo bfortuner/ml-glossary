@@ -4,6 +4,8 @@
 Backpropagation
 ===============
 
+.. contents:: :local:
+
 The goals of backpropagation are straightforward: adjust each weight in the network in proportion to how much it contributes to overall error. If we iteratively reduce each weight's error, eventually we’ll have a series of weights the produce good predictions.
 
 
@@ -179,5 +181,4 @@ Code example
 
 .. rubric:: References
 
-- Reference1
-
+.. [1] Example

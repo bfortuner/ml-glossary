@@ -1,14 +1,12 @@
 .. _linear_algebra:
 
 ==============
-Linear algebra
+Linear Algebra
 ==============
 
-.. toctree::
-  :maxdepth: 1
-  :titlesonly:
+.. contents:: :local:
 
-Linear algebra is a mathematical toolbox that offers helpful techniques for manipulating groups of numbers simultaneously. It provides structures like vectors and matrices (spreadsheets) to hold these numbers and new rules for how to add, subtract, multiply, and divide them. Some of the content below is from my linear algebra `post <https://medium.com/p/cd67aba4526c>`_ on Medium.
+Linear algebra is a mathematical toolbox that offers helpful techniques for manipulating groups of numbers simultaneously. It provides structures like vectors and matrices (spreadsheets) to hold these numbers and new rules for how to add, subtract, multiply, and divide them. Here is a brief overview of basic linear algebra concepts taken from my linear algebra `post <https://medium.com/p/cd67aba4526c>`_ on Medium.
 
 Vectors
 =======
@@ -596,6 +594,6 @@ In numpy the dimension requirements for elementwise operations are relaxed via a
 
 .. rubric:: References
 
-.. [1] `Vector Geometry Image <http://mathinsight.org/vector_introduction>`_
-.. [2] `Vector Field Image <https://en.wikipedia.org/wiki/Vector_field>`_
-.. [3] `Khan Academy Matrix Product Image <https://www.khanacademy.org/math/precalculus/precalc-matrices/properties-of-matrix-multiplication/a/properties-of-matrix-multiplication>`_
+.. [1] http://mathinsight.org/vector_introduction
+.. [2] https://en.wikipedia.org/wiki/Vector_field
+.. [3] https://www.khanacademy.org/math/precalculus/precalc-matrices/properties-of-matrix-multiplication/a/properties-of-matrix-multiplication

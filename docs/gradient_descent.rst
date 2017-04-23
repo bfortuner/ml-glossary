@@ -1,10 +1,10 @@
 .. _gradient_descent:
 
 ================
-Gradient descent
+Gradient Descent
 ================
 
-Gradient Descent is an optimization algorithm used to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the parameters of our model. Parameters refer to coefficients in linear regression and weights in neural networks.
+Gradient descent is an optimization algorithm used to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the :ref:`parameters <glossary_parameters>` of our model. Parameters refer to coefficients in :doc:`linear_regression` and :ref:`weights <nn_weights>` in neural networks.
 
 
 How it works
@@ -20,6 +20,7 @@ Starting at the top of the mountain, we take our first step downhill in the dire
 .. image:: images/gradient_descent_demystified.png
     :align: center
 
+.. _
 
 Learning rate
 -------------
@@ -30,7 +31,7 @@ The size of these steps is called the *learning rate*. With a high learning rate
 Cost function
 -------------
 
-A `Cost function`_ tells us "how good" our model is at making predictions for a given set of parameters. The cost function has its own curve and its own gradients. The slope of this curve tells us how to update our parameters to make the model more accurate.
+A :ref:`cost_function` tells us "how good" our model is at making predictions for a given set of parameters. The cost function has its own curve and its own gradients. The slope of this curve tells us how to update our parameters to make the model more accurate.
 
 
 Algorithm
@@ -88,3 +89,7 @@ Code
 
       return m, b
 
+
+.. rubric:: References
+
+.. [1] http://sebastianruder.com/optimizing-gradient-descent/

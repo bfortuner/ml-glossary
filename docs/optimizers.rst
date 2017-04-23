@@ -49,6 +49,6 @@ SGD
     :pyobject: SGD
 
 
-**References**
+.. rubric:: References
 
-* http://sebastianruder.com/optimizing-gradient-descent/
+.. [1] http://sebastianruder.com/optimizing-gradient-descent/

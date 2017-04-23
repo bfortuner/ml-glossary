@@ -4,9 +4,11 @@
 GANs
 ====
 
+.. contents:: :local:
+
+
 Intro to Generative Adversarial Networks
 
-.. toctree::
-  :maxdepth: 2
+.. rubric:: References
 
-
+.. [1] Example

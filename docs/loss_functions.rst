@@ -1,42 +1,40 @@
-.. _loss_functions:
+.. _cost_function:
 
 ==============
-Loss functions
+Loss Functions
 ==============
 
-Metrics used to quantify how "good" or "bad" our model is at making predictions. The smaller the loss, the better our model (unless we overfit).
-
-.. toctree::
-  :maxdepth: 1
-  :titlesonly:
-
+.. contents:: :local:
 
 Overview
 ========
 
-A cost function is a wrapper around our model function that tells us "how good" our model is at making predictions for a given set of parameters. The cost function has its own curve and its own derivatives. The slope of this curve tells us how to change our parameters to make the model more accurate! We use the model to make predictions. We use the cost function to update our parameters. Our cost function can take a variety of forms as there are many different cost functions available. Popular cost functions include: Mean Squared Error, Root Mean Squared Error, and [[Log Loss]].
+A loss function, or cost function, is a wrapper around our model's predict function that tells us "how good" the model is at making predictions for a given set of parameters. The loss function has its own curve and its own derivatives. The slope of this curve tells us how to change our parameters to make the model more accurate! We use the model to make predictions. We use the cost function to update our parameters. Our cost function can take a variety of forms as there are many different cost functions available. Popular loss functions include: Mean Squared Error, Root Mean Squared Error, and `Cross-entropy loss`_.
 
 [[File:linear_line_w_cost_function.png]]
-[http://www.ken-szulczyk.com/misc/statistical_lecture_10.php source]
+
+[#]_
+
 
 Let's take an example from linear regression where our model is :math:`f(x) = mx + b`, where :math:`m` and :math:`b` are the parameters we can tweak.
 
 If we use Mean Squared Error as our cost function, we can calculate total cost of our predictions like this:
 
-Math
-----
+.. rubric:: Math
 
 .. math::
 
   MSE =  \frac{1}{N} \sum_{i=1}^{n} (y_i - (mx_i + b))^2
 
-* :math:`N` is the total number of observations (data points)
-* :math:`frac{1}{N} \sum_{i=1}^{n}` is the mean
-* :math:`y_i` is the actual value of an observation
-* :math:`mx_i + b` is our prediction
+.. note::
 
-Code
-----
+  - :math:`N` is the total number of observations (data points)
+  - :math:`frac{1}{N} \sum_{i=1}^{n}` is the mean
+  - :math:`y_i` is the actual value of an observation
+  - :math:`mx_i + b` is our prediction
+
+
+.. rubric:: Code
 
 ::
 
@@ -63,8 +61,7 @@ The graph below shows the range of possible loss values given a true observation
 
   Cross-entropy and log loss are slightly different depending on context, but in machine learning when calculating error rates between 0 and 1 they resolve to the same thing.
 
-Code
-----
+.. rubric:: Code
 
 To calculate log loss from scratch, we need to include the MinMax function (see below). Numpy implements this for us with np.clip().
 
@@ -78,21 +75,20 @@ To calculate log loss from scratch, we need to include the MinMax function (see 
       return -log(1 - p)
 
 
-Math
-----
+.. rubric:: Math
 
 The equations below demonstrate how to calculate cross-entropy loss for a single observation. When evaluating a model against a dataset, your log loss score is simply the average log loss across all observations.
 
 .. note::
 
-  * N - number of observations
-  * M - number of possible class labels (dog, cat, fish)
-  * log - the natural logarithm
-  * y - a binary indicator (0 or 1) of whether class label :math:`c` is the correct classification for observation :math:`o`
-  * p - the model's predicted probability that observation :math:`o` is of class :math:`c`
+  - N - number of observations
+  - M - number of possible class labels (dog, cat, fish)
+  - log - the natural logarithm
+  - y - a binary indicator (0 or 1) of whether class label :math:`c` is the correct classification for observation :math:`o`
+  - p - the model's predicted probability that observation :math:`o` is of class :math:`c`
 
-Binary Classification
----------------------
+
+.. rubric:: Binary cross-entropy
 
 In binary classification (M=2), the formula equals:
 
@@ -131,8 +127,7 @@ In Python we can express this even more simply:
       return -log(1 - predicted_prob)
 
 
-Multi-class Classification
---------------------------
+.. rubric:: Multi-class cross-entropy
 
 In multi-class classification (M>2), we take the sum of loss values for each class prediction in the observation.
 
@@ -146,22 +141,21 @@ In multi-class classification (M>2), we take the sum of loss values for each cla
   :math:`c=1` is the starting point in the summation (i.e. the first class)
 
 
-Why the Negative Sign?
-----------------------
+.. rubric:: Why the Negative Sign?
+
 Cross-entropy takes the negative log to provide an easy metric for comparison. It takes this approach because the positive log of numbers < 1 returns negative values, which is confusing to work with when comparing the performance of two models.
 
 .. image:: images/log_vs_neglog.gif
     :align: center
 
 
-MinMax Rule
------------
+.. rubric:: MinMax Rule
 
 When calculating log loss using the formulas above, predicted input values of 0 and 1 are undefined. To avoid this problem, log loss functions typically adjust the predicted probabilities :math:`p` by a small value (epsilon).
 
 .. math::
 
-  max(min(p, 1−10^−15), 10^-15)
+  max(min(p, 1−10^{−15}), 10^{-15})
 
 Here are some examples:
 
@@ -178,14 +172,8 @@ Here are some examples:
   #. Thus, our submitted probability of 1 is converted to 1 - 1e-15 (~0.9999999999999999)
 
 
-.. rubric:: References
 
-- https://en.m.wikipedia.org/wiki/Cross_entropy
-- https://www.kaggle.com/wiki/LogarithmicLoss
-- https://en.wikipedia.org/wiki/Loss_functions_for_classification
-- http://www.exegetic.biz/blog/2015/12/making-sense-logarithmic-loss/
-- http://neuralnetworksanddeeplearning.com/chap3.html#the_cross-entropy_cost_function
-
+.. _hinge_loss:
 
 Hinge Loss
 ==========
@@ -193,11 +181,15 @@ Hinge Loss
 Be the first to contribute!
 
 
+.. _kl_divergence:
+
 Kullback-Leibler divergence
 ===========================
 
 Be the first to contribute!
 
+
+.. _l1_loss:
 
 L1 Loss
 =======
@@ -205,11 +197,15 @@ L1 Loss
 Be the first to contribute!
 
 
+.. _l2_loss:
+
 L2 Loss
 =======
 
 Be the first to contribute!
 
+
+.. _mle:
 
 Maximum Likelihood
 ==================
@@ -217,10 +213,12 @@ Maximum Likelihood
 Be the first to contribute!
 
 
+.. _mse:
+
 Mean Squared Error
 ==================
 
-Description of MSE.
+Description of MSE...
 
 .. literalinclude:: ../code/loss_functions.py
     :language: python
@@ -233,6 +231,11 @@ Description of MSE.
     :pyobject: MSE_prime
 
 
-**References**
+.. rubric:: References
 
-* http://rishy.github.io/ml/2015/07/28/l1-vs-l2-loss/
+.. [1] https://en.m.wikipedia.org/wiki/Cross_entropy
+.. [2] https://www.kaggle.com/wiki/LogarithmicLoss
+.. [3] https://en.wikipedia.org/wiki/Loss_functions_for_classification
+.. [4] http://www.exegetic.biz/blog/2015/12/making-sense-logarithmic-loss/
+.. [5] http://neuralnetworksanddeeplearning.com/chap3.html
+.. [6] http://rishy.github.io/ml/2015/07/28/l1-vs-l2-loss/

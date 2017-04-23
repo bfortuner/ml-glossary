@@ -4,8 +4,10 @@
 RNNs
 ====
 
+.. contents:: :local:
+
 Intro to RNNs
 
-.. toctree::
-  :maxdepth: 2
+.. rubric:: References
 
+.. [1] Example

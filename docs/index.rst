@@ -1,3 +1,5 @@
+
+===========================
 Machine learning cheatsheet
 ===========================
 
@@ -55,13 +57,12 @@ Quick visual explanations of machine learning concepts with diagrams, code examp
     papers
     repos
 
+.. toctree::
+    :maxdepth: 1
+    :caption: Contributing
+    :titlesonly:
 
-
-Contributing
-------------
-
-Become a contributor! Check out our `github <http://github.com/bfortuner/ml-cheatsheet/>`_ for more information.
-
+    How to contribute <contribute>
 
 
 

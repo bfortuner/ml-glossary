@@ -1,6 +1,6 @@
 # Machine Learning Cheatsheet
 
-[View The Cheatsheet](http://ml-glossary.readthedocs.io/en/latest/)
+[View The Cheatsheet](http://ml-cheatsheet.readthedocs.io/en/latest/)
 
 ## How To Contribute
 
@@ -14,6 +14,7 @@ git clone https://github.com/bfortuner/ml-glossary
 # Assumes you have the usual suspects installed: numpy, scipy, etc..
 pip install sphinx sphinx-autobuild
 pip install sphinx_rtd_theme
+pip install recommonmark
 ```
 
 3. Preview Changes

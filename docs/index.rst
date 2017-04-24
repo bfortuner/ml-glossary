@@ -5,6 +5,10 @@ Machine Learning Cheatsheet
 
 Brief visual explanations of machine learning concepts with diagrams, code examples and links to resources for learning more.
 
+.. warning::
+
+    This document is under very early stage development. If you find errors, please raise an `issue <https://github.com/bfortuner/ml-cheatsheet/issues>`_ or `contribute <https://github.com/bfortuner/ml-cheatsheet/blob/master/README.md>`_ a better definition!
+
 .. toctree::
     :caption: Basics
     :maxdepth: 1

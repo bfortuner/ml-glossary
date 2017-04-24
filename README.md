@@ -28,6 +28,10 @@ make html
 5. [Submit Pull Request](https://help.github.com/articles/creating-a-pull-request/)
 
 
+### Short for time?
+
+Feel free to raise an [issue](https://github.com/bfortuner/ml-cheatsheet/issues) to correct errors or contribute content without a pull request.
+
 
 ## Style Guide
 

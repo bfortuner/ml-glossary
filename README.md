@@ -14,6 +14,7 @@ git clone https://github.com/bfortuner/ml-glossary
 # Assumes you have the usual suspects installed: numpy, scipy, etc..
 pip install sphinx sphinx-autobuild
 pip install sphinx_rtd_theme
+pip install recommonmark
 ```
 
 3. Preview Changes

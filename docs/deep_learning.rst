@@ -10,13 +10,13 @@ Deep Learning
 General
 =======
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 CNNs
 ====
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 `cnn reference <http://www.deeplearningbook.org/contents/convnets.html>`_
 
@@ -36,7 +36,7 @@ GANs
 Reinforcement Learning
 ======================
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 

@@ -60,7 +60,7 @@ If :math:`M > 2` (i.e. multiclass classification), we calculate a separate loss 
 Hinge
 =====
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 .. _kl_divergence:
@@ -68,7 +68,7 @@ Be the first to contribute!
 Kullback-Leibler
 ================
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 .. _l1_loss:
@@ -76,7 +76,7 @@ Be the first to contribute!
 L1
 =======
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 .. _l2_loss:
@@ -84,7 +84,7 @@ Be the first to contribute!
 L2
 ==
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 .. _mle:
@@ -92,7 +92,7 @@ Be the first to contribute!
 Maximum Likelihood
 ==================
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 .. _mse:

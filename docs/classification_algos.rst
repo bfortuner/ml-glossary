@@ -15,32 +15,32 @@ Overlaps..
 Boosting
 ========
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 Decision Trees
 ==============
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 K-Nearest Neighbor
 ==================
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 Logistic Regression
 ===================
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 Random Forests
 ==============
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 Support Vector Machines
 =======================
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 

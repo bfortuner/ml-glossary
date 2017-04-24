@@ -10,7 +10,7 @@ Papers
 Machine Learning
 ================
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 Deep Learning

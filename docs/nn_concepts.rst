@@ -117,7 +117,7 @@ A loss function, or cost function, is a wrapper around our model's predict funct
 Optimization Algorithms
 =======================
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 

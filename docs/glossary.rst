@@ -115,7 +115,7 @@ Feature Vector
 .. _glossary_hyperparameters:
 
 Hyperparameters
-  Be the first to contribute!
+  Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 .. _glossary_induction:
 
@@ -175,7 +175,7 @@ Overfitting
 .. _glossary_parameters:
 
 Parameters
-  Be the first to contribute!
+  Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 .. _glossary_precision:
 

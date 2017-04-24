@@ -10,13 +10,13 @@ Activation Functions
 ELU
 ===
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 LeakyReLU
 =========
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 .. _activation_relu:
 
@@ -87,13 +87,13 @@ Sigmoid takes a real value as input and outputs another value between 0 and 1. I
 Softmax
 =======
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 Tanh
 ====
 
-Be the first to contribute!
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
 .. rubric:: References

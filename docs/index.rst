@@ -1,6 +1,6 @@
 
 ===========================
-Machine learning cheatsheet
+Machine Learning Cheatsheet
 ===========================
 
 Brief visual explanations of machine learning concepts with diagrams, code examples and links to resources for learning more.
@@ -12,6 +12,7 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
     linear_regression
     gradient_descent
     logistic_regression
+    training
     glossary
 
 
@@ -28,24 +29,26 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
 
 .. toctree::
     :maxdepth: 1
-    :caption: Neural networks
+    :caption: Neural Networks
 
     nn_concepts
     forwardpropagation
     backpropagation
     activation_functions
     loss_functions
-    optimizers
-
+    optimization
+    regularization
 
 .. toctree::
     :maxdepth: 1
-    :caption: Deep learning
+    :caption: Algorithms (empty)
 
-    CNNs (empty) <cnn>
-    RNNs (empty) <rnn>
-    GANs (empty) <gan>
-
+    Applications <applications>
+    Classification <classification_algos>
+    Clustering <clustering_algos>
+    Deep Learning <deep_learning>
+    Generative <generative_algos>
+    Regression <regression_algos>
 
 .. toctree::
     :maxdepth: 1
@@ -65,6 +68,7 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
     How to contribute <contribute>
 
 
+.. https://en.wikipedia.org/wiki/Outline_of_machine_learning
 
 .. Indices and tables
 .. ------------------

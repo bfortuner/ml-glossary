@@ -1,6 +1,6 @@
 # Machine Learning Cheatsheet
 
-[View The Cheatsheet](http://ml-glossary.readthedocs.io/en/latest/)
+[View The Cheatsheet](http://ml-cheatsheet.readthedocs.io/en/latest/)
 
 ## How To Contribute
 

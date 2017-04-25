@@ -7,6 +7,7 @@ Activation Functions
 .. contents:: :local:
 
 
+
 ELU
 ===
 
@@ -23,36 +24,38 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 ReLU
 ====
 
-.. image:: images/relu.png
-    :align: center
-
 A recent invention which stands for Rectified Linear Units. The formula is deceptively simple: :math:`max(0,z)`. Despite its name and appearance, it’s not linear and provides the same benefits as Sigmoid but with better performance.
 
-.. math::
++-------------------------------------------------------+------------------------------------------------------+
+| Function                                              | Derivative                                           |
++-------------------------------------------------------+------------------------------------------------------+
+| .. math::                                             | .. math::                                            |
+|      R(z) = \begin{Bmatrix} z & z > 0 \\              |       R'(z) = \begin{Bmatrix} 1 & z>0 \\             |
+|       0 & z <= 0 \end{Bmatrix}                        |       0 & z<0 \end{Bmatrix}                          |
++-------------------------------------------------------+------------------------------------------------------+
+| .. image:: images/relu.png                            | .. image:: images/relu_prime.png                     |
+|       :align: center                                  |      :align: center                                  |
+|       :width: 256 px                                  |      :width: 256 px                                  |
+|       :height: 256 px                                 |      :height: 256 px                                 |
++-------------------------------------------------------+------------------------------------------------------+
+| .. literalinclude:: ../code/activation_functions.py   | .. literalinclude:: ../code/activation_functions.py  |
+|       :pyobject: relu                                 |      :pyobject: relu_prime                           |
++-------------------------------------------------------+------------------------------------------------------+
 
-  R(z) = \begin{Bmatrix}
-  z & z > 0 \\
-  0 & otherwise \\
-  \end{Bmatrix}\\
+.. quick create tables with tablesgenerator.com/text_tables and import our premade template in figures/
 
-.. literalinclude:: ../code/activation_functions.py
-    :language: python
-    :pyobject: relu
+.. rubric:: Pros
 
-**Derivative**
+- Pro 1
 
-The derivative of relu...
+.. rubric:: Cons
 
-.. math::
+- Con 1
 
-  R'(z) = \begin{Bmatrix}
-  1 & z>0 \\
-  0 & z<0 \\
-  \end{Bmatrix}
+.. rubric:: Further reading
 
-.. literalinclude:: ../code/activation_functions.py
-    :language: python
-    :pyobject: relu_prime
+- `Deep Sparse Rectifier Neural Networks <http://proceedings.mlr.press/v15/glorot11a/glorot11a.pdf>`_ Glorot et al., (2011)
+- `Yes You Should Understand Backprop <https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b>`_, Karpathy (2016)
 
 
 .. _activation_sigmoid:
@@ -60,28 +63,35 @@ The derivative of relu...
 Sigmoid
 =======
 
-.. image:: images/sigmoid.png
-    :align: center
-
 Sigmoid takes a real value as input and outputs another value between 0 and 1. It’s easy to work with and has all the nice properties of activation functions: it’s non-linear, continuously differentiable, monotonic, and has a fixed output range.
 
-.. math::
++-----------------------------------------------------+-----------------------------------------------------+
+| Function                                            | Derivative                                          |
++-----------------------------------------------------+-----------------------------------------------------+
+| .. math::                                           | .. math::                                           |
+|      S(z) = \frac{1} {1 + e^{-z}}                   |      S'(z) = S(z) \cdot (1 - S(z))                  |
++-----------------------------------------------------+-----------------------------------------------------+
+| .. image:: images/sigmoid.png                       | .. image:: images/sigmoid_prime.png                 |
+|       :align: center                                |       :align: center                                |
+|       :width: 256 px                                |       :width: 256 px                                |
++-----------------------------------------------------+-----------------------------------------------------+
+| .. literalinclude:: ../code/activation_functions.py | .. literalinclude:: ../code/activation_functions.py |
+|       :pyobject: sigmoid                            |       :pyobject: sigmoid_prime                      |
++-----------------------------------------------------+-----------------------------------------------------+
 
-  S(z) = \frac{1} {1 + e^{-z}}
+.. quick create tables with tablesgenerator.com/text_tables and import our premade template in figures/
 
-.. literalinclude:: ../code/activation_functions.py
-    :language: python
-    :pyobject: sigmoid
+.. rubric:: Pros
 
-**Derivative**
+- Pro 1
 
-.. math::
+.. rubric:: Cons
 
-  S'(z) = S(z) * (1 - S(z))
+- Con 1
 
-.. literalinclude:: ../code/activation_functions.py
-    :language: python
-    :pyobject: sigmoid_prime
+.. rubric:: Further reading
+
+- `Yes You Should Understand Backprop <https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b>`_, Karpathy (2016)
 
 
 Softmax

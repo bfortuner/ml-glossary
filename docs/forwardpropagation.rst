@@ -62,13 +62,13 @@ To accomodate arbitrarily large inputs or outputs, we need to make our code more
 Weight Initialization
 ---------------------
 
-Unlike last time where ``Wh`` and ``Wo`` were scalar numbers, our new weight variables will be numpy arrays. Each array will hold all the weights for its own layer — one weight for each synapse. Below we initialize each array with the numpy's ``np.random.rand(rows, cols)`` method, which returns a matrix of random numbers drawn from a normal distribution (mean 0, variable 1).
+Unlike last time where ``Wh`` and ``Wo`` were scalar numbers, our new weight variables will be numpy arrays. Each array will hold all the weights for its own layer — one weight for each synapse. Below we initialize each array with the numpy's ``np.random.randn(rows, cols)`` method, which returns a matrix of random numbers drawn from a normal distribution with mean 0 and variance 1.
 
 .. literalinclude:: ../code/nn_matrix.py
     :language: python
     :pyobject: init_weights
 
-Here's an example of calling ``random.rand()``:
+Here's an example calling ``random.randn()``:
 
 ::
 

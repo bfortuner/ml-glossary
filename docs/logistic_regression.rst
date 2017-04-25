@@ -9,10 +9,10 @@ Logistic Regression
 Introduction
 ============
 
-Logistic regression is a classification algorithm, used to estimate probabilities (Binary values like 0/1, yes/no, true/false) based on given set of independent variable(s). Its output values lies between 0 and 1. Prior to building a model, the features values are transformed using the logistic function (Sigmoid) to produce probability values that can be mapped to two or more classes.
+Logistic regression is a classification algorithm used to assign observations to a discrete set of classes. Unlike linear regression which outputs number values on a continuous plane, logistic regression transforms its output using the logistic sigmoid function to return a probability value which can then be mapped to two or more discrete classes.
 
-Linear vs logistic regression
------------------------------
+Comparison to linear regression
+-------------------------------
 
 Given data on time spent studying and exam scores. :doc:`linear_regression` and logistic regression can predict different things:
 
@@ -56,7 +56,9 @@ Graphically we could represent our data with a scatter plot.
 Sigmoid activation
 ------------------
 
-In order to map predicted values to probabilities, we use the :ref:`sigmoid <activation_sigmoid>` function. The function maps any real value into another value between 0 and 1. In machine learning, we use Sigmoid to map predictions to probabilities.
+In order to map predicted values to probabilities, we use the :ref:`sigmoid <activation_sigmoid>` function. The function maps any real value into another value between 0 and 1. In machine learning, we use sigmoid to map predictions to probabilities.
+
+.. rubric:: Math
 
 .. math::
 
@@ -68,22 +70,24 @@ In order to map predicted values to probabilities, we use the :ref:`sigmoid <act
   - :math:`z` = input to the function (your algorithm's prediction e.g. mx + b)
   - :math:`e` = base of natural log
 
+.. rubric:: Graph
+
+.. image:: images/sigmoid.png
+    :align: center
+
 .. rubric:: Code
 
 .. literalinclude:: ../code/activation_functions.py
     :language: python
     :pyobject: sigmoid
 
-.. rubric:: Graph
-
-.. image:: images/logistic_regression_sigmoid_w_threshold.png
-    :align: center
+.. could potentially link to another file.. http://docutils.sourceforge.net/docs/ref/rst/directives.html#include
 
 
 Decision boundary
 -----------------
 
-A decision boundary is a pretty simple concept. Logistic regression is a classification algorithm, the output should be a category: Yes/No, True/False, Red/Yellow/Orange. Our prediction function however returns a probability score between 0 and 1. A decision boundary is a threshold or tipping point that helps us decide which category to choose based on probability.
+Our current prediction function returns a probability score between 0 and 1. In order to map this to a discrete class (true/false, cat/dog), we select a threshold value or tipping point above which we will classify values into class 1 and below which we classify values into class 2.
 
 .. math::
 
@@ -92,7 +96,7 @@ A decision boundary is a pretty simple concept. Logistic regression is a classif
 
 For example, if our threshold was .5 and our prediction function returned .7, we would classify this observation as positive. If our prediction was .2 we would classify the observation as negative. For logistic regression with multiple classes we could select the class with the highest predicted probability.
 
-.. image:: images/logistic_regression_exam_scores_scatter.png
+.. image:: images/logistic_regression_sigmoid_w_threshold.png
     :align: center
 
 
@@ -121,14 +125,9 @@ If the model returns .4 it believes there is only a 40% chance of passing. If ou
 
 We wrap the sigmoid function over the same prediction function we used in :ref:`multiple linear regression <multiple_linear_regression_predict>`
 
-::
-
-  def predict(features, weights):
-      '''
-      Returns 1D array of probabilities
-      that the class label == 1
-      '''
-      return 1 / (1 + np.exp(-np.dot(features, weights)))
+.. literalinclude:: ../code/logistic_regression.py
+    :language: python
+    :pyobject: predict
 
 
 Cost function
@@ -138,7 +137,7 @@ Unfortunately we can't (or at least shouldn't) use the same cost function :ref:`
 
 .. rubric:: Math
 
-Instead of Mean Squared Error, we use a cost function called :ref:`loss_cross_entropy`, also known as Log Loss. Cross-entropy loss can be divided into two separate cost functions, one for :math:`y=1` and one for :math:`y=0`.
+Instead of Mean Squared Error, we use a cost function called :ref:`loss_cross_entropy`, also known as Log Loss. Cross-entropy loss can be divided into two separate cost functions: one for :math:`y=1` and one for :math:`y=0`.
 
 .. image:: images/ng_cost_function_logistic.png
     :align: center
@@ -157,40 +156,16 @@ The key thing to note is the cost function penalizes confident and wrong predict
 
 Multiplying by :math:`y` and :math:`(1-y)` in the above equation is a sneaky trick that let's us use the same equation to solve for both y=1 and y=0 cases. If y=0, the first side cancels out. If y=1, the second side cancels out. In both cases we only perform the operation we need to perform.
 
-
 .. rubric:: Vectorized cost function
 
 .. image:: images/logistic_cost_function_vectorized.png
     :align: center
 
-::
+.. rubric:: Code
 
-  # Using Mean Absolute Error
-  def cost_function(features, labels, weights):
-      **
-      Features:(100,3)
-      Labels: (100,1)
-      Weights:(3,1)
-      Returns 1D matrix of predictions
-      Cost = ( log(predictions) + (1-labels)*log(1-predictions) ) / len(labels)
-      **
-      observations = len(labels)
-
-      predictions = predict(features, weights)
-
-      #Take the error when label=1
-      class1_cost = -labels*np.log(predictions)
-
-      #Take the error when label=0
-      class2_cost = (1-labels)*np.log(1-predictions)
-
-      #Take the sum of both costs
-      cost = class1_cost - class2_cost
-
-      #Take the average cost
-      cost = cost.sum()/observations
-
-      return cost
+.. literalinclude:: ../code/logistic_regression.py
+    :language: python
+    :pyobject: cost_function
 
 
 Gradient descent
@@ -205,92 +180,67 @@ One of the neat properties of the sigmoid function is its derivative is easy to 
 .. math::
 
   \begin{align}
-  z = w_0 + w_1 x_1 + w_2 x_2 \\
-  s(z) = \frac{1} {1 + e^{-z}} \\
-  s'(z) = s(z)(1 - s(z))
+  s'(z) & = s(z)(1 - s(z))
   \end{align}
 
-This leads to an equally beautiful and convenient derivative:
+Which leads to an equally beautiful and convenient cost function derivative:
 
 .. math::
 
-  C' = x(s(z) - \hat{y})
+  C' = x(s(z) - y)
 
 .. note::
 
   - :math:`C'` is the derivative of cost with respect to weights
-  - :math:`\hat{y}` is the actual class label (y=0 or y=1)
-  - :math:`z` is your model's prediction prior applying sigmoid (:math:`w_0 + w_1 x_1 + w_2 x_2`)
+  - :math:`y` is the actual class label (0 or 1)
+  - :math:`s(z)` is your model's prediction
   - :math:`x` is your feature or feature vector.
 
 Notice how this gradient is the same as the :ref:`mse` gradient, the only difference is the hypothesis function.
 
-.. rubric:: Procedure
+.. rubric:: Pseudocode
 
-#. Calculate gradient average
-#. Multiply by learning rate
-#. Subtract from weights
-#. Repeat
+::
+
+  Repeat {
+
+    1. Calculate gradient average
+    2. Multiply by learning rate
+    3. Subtract from weights
+
+  }
 
 .. rubric:: Code
 
-::
-
-  # Vectorized Gradient Descent
-  # gradient = X.T * (X*W - y) / N
-  # gradient = features.T * (predictions - labels) / N
-
-  def update_weights(features, labels, weights, lr):
-      **
-      Features:(200, 3)
-      Labels: (200, 1)
-      Weights:(3, 1)
-      **
-      N = len(features)
-
-      #1 - Get Predictions
-      predictions = predict(features, weights)
-
-      #2 Transpose features from (200, 3) to (3, 200)
-      # So we can multiply w the (200,1)  cost matrix.
-      # Returns a (3,1) matrix holding 3 partial derivatives --
-      # one for each feature -- representing the aggregate
-      # slope of the cost function across all observations
-      gradient = np.dot(features.T,  predictions - labels)
-
-      #3 Take the average cost derivative for each feature
-      gradient /= N
-
-      #4 - Multiply the gradient by our learning rate
-      gradient *= lr
-
-      #5 - Subtract from our weights to minimize cost
-      weights -= gradient
-
-      return weights
+.. literalinclude:: ../code/logistic_regression.py
+    :language: python
+    :pyobject: update_weights
 
 
-Probabilities to labels
------------------------
+Mapping probabilities to classes
+--------------------------------
 
-The final step is to convert assign predicted probabilities into class labels (0 or 1).
+The final step is assign class labels (0 or 1) to our predicted probabilities.
+
+.. rubric:: Decision boundary
+
+.. literalinclude:: ../code/logistic_regression.py
+    :language: python
+    :pyobject: decision_boundary
+
+.. rubric:: Convert probabilities to classes
+
+
+.. literalinclude:: ../code/logistic_regression.py
+    :language: python
+    :pyobject: classify
+
+.. rubric:: Example output
 
 ::
 
-  def decision_boundary(prob):
-      return 1 if prob >= .5 else 0
-
-  def classify(preds):
-      '''
-      preds = N element array of predictions between 0 and 1
-      returns N element array of 0s (False) and 1s (True)
-      '''
-      decision_boundary = np.vectorize(decision_boundary)  #vectorized function
-      return decision_boundary(predictions).flatten()
-
-  # Example
-  Probabilities = [ 0.967  0.448   0.015  0.780  0.978  0.004]
-  Classifications = [1 0 0 1 1 0]
+  Probabilities = [ 0.967, 0.448, 0.015, 0.780, 0.978, 0.004]
+  Classifications = [1, 0, 0, 1, 1, 0]
 
 
 Training
@@ -298,23 +248,9 @@ Training
 
 Our training code is the same as we used for :ref:`linear regression <simple_linear_regression_training>`.
 
-::
-
-  def train(features, labels, weights, lr, iters):
-      cost_history = []
-
-      for i in range(iters):
-          weights = update_weights(features, labels, weights, lr)
-
-          #Calculate error for auditing purposes
-          cost = cost_function(features, labels, weights)
-          cost_history.append(cost)
-
-          # Log Progress
-          if i % 1000 == 0:
-              print "iter: "+str(i) + " cost: "+str(cost)
-
-      return weights, cost_history
+.. literalinclude:: ../code/logistic_regression.py
+    :language: python
+    :pyobject: train
 
 
 Model evaluation
@@ -328,8 +264,7 @@ If our model is working, we should see our cost decrease after every iteration.
   iter: 1000 cost: 0.302
   iter: 2000 cost: 0.264
 
-  - **Final Cost:** 0.2487
-  - **Final Weights:** [-8.197, .921, .738]
+**Final cost:**  0.2487.  **Final weights:** [-8.197, .921, .738]
 
 .. rubric:: Cost history
 
@@ -338,41 +273,25 @@ If our model is working, we should see our cost decrease after every iteration.
 
 .. rubric:: Accuracy
 
-:ref:`Accuracy <glossary_accuracy>` measures how correct our predictions were.
+:ref:`Accuracy <glossary_accuracy>` measures how correct our predictions were. In this case we simple compare predicted labels to true labels and divide by the total.
 
-::
-
-  def accuracy(predicted_labels, actual_labels):
-      diff = predicted_labels - actual_labels
-      return 1.0 - (float(np.count_nonzero(diff)) / len(diff))
+.. literalinclude:: ../code/logistic_regression.py
+    :language: python
+    :pyobject: accuracy
 
 
-Decision boundary
------------------
+.. rubric:: Decision boundary
 
-We can also visualize our models performance by graphically comparing our probability estimates to the actual labels. This involves splitting our observations by class (0 and 1) and assigning each observation its predicted probability.
+Another helpful technique is to plot the decision boundary on top of our predictions to see how our labels compare to the actual labels. This involves plotting our predicted probabilities and coloring them with their true labels.
 
 .. image:: images/logistic_regression_final_decision_boundary.png
     :align: center
 
-::
+.. rubric:: Code to plot the decision boundary
 
-  def plot_decision_boundary(trues_preds, falses_preds, db):
-      fig = plt.figure()
-      ax = fig.add_subplot(111)
-
-      no_of_preds = len(trues_preds) + len(falses_preds)
-
-      ax.scatter([i for i in range(len(trues_preds))],trues_preds, s=25, c='b', marker="o", label='Trues')
-      ax.scatter([i for i in range(len(falses_preds))],falses_preds, s=25, c='r', marker="s", label='Falses')
-
-      plt.legend(loc='upper right');
-      ax.set_title("Decision Boundary")
-      ax.set_xlabel('N/2')
-      ax.set_ylabel('Predicted Probability')
-      plt.axhline(.5, color='black')
-      plt.show()
-
+.. literalinclude:: ../code/logistic_regression.py
+    :language: python
+    :pyobject: plot_decision_boundary
 
 
 Multiclass logistic regression
@@ -402,36 +321,7 @@ Scipy example
 
 Let's compare our performance to the ``LogisticRegression`` model provided by scikit-learn [8]_.
 
-::
-
-  import sklearn
-  from sklearn.linear_model import LogisticRegression
-  from sklearn.cross_validation import train_test_split
-
-  # Normalize grades to values between 0 and 1 for more efficient computation
-  normalized_range = sklearn.preprocessing.MinMaxScaler(feature_range=(-1,1))
-
-  # Extract Features + Labels
-  labels.shape =  (100,) #scikit expects this
-  features = normalized_range.fit_transform(features)
-
-  # Create Test/Train
-  features_train,features_test,labels_train,labels_test = train_test_split(features,labels,test_size=0.4)
-
-  # Scikit Logistic Regression
-  scikit_log_reg = LogisticRegression()
-  scikit_log_reg.fit(features_train,labels_train)
-
-  #Score is Mean Accuracy
-  scikit_score = clf.score(features_test,labels_test)
-  print 'Scikit score: ', scikit_score
-
-  #Our Mean Accuracy
-  observations, features, labels, weights = run()
-  probabilities = predict(features, weights).flatten()
-  classifications = classifier(probabilities)
-  our_acc = accuracy(classifications,labels.flatten())
-  print 'Our score: ',our_acc
+.. literalinclude:: ../code/logistic_regression_scipy.py
 
 
 **Scikit score:**  0.88. **Our score:** 0.89

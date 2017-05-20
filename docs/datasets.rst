@@ -15,6 +15,10 @@ Agriculture
 * `U.S. Department of Agriculture's Nutrient Database <https://www.ars.usda.gov/northeast-area/beltsville-md/beltsville-human-nutrition-research-center/nutrient-data-laboratory/docs/sr28-download-files/>`_
 
 
+Art
+---
+* `Google's Quick Draw Sketch Dataset <https://quickdraw.withgoogle.com/data>`_
+
 Biology
 -------
 
@@ -337,6 +341,11 @@ Museums
 * `Tate Collection metadata <https://github.com/tategallery/collection>`_
 * `The Getty vocabularies <http://vocab.getty.edu>`_
 
+Music
+-----
+
+* `Nottingham Folk Songs <https://github.com/jukedeck/nottingham-dataset>`_
+* `Bach 10 <http://music.cs.northwestern.edu/data/Bach10_Dataset_Description.pdf>`_
 
 Natural Language
 ----------------

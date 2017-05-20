@@ -7,6 +7,16 @@ Calculus
 .. contents:: :local:
 
 
+.. _introduction:
+
+Introduction
+============
+
+You need to know some basic calculus in order to understand how functions change over time (derivatives), and to calculate the total amount of a quantity that accumulates over a time period (integrals). The language of calculus will allow you to speak precisely about the properties of functions and better understand their behaviour.
+
+Normally taking a calculus course involves doing lots of tedious calculations by hand, but having the power of computers on your side can make the process much more fun. This section describes the key ideas of calculus which you'll need to know to understand machine learning concepts.
+
+
 .. _derivative:
 
 Derivatives
@@ -103,25 +113,171 @@ So what does this mean? It means for the function :math:`f(x) = x^2`, the slope 
 .. rubric:: Code
 
 
-Let's write code to calculate the derivative for :math:`f(x) = x^2`. We know the derivative should be :math:`2x`.
+Let's write code to calculate the derivative of any function :math:`f(x)`. We test our function works as expected on the input :math:`f(x)=x^2` producing a value close to the actual derivative :math:`2x`.
 
 ::
 
-  def getDeriv(func, x):
-    h = 0.0001
-    return (func(x+h) - func(x)) / h
+  def get_derivative(func, x):
+      h = 0.0001                # step size
+      return (func(x+h) - func(x)) / h
 
   x = 3
-  derivative = getDeriv(x**2, x)
+  computed = get_derivative(x**2, x)
   actual = 2*x
 
-  derivative, actual = 6.0001, 6
+  computed, actual = 6.0001, 6
+
+
+In general it's preferable to use the math to obtain exact derivative formulas, but keep in mind you can always compute derivatives numerically by computing the rise-over-run for a "small step" :math:`h`. 
 
 
 Machine learning use cases
 --------------------------
 
-Machine learning uses derivatives to find optimal solutions to problems. It's useful in optimization functions like Gradient Descent because it helps us decide whether to increase or decrease our weights in order to maximize or minimize some metrics (e.g. loss). It also helps us model nonlinear functions as linear functions (tangent lines), which have constant slopes. With a constant slope we can decide whether to move up or down the slope (increase or decrease our weights) to get closer to the target value (class label).
+Machine learning uses derivatives in optimization problems. Optimization algorithms like *gradient descent* use derivatives to decide whether to increase or decrease weights in order to maximize or minimize some objective (e.g. a model's accuracy or error functions). Derivatives also help us approximate nonlinear functions as linear functions (tangent lines), which have constant slopes. With a constant slope we can decide whether to move up or down the slope (increase or decrease our weights) to get closer to the target value (class label).
+
+
+
+.. _chain_rule:
+
+Chain rule
+==========
+
+The chain rule is a formula for calculating the derivatives of composite functions. Composite functions are functions composed of functions inside other function(s).
+
+How It Works
+------------
+
+Given a composite function :math:`f(x) = A(B(x))`, the derivative of :math:`f(x)` equals the product of the derivative of :math:`A` with respect to :math:`B(x)` and the derivative of :math:`B` with respect to :math:`x`.
+
+.. math::
+
+  \mbox{composite function derivative} = \mbox{outer function derivative} * \mbox{inner function derivative}
+
+For example, given a composite function :math:`f(x)`, where:
+
+.. math::
+
+  f(x) = h(g(x))
+
+The chain rule tells us that the derivative of :math:`f(x)` equals:
+
+.. math::
+
+  \frac{df}{dx} = \frac{dh}{dg} \cdot \frac{dg}{dx}
+
+
+Step-by-step
+------------
+
+Say :math:`f(x)` is composed of two functions :math:`h(x) = x^3` and :math:`g(x) = x^2`. And that:
+
+.. math::
+
+  \begin{align}
+  f(x) &= h(g(x)) \\
+       &= (x^2)^3 \\
+  \end{align}
+
+The derivative of :math:`f(x)` would equal:
+
+.. math::
+
+  \begin{align}
+  \frac{df}{dx} &=  \frac{dh}{dg} \frac{dg}{dx} \\
+                &=  \frac{dh}{d(x^2)} \frac{dg}{dx}
+  \end{align}
+
+
+.. rubric:: Steps
+
+1. Solve for the inner derivative of :math:`g(x) = x^2`
+
+.. math::
+
+  \frac{dg}{dx} = 2x
+
+2. Solve for the outer derivative of :math:`h(x) = x^3`, using a placeholder :math:`b` to represent the inner function :math:`x^2`
+
+.. math::
+
+  \frac{dh}{db} = 3b^2
+
+3. Swap out the placeholder variable for the inner function
+
+.. math::
+
+  3x^4
+
+4. Return the product of the two derivatives
+
+.. math::
+
+  3x^4 \cdot 2x = 6x^5
+
+
+Multiple functions
+------------------
+
+In the above example we assumed a composite function containing a single inner function. But the chain rule can also be applied to higher-order functions like:
+
+.. math::
+
+  f(x) = A(B(C(x)))
+
+The chain rule tells us that the derivative of this function equals:
+
+.. math::
+
+  \frac{df}{dx} = \frac{dA}{dB} \frac{dB}{dC} \frac{dC}{dx}
+
+We can also write this derivative equation :math:`f'` notation:
+
+.. math::
+
+  f' = A'(B(C(x)) \cdot B'(C(x)) \cdot C'(x)
+
+
+.. rubric:: Steps
+
+
+Given the function :math:`f(x) = A(B(C(x)))`, lets assume:
+
+.. math::
+
+  \begin{align}
+  A(x) & = sin(x) \\
+  B(x) & = x^2 \\
+  C(x) & = 4x
+  \end{align}
+
+The derivatives of these functions would be:
+
+.. math::
+
+  \begin{align}
+  A'(x) &= cos(x) \\
+  B'(x) &= 2x \\
+  C'(x) &= 4
+  \end{align}
+
+We can calculate the derivative of :math:`f(x)` using the following formula:
+
+.. math::
+
+  f'(x) = A'( (4x)^2) \cdot B'(4x) \cdot C'(x)
+
+We then input the derivatives and simplify the expression:
+
+.. math::
+
+  \begin{align}
+  f'(x) &= cos((4x)^2) \cdot 2(4x) \cdot 4 \\
+        &= cos(16x^2) \cdot 8x \cdot 4 \\
+        &= cos(16x^2)32x
+  \end{align}
+
+
 
 
 
@@ -239,8 +395,8 @@ As described above, we take the dot product of the gradient and the directional 
 
    \begin{bmatrix}
      \frac{df}{dx} \\
-     \frac{df}{dx} \\
-     \frac{df}{dx}  \\
+     \frac{df}{dy} \\
+     \frac{df}{dz} \\
     \end{bmatrix}
     \cdot
     \begin{bmatrix}
@@ -269,144 +425,109 @@ There are two additional properties of gradients that are especially useful in d
 
 
 
-.. _chain_rule:
 
-Chain rule
-==========
 
-The chain rule is a formula for calculating the derivatives of composite functions. Composite functions are functions composed of functions inside other function(s).
 
-How It Works
-------------
+.. _integrals:
 
-Given a composite function :math:`f(x) = A(B(x))`, the derivative of :math:`f(x)` equals the product of the derivative of :math:`A` with respect to :math:`B(x)` and the derivative of :math:`B` with respect to :math:`x`.
+Integrals
+=========
+
+The integral of :math:`f(x)` corresponds to the computation of the area under the graph of :math:`f(x)`. The area under :math:`f(x)` between the points :math:`x=a` and :math:`x=b` is denoted as follows:
 
 .. math::
 
-  \mbox{composite function derivative} = \mbox{outer function derivative} * \mbox{inner function derivative}
+   A(a,b) = \int_a^b f(x) \: dx.
 
-For example, given a composite function :math:`f(x)`, where:
+.. image:: images/integral_definition.png
+   :align: center
 
-.. math::
+The area :math:`A(a,b)` is bounded by the function :math:`f(x)` from above, by the :math:`x`-axis from below, and by two vertical lines at :math:`x=a` and :math:`x=b`. The points :math:`x=a` and :math:`x=b` are called the limits of integration. The :math:`\int` sign comes from the Latin word summa. The integral is the "sum" of the values of :math:`f(x)` between the two limits of integration.
 
-  f(x) = h(g(x))
-
-The chain rule tells us that the derivative of :math:`f(x)` equals:
-
-.. math::
-
-  \frac{df}{dx} = \frac{dh}{dg} \cdot \frac{dg}{dx}
-
-
-Step-by-step
-------------
-
-Say :math:`f(x)` is composed of two functions :math:`h(x) = x^3` and :math:`g(x) = x^2`. And that:
+The *integral function* :math:`F(c)` corresponds to the area calculation as a function of the upper limit of integration:
 
 .. math::
 
-  \begin{align}
-  f(x) &= h(g(x)) \\
-       &= (x^2)^3 \\
-  \end{align}
+  F(c) \equiv \int_0^c \! f(x)\:dx\,.
 
-The derivative of :math:`f(x)` would equal:
+There are two variables and one constant in this formula. The input variable :math:`c` describes the upper limit of integration. The *integration variable* :math:`x` performs a sweep from :math:`x=0` until :math:`x=c`. The constant :math:`0` describes the lower limit of integration. Note that choosing :math:`x=0` for the starting point of the integral function was an arbitrary choice.
 
-.. math::
+The integral function :math:`F(c)` contains the "precomputed" information about the area under the graph of :math:`f(x)`.  The derivative function :math:`f'(x)` tells us the "slope of the graph" property of the function :math:`f(x)` for all values of :math:`x`. Similarly, the integral function :math:`F(c)` tells us the "area under the graph" property of the function :math:`f(x)` for *all* possible limits of integration.
 
-  \begin{align}
-  \frac{df}{dx} &=  \frac{dh}{dg} \frac{dg}{dx} \\
-                &=  \frac{dh}{d(x^2)} \frac{dg}{dx}
-  \end{align}
-
-
-.. rubric:: Steps
-
-1. Solve for the inner derivative of :math:`g(x) = x^2`
+The area under :math:`f(x)` between :math:`x=a` and :math:`x=b` is obtained by calculating the *change* in the integral function as follows:
 
 .. math::
 
-  \frac{dg}{dx} = 2x
+   A(a,b) = \int_a^b \! f(x)\:dx
+   	=  F(b)-F(a).
 
-2. Solve for the outer derivative of :math:`h(x) = x^3`, using a placeholder :math:`b` to represent the inner function :math:`x^2`
-
-.. math::
-
-  \frac{dh}{db} = 3b^2
-
-3. Swap out the placeholder variable for the inner function
-
-.. math::
-
-  3x^4
-
-4. Return the product of the two derivatives
-
-.. math::
-
-  3x^4 \cdot 2x = 6x^5
+.. image:: images/integral_as_change_in_antriderivative.png
+   :align: center
 
 
-Higher dimensions
------------------
+Applications of integration
+---------------------------
 
-In the above example we assumed a composite function containing a single inner function. But the chain rule can also be applied to higher-order functions like:
+Integral calculations have widespread applications to more areas of science than are practical to list here. Let's explore a few examples related to probabilities.
+
+
+Computing probabilities
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A continuous random variable :math:`X` is described by its probability density function :math:`p(x)`. A probability density function :math:`p(x)` is a positive function for which the total area under the curve is :math:`1`:
 
 .. math::
 
-  f(x) = A(B(C(x)))
+	  p(x) \geq 0, \forall x 
+    \qquad
+	   \textrm{and}
+	   \qquad
+	   \int_{-\infty}^\infty p(x)\; dx = 1.
 
-The chain rule tells us that the derivative of this function equals:
-
-.. math::
-
-  \frac{df}{dx} = \frac{dA}{dB} \frac{dB}{dC} \frac{dC}{dx}
-
-We can also write this derivative equation :math:`f'` notation:
+The probability of observing a value of :math:`X` between :math:`a` and :math:`b` is given by the integral
 
 .. math::
 
-  f' = A'(B(C(x)) \cdot B'(C(x)) \cdot C'(x)
+	 \textrm{Pr}(a \leq X \leq b)
+   =
+	 \int_a^b p(x)\; dx.
+
+Thus, the notion of integration is central to probability theory with continuous random variables.
+
+We also use integration to compute certain characteristic properties of the random variable. The *expected value* and the *variance* are two properties of any random variable :math:`X` that capture important aspects of its behaviour.
 
 
-.. rubric:: Steps
+Expected value
+~~~~~~~~~~~~~~
 
-
-Given the function :math:`f(x) = A(B(C(x)))`, lets assume:
-
-.. math::
-
-  \begin{align}
-  A(x) & = sin(x) \\
-  B(x) & = x^2 \\
-  C(x) & = 4x
-  \end{align}
-
-The derivatives of these functions would be:
+The *expected value* of the random variable :math:`X` is computed using the formula
 
 .. math::
 
-  \begin{align}
-  A'(x) = cos(x) \\
-  B'(x) = 2x \\
-  C'(x) = 4
-  \end{align}
+  \mu
+	% \equiv \mathbb{E}_X[X]
+	= \int_{-\infty}^\infty x\, p(x).
 
-We can calculate the derivative of :math:`f(x)` using the following formula:
+The expected value is a single number that tells us what value of :math:`X` we can expect to obtain on average from the random variable :math:`X`. The expected value is also called the *average* or the *mean* of the random variable :math:`X`.
+
+
+
+Variance
+~~~~~~~~
+
+The *variance* of the random variable :math:`X` is defined as follows:
 
 .. math::
 
-  f'(x) = A'( (4x)^2) \cdot B'(4x) \cdot C'(x)
+   \sigma^2
+	 % \equiv  \mathbb{E}_X\!\big[(X-\mu)^2\big] 
+	 = \int_{-\infty}^\infty (x-\mu)^2 \, p(x).
 
-We then input the derivatives and simplify the expression:
+The variance formula computes the expectation of the squared distance of the random variable :math:`X` from its expected value. The variance :math:`\sigma^2`, also denoted :math:`\textrm{var}(X)`, gives us an indication of how clustered or spread the values of :math:`X` are. A small variance indicates the outcomes of :math:`X` are tightly clustered near the expected value :math:`\mu`, while a large variance indicates the outcomes of :math:`X` are widely spread. The square root of the variance is called the *standard deviation* and is usually denoted :math:`\sigma`.
 
-.. math::
+The expected value :math:`\mu` and the variance :math:`\sigma^2` are two central concepts in probability theory and statistics because they allow us to characterize any random variable. The expected value is a measure of the *central tendency* of the random variable,  while the variance :math:`\sigma^2` measures its *dispersion*.
+Readers familiar with concepts from physics can think of the expected value as the *centre of mass* of the distribution, and the variance as the *moment of inertia* of the distribution.
 
-  \begin{align}
-  f'(x) &= cos((4x)^2) \cdot 2(4x) \cdot 4 \\
-        &= cos(16x^2) \cdot 8x \cdot 4 \\
-        &= cos(16x^2)32x
-  \end{align}
 
 
 
@@ -423,4 +544,3 @@ We then input the derivatives and simplify the expression:
 .. [9] http://tutorial.math.lamar.edu/Classes/CalcI/ChainRule.aspx
 .. [10] https://youtu.be/pHMzNW8Agq4?t=1m5s
 .. [11] https://en.wikipedia.org/wiki/Dot_product
-

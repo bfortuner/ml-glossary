@@ -118,14 +118,16 @@ Let's write code to calculate the derivative of any function :math:`f(x)`. We te
 ::
 
   def get_derivative(func, x):
-      h = 0.0001                # step size
-      return (func(x+h) - func(x)) / h
+      """Compute the derivative of `func` at the location `x`."""
+      h = 0.0001                          # step size
+      return (func(x+h) - func(x)) / h    # rise-over-run
 
-  x = 3
-  computed = get_derivative(x**2, x)
+  def f(x): return x**2                   # some test function f(x)=x^2
+  x = 3                                   # the location of interest
+  computed = get_derivative(f, x)
   actual = 2*x
 
-  computed, actual = 6.0001, 6
+  computed, actual   # = 6.0001, 6        # pretty close if you ask me...
 
 
 In general it's preferable to use the math to obtain exact derivative formulas, but keep in mind you can always compute derivatives numerically by computing the rise-over-run for a "small step" :math:`h`. 
@@ -463,6 +465,73 @@ The area under :math:`f(x)` between :math:`x=a` and :math:`x=b` is obtained by c
 
 .. image:: images/integral_as_change_in_antriderivative.png
    :align: center
+
+
+
+Computing integrals
+-------------------
+
+We can approximate the total area under the function :math:`f(x)` between :math:`x=a` and :math:`x=b` by splitting the region into tiny vertical strips of width :math:`h`, then adding up the areas of the rectangular strips. The figure below shows how to compute the area under :math:`f(x)=x^2` between :math:`x=1` and :math:`x=3` by approximating it as four rectangular strips of width :math:`h=0.5`.
+
+.. image:: images/integral_as_rectangular_strips.png
+   :align: center
+
+Usually we want to choose :math:`h` to be a small number so that the approximation is accurate. Here is some sample code that performs integration.
+
+::
+
+  def get_integral(func, a, b):
+      """Compute the area under `func` between x=a and x=b."""
+      h = 0.0001               # width of small rectangle
+      x = a                    # start at x=a
+      total = 0
+      while x <= b:            # continue until x=b
+          total += h*func(x)   # area of rect is base*height
+          x += h
+      return total
+
+  def f(x): return x**2                    # some test function f(x)=x^2
+  computed = get_integral(f, 1, 3)
+  def actualF(x): return 1.0/3.0*x**3   
+  actual = actualF(3) - actualF(1)
+  computed, actual    # = 8.6662, 8.6666   # pretty close if you ask me...
+
+
+You can find integral functions using the derivative formulas and some reverse engineering. To find an integral function of the function :math:`f(x)`, we must find a function :math:`F(x)` such that :math:`F'(x)=f(x)`. Suppose you're given a function :math:`f(x)` and asked to find its integral function :math:`F(x)`:
+
+.. math::
+
+   F(x) = \int \! f(x)\: dx.
+
+This problem is equivalent to finding a function :math:`F(x)` whose derivative is :math:`f(x)`:
+
+.. math::
+
+  F'(x) = f(x).
+
+
+For example, suppose you want to find the indefinite integral :math:`\int \!x^2\:dx`. We can rephrase this problem as the search for some function :math:`F(x)` such that
+
+.. math::
+
+  F'(x) = x^2.
+
+Remembering the derivative formulas we saw above, you guess that :math:`F(x)` must contain an :math:`x^3` term. Taking the derivative of a cubic term results in a quadratic term. Therefore, the function you are looking for has the form :math:`F(x)=cx^3`, for some constant :math:`c`. Pick the constant :math:`c` that makes this equation true:
+
+.. math::
+
+  F'(x) = 3cx^2 = x^2.
+
+Solving :math:`3c=1`, we find :math:`c=\frac{1}{3}` and so the integral function is
+
+.. math::
+
+  F(x) = \int x^2 \:dx = \frac{1}{3}x^3 + C.
+
+You can verify that :math:`\frac{d}{dx}\left[\frac{1}{3}x^3 + C\right] = x^2`.
+
+
+
 
 
 Applications of integration

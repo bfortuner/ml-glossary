@@ -19,6 +19,7 @@ pip install recommonmark
 
 3. Preview Changes
 ```
+cd ml-cheatsheet
 cd docs
 make html
 ```

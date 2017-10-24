@@ -58,7 +58,7 @@ indices representing the class (language) of the name.
 
 .. rubric:: Further reading
 
-- `Jupyter notebook <https://github.com/bfortuner/ml-cheatsheet/notebooks/rnn.ipynb>`_
+- `Jupyter notebook <https://github.com/bfortuner/ml-cheatsheet/blob/master/notebooks/rnn.ipynb>`_
 - `Deep Learning Book <http://www.deeplearningbook.org/contents/rnn.html>`_
 
 

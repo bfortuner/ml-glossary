@@ -30,4 +30,4 @@ def train(model, inputs, targets):
         loss.backward()
         
         for p in model.parameters():
-            p.data.add_(-lr, p.grad.data)
+            p.data.add_(-.001, p.grad.data)

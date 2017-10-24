@@ -45,14 +45,14 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
 
 .. toctree::
     :maxdepth: 1
-    :caption: Algorithms (empty)
+    :caption: Algorithms
 
     Applications <applications>
     Classification <classification_algos>
     Clustering <clustering_algos>
     Deep Learning <deep_learning>
-    Generative <generative_algos>
     Regression <regression_algos>
+    Reinforcement Learning <reinforcement_learning>
 
 .. toctree::
     :maxdepth: 1

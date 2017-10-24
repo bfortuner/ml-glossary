@@ -1,4 +1,6 @@
+import torch
 import torch.nn as nn
+#from torch.autograd import Variable
 
 class RNN(nn.Module):
     def __init__(self, n_classes):
@@ -17,16 +19,16 @@ class RNN(nn.Module):
         
 def train(model, inputs, targets):
     for i in range(len(inputs)):
-        target = Variable([targets[i]])
+        target = Variable(targets[i])
         name = inputs[i]
         hidden = Variable(torch.zeros(1,128))
         model.zero_grad()
         
         for char in name:
             input_ = Variable(torch.FloatTensor(char))
-            out, hidden = model(input_, hidden)
+            pred, hidden = model(input_, hidden)
         
-        loss = criterion(out, target)
+        loss = criterion(pred, target)
         loss.backward()
         
         for p in model.parameters():

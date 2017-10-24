@@ -50,6 +50,13 @@ Excellent entries will also include:
 The goal of the cheatsheet is to present content in the most accessible way possible, with a heavy emphasis on visuals and interactive diagrams. That said, in the spirit of rapid prototyping, it's okay to to submit a "rough draft" without visuals or code. We expect other readers will enhance your submission over time.
 
 
+## Why RST and not Markdown?
+
+RST has more features. For large and complex documentation projects, it's the logical choice.
+
+* https://eli.thegreenplace.net/2017/restructuredtext-vs-markdown-for-technical-documentation/
+
+
 ## Top Contributors
 
 We're big fans of [Distill](http://distill.pub/prize) and we like their idea of offering prizes for high-quality submissions. We don't have as much money as they do, but we'd still like to reward contributors in some way for contributing to the glossary. In that spirit, we plan to publish a running table of top authors based on number and quality of original submissions:

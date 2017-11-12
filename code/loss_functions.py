@@ -1,6 +1,8 @@
 import math
 import numpy as np
 
+# using the common convention:
+#	yHat is the prediction while is the truth (true label)
 
 def CrossEntropy(yHat, y):
     pass
@@ -15,11 +17,12 @@ def KLDivergence(yHat, y):
 
 
 def L1(yHat, y):
-    pass
+    return np.sum(np.absolute(yHat - y))
 
 
 def L2(yHat, y):
-    pass
+	# same as MSE but without mean
+    return np.sum((yHat - y)**2)
 
 
 def MLE(yHat, y):

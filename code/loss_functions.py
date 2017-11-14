@@ -27,7 +27,7 @@ def MLE(yHat, y):
 
 
 def MSE(yHat, y):
-    return np.sum((yHat - y)**2) / 2.0
+    return np.sum((yHat - y)**2) / y.size
 
 def MSE_prime(yHat, y):
     return yHat - y

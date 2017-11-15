@@ -104,4 +104,3 @@ We'd also like to publish top entries to our Medium Blog, for even more visibili
 * [Sphinx Tutorial](https://pythonhosted.org/an_example_pypi_project/sphinx.html)
 * [Sphinx Docs](http://www.sphinx-doc.org/en/stable/markup/code.html)
 * [Sphinx Cheatsheet](http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html)
-

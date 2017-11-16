@@ -6,7 +6,7 @@
 
 1. Clone Repo
 ```
-git clone https://github.com/bfortuner/ml-glossary
+git clone https://github.com/bfortuner/ml-cheatsheet.git
 ```
 
 2. Install Dependencies
@@ -16,7 +16,12 @@ pip install sphinx sphinx-autobuild
 pip install sphinx_rtd_theme
 pip install recommonmark
 ```
-
+For python-3.x installed, use:
+```
+pip3 install sphinx sphinx-autobuild
+pip3 install sphinx_rtd_theme
+pip3 install recommonmark
+```
 3. Preview Changes
 ```
 cd ml-cheatsheet
@@ -81,6 +86,7 @@ We'd also like to publish top entries to our Medium Blog, for even more visibili
 ## Tips and Tricks
 
 * [Adding equations](http://www.sphinx-doc.org/en/stable/ext/math.html)
+* [Working with Jupyter Notebook](http://louistiao.me/posts/demos/ipython-notebook-demo/)
 * Quickstart with Jupyter notebook template
 * Graphs and charts
 * Importing images
@@ -98,4 +104,3 @@ We'd also like to publish top entries to our Medium Blog, for even more visibili
 * [Sphinx Tutorial](https://pythonhosted.org/an_example_pypi_project/sphinx.html)
 * [Sphinx Docs](http://www.sphinx-doc.org/en/stable/markup/code.html)
 * [Sphinx Cheatsheet](http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html)
-

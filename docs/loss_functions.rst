@@ -25,13 +25,8 @@ The graph above shows the range of possible loss values given a true observation
 
 .. rubric:: Code
 
-::
-
-  def cross_entropy(true_label, prediction):
-      if true_label == 1:
-          return -log(prediction)
-      else:
-          return -log(1 - prediction)
+.. literalinclude:: ../code/loss_functions.py   
+      :pyobject: CrossEntropy
 
 .. rubric:: Math
 

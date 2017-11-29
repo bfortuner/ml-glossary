@@ -7,7 +7,7 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
 
 .. warning::
 
-    This document is under very early stage development. If you find errors, please raise an `issue <https://github.com/bfortuner/ml-cheatsheet/issues>`_ or `contribute <https://github.com/bfortuner/ml-cheatsheet/blob/master/README.md>`_ a better definition!
+    This document is under early stage development. If you find errors, please raise an `issue <https://github.com/bfortuner/ml-cheatsheet/issues>`_ or `contribute <https://github.com/bfortuner/ml-cheatsheet/blob/master/README.md>`_ a better definition!
 
 .. toctree::
     :caption: Basics

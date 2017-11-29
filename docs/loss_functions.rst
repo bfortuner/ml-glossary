@@ -21,7 +21,7 @@ The graph above shows the range of possible loss values given a true observation
 
 .. note::
 
-  Cross-entropy and log loss are slightly different depending on context, but in machine learning when calculating error rates between 0 and 1 they resolve to the same thing.
+Cross-entropy and log loss are slightly different depending on context, but in machine learning when calculating error rates between 0 and 1 they resolve to the same thing.
 
 .. rubric:: Code
 
@@ -55,15 +55,36 @@ If :math:`M > 2` (i.e. multiclass classification), we calculate a separate loss 
 Hinge
 =====
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Used for classification. 
 
+.. rubric:: Code
+
+.. literalinclude:: ../code/loss_functions.py   
+      :pyobject: Hinge
+
+
+.. _huber_loss:
+
+Huber
+=====
+
+Typically used for regression. It's less sensitive to outliers than the MSE.
+
+.. rubric:: Code
+
+.. literalinclude:: ../code/loss_functions.py   
+      :pyobject: Huber
+      
 
 .. _kl_divergence:
 
 Kullback-Leibler
 ================
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+.. rubric:: Code
+
+.. literalinclude:: ../code/loss_functions.py   
+      :pyobject: KLDivergence
 
 
 .. _l1_loss:
@@ -71,7 +92,12 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 L1
 =======
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Excellent overview below [6] and [10].
+
+.. rubric:: Code
+
+.. literalinclude:: ../code/loss_functions.py   
+      :pyobject: L2
 
 
 .. _l2_loss:
@@ -79,7 +105,12 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 L2
 ==
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Excellent overview below [6] and [10].
+
+.. rubric:: Code
+
+.. literalinclude:: ../code/loss_functions.py   
+      :pyobject: L2
 
 
 .. _mle:
@@ -87,7 +118,10 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Maximum Likelihood
 ==================
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+.. rubric:: Code
+
+.. literalinclude:: ../code/loss_functions.py   
+      :pyobject: MLE
 
 
 .. _mse:
@@ -114,3 +148,7 @@ Description of MSE...
 .. [4] http://www.exegetic.biz/blog/2015/12/making-sense-logarithmic-loss/
 .. [5] http://neuralnetworksanddeeplearning.com/chap3.html
 .. [6] http://rishy.github.io/ml/2015/07/28/l1-vs-l2-loss/
+.. [7] https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient
+.. [8] https://en.wikipedia.org/wiki/Huber_loss
+.. [9] https://en.wikipedia.org/wiki/Hinge_loss
+.. [10] http://www.chioka.in/differences-between-l1-and-l2-as-loss-function-and-regularization/

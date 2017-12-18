@@ -25,7 +25,7 @@ Cross-entropy and log loss are slightly different depending on context, but in m
 
 .. rubric:: Code
 
-.. literalinclude:: ../code/loss_functions.py   
+.. literalinclude:: ../code/loss_functions.py
       :pyobject: CrossEntropy
 
 .. rubric:: Math
@@ -55,11 +55,11 @@ If :math:`M > 2` (i.e. multiclass classification), we calculate a separate loss 
 Hinge
 =====
 
-Used for classification. 
+Used for classification.
 
 .. rubric:: Code
 
-.. literalinclude:: ../code/loss_functions.py   
+.. literalinclude:: ../code/loss_functions.py
       :pyobject: Hinge
 
 
@@ -72,9 +72,9 @@ Typically used for regression. It's less sensitive to outliers than the MSE.
 
 .. rubric:: Code
 
-.. literalinclude:: ../code/loss_functions.py   
+.. literalinclude:: ../code/loss_functions.py
       :pyobject: Huber
-      
+
 
 .. _kl_divergence:
 
@@ -83,7 +83,7 @@ Kullback-Leibler
 
 .. rubric:: Code
 
-.. literalinclude:: ../code/loss_functions.py   
+.. literalinclude:: ../code/loss_functions.py
       :pyobject: KLDivergence
 
 
@@ -96,8 +96,8 @@ Excellent overview below [6] and [10].
 
 .. rubric:: Code
 
-.. literalinclude:: ../code/loss_functions.py   
-      :pyobject: L2
+.. literalinclude:: ../code/loss_functions.py
+      :pyobject: L1
 
 
 .. _l2_loss:
@@ -109,7 +109,7 @@ Excellent overview below [6] and [10].
 
 .. rubric:: Code
 
-.. literalinclude:: ../code/loss_functions.py   
+.. literalinclude:: ../code/loss_functions.py
       :pyobject: L2
 
 
@@ -120,7 +120,7 @@ Maximum Likelihood
 
 .. rubric:: Code
 
-.. literalinclude:: ../code/loss_functions.py   
+.. literalinclude:: ../code/loss_functions.py
       :pyobject: MLE
 
 

@@ -96,6 +96,7 @@ We'd also like to publish top entries to our Medium Blog, for even more visibili
 ## Resources
 
 * [Desmos Graphing Tool](https://www.desmos.com/calculator)
+* [3D Graphing Tool](https://www.geogebra.org/3d)
 * [How To Submit Pull Requests](https://help.github.com/articles/creating-a-pull-request/)
 * [RST Cheatsheet](http://docutils.sourceforge.net/docs/user/rst/quickref.html)
 * [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)

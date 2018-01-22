@@ -55,6 +55,13 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Text Summarization
 ------------------
 
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+
+Question Answering
+------------------
+
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+
 
 
 Recommender Systems

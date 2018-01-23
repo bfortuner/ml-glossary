@@ -14,11 +14,6 @@ ELU
 Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
-LeakyReLU
-=========
-
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
-
 .. _activation_relu:
 
 ReLU
@@ -58,6 +53,46 @@ A recent invention which stands for Rectified Linear Units. The formula is decep
 - `Yes You Should Understand Backprop <https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b>`_, Karpathy (2016)
 
 
+.. _activation_leakyrelu:
+
+LeakyReLU
+=========
+
+LeakyRelu is a variant of ReLU. Instead of being 0 when :math:`z < 0`, a leaky ReLU allows a small, non-zero, constant gradient :math:`\alpha` (Normally, :math:`\alpha = 0.01`). However, the consistency of the benefit across tasks is presently unclear. [1]_
+
++-------------------------------------------------------+------------------------------------------------------+
+| Function                                              | Derivative                                           |
++-------------------------------------------------------+------------------------------------------------------+
+| .. math::                                             | .. math::                                            |
+|      R(z) = \begin{Bmatrix} z & z > 0 \\              |       R'(z) = \begin{Bmatrix} 1 & z>0 \\             |
+|       \alpha z & z <= 0 \end{Bmatrix}                 |       \alpha & z<0 \end{Bmatrix}                     |
++-------------------------------------------------------+------------------------------------------------------+
+| .. image:: images/leakyrelu.png                       | .. image:: images/leakyrelu_prime.png                |
+|       :align: center                                  |      :align: center                                  |
+|       :width: 256 px                                  |      :width: 256 px                                  |
+|       :height: 256 px                                 |      :height: 256 px                                 |
++-------------------------------------------------------+------------------------------------------------------+
+| .. literalinclude:: ../code/activation_functions.py   | .. literalinclude:: ../code/activation_functions.py  |
+|       :pyobject: leakyrelu                            |      :pyobject: leakyrelu_prime                      |
++-------------------------------------------------------+------------------------------------------------------+
+
+.. quick create tables with tablesgenerator.com/text_tables and import our premade template in figures/
+
+
+
+.. rubric:: Pros
+
+- Pro 1
+
+.. rubric:: Cons
+
+- Con 1
+
+.. rubric:: Further reading
+
+- `Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification <https://arxiv.org/pdf/1502.01852.pdf>`_, Kaiming He et al. (2015)
+
+
 .. _activation_sigmoid:
 
 Sigmoid
@@ -94,18 +129,45 @@ Sigmoid takes a real value as input and outputs another value between 0 and 1. I
 - `Yes You Should Understand Backprop <https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b>`_, Karpathy (2016)
 
 
+.. _activation_tanh:
+
+Tanh
+====
+
+Tanh squashes a real-valued number to the range [-1, 1]. It's non-linear. But unlike Sigmoid, its output is zero-centered.
+Therefore, in practice the tanh non-linearity is always preferred to the sigmoid nonlinearity. [1]_ 
+
++-----------------------------------------------------+-----------------------------------------------------+
+| Function                                            | Derivative                                          |
++-----------------------------------------------------+-----------------------------------------------------+
+| .. math::                                           | .. math::                                           |
+|      tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}}|      tanh'(z) = 1 - tanh(z)^{2}                     |
++-----------------------------------------------------+-----------------------------------------------------+
+| .. image:: images/tanh.png                          | .. image:: images/tanh_prime.png                    |
+|       :align: center                                |       :align: center                                |
+|       :width: 256 px                                |       :width: 256 px                                |
++-----------------------------------------------------+-----------------------------------------------------+
+| .. literalinclude:: ../code/activation_functions.py | .. literalinclude:: ../code/activation_functions.py |
+|       :pyobject: tanh                               |       :pyobject: tanh_prime                         |
++-----------------------------------------------------+-----------------------------------------------------+
+
+.. quick create tables with tablesgenerator.com/text_tables and import our premade template in figures/
+
+.. rubric:: Pros
+
+- Pro 1
+
+.. rubric:: Cons
+
+- Con 1
+
+
 Softmax
 =======
 
 Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
-Tanh
-====
-
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
-
-
 .. rubric:: References
 
-.. [1] Example
+.. [1] http://cs231n.github.io/neural-networks-1/

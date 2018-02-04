@@ -64,7 +64,7 @@ RST has more features. For large and complex documentation projects, it's the lo
 
 ## Top Contributors
 
-We're big fans of [Distill](http://distill.pub/prize) and we like their idea of offering prizes for high-quality submissions. We don't have as much money as they do, but we'd still like to reward contributors in some way for contributing to the glossary. For instance a cheatsheet cryptocurreny and offer tokens for commits ;). In the end, this is an open-source project and we hope contributing to a repository of concise, accessible, machine learning knowledge is enough incentive on its own!
+We're big fans of [Distill](http://distill.pub/prize) and we like their idea of offering prizes for high-quality submissions. We don't have as much money as they do, but we'd still like to reward contributors in some way for contributing to the glossary. For instance a cheatsheet cryptocurreny where tokens equal commits ;). Let us know if you have better ideas. In the end, this is an open-source project and we hope contributing to a repository of concise, accessible, machine learning knowledge is enough incentive on its own!
 
 
 ## Tips and Tricks

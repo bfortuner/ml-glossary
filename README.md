@@ -64,23 +64,7 @@ RST has more features. For large and complex documentation projects, it's the lo
 
 ## Top Contributors
 
-We're big fans of [Distill](http://distill.pub/prize) and we like their idea of offering prizes for high-quality submissions. We don't have as much money as they do, but we'd still like to reward contributors in some way for contributing to the glossary. In that spirit, we plan to publish a running table of top authors based on number and quality of original submissions:
-
-### Top Entries
-
-| Entry         | Author        | Link         |
-|:------------- |:------------- |:-------------|
-| Example Entry | Your Name     | Your GitHub  |
-| Example Entry | Your Name     | Your GitHub  |
-
-### Most Entries
-
-| Author        | Entries  | Link         |
-|:------------- |:---------|:-------------|
-| Your Name     | 24       | Your GitHub  |
-| Your Name     | 18       | Your GitHub  |
-
-We'd also like to publish top entries to our Medium Blog, for even more visibility. But in the end, this is an open-source project and we hope contributing to a repository of concise, accessible, machine learning knowledge is enough incentive on its own!
+We're big fans of [Distill](http://distill.pub/prize) and we like their idea of offering prizes for high-quality submissions. We don't have as much money as they do, but we'd still like to reward contributors in some way for contributing to the glossary. For instance a cheatsheet cryptocurreny and offer tokens for commits ;). In the end, this is an open-source project and we hope contributing to a repository of concise, accessible, machine learning knowledge is enough incentive on its own!
 
 
 ## Tips and Tricks

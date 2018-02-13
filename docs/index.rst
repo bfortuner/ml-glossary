@@ -19,7 +19,6 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
     training
     glossary
 
-
 .. toctree::
     :caption: Math
     :maxdepth: 1
@@ -30,7 +29,6 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
     Statistics (empty) <statistics>
     math_notation
 
-
 .. toctree::
     :maxdepth: 1
     :caption: Neural Networks
@@ -39,8 +37,9 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
     forwardpropagation
     backpropagation
     activation_functions
+    layers
     loss_functions
-    optimization
+    optimizers
     regularization
 
 .. toctree::

@@ -16,8 +16,8 @@ def feed_forward(x, Wh, Wo):
 
 def relu_prime(z):
     if z > 0:
-        return z
-    return 1
+        return 1
+    return 0
 
 def cost(yHat, y):
     return 0.5 * (yHat - y)**2

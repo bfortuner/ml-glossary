@@ -53,7 +53,7 @@ Using the chain rule we can easily find the derivative of Cost with respect to w
 .. math::
 
   C'(W) &= C'(R) \cdot R'(Z) \cdot Z'(W) \\
-        &= (\hat y -y) \cdot R'(Z) \cdot X
+        &= (\hat{y} -y) \cdot R'(Z) \cdot X
 
 Now that we have an equation to calculate the derivative of cost with respect to any weight, let's go back to our toy neural network example above
 
@@ -64,15 +64,15 @@ What is the derivative of cost with respect to :math:`W_o`?
 
 .. math::
 
-  C'(W_O) &= C'(O) \cdot O'(Z_O) \cdot Z_O'(W_O) \\
+  C'(W_O) &= C'(\hat{y}) \cdot \hat{y}'(Z_O) \cdot Z_O'(W_O) \\
           &= (O - y) \cdot R'(Z_O) \cdot H
 
 And how about with respect to :math:`W_h`? To find out we just keep going further back in our function applying the chain rule recursively until we get to the function that has the Wh term.
 
 .. math::
 
-  C'(W_h) &= C'(O) \cdot O'(Z_o) \cdot Z_o'(H) \cdot H'(Z_h) \cdot Z_h'(W_h) \\
-          &= (O - y) \cdot R'(Z_o) \cdot W_o \cdot R'(Z_h) \cdot X
+  C'(W_h) &= C'(\hat{y}) \cdot O'(Z_o) \cdot Z_o'(H) \cdot H'(Z_h) \cdot Z_h'(W_h) \\
+          &= (\hat{y} - y) \cdot R'(Z_o) \cdot W_o \cdot R'(Z_h) \cdot X
 
 And just for fun, what if our network had 10 hidden layers. What is the derivative of cost for the first weight :math:`w_1`?
 
@@ -110,13 +110,13 @@ To calculate output layer error we need to find the derivative of cost with resp
 
 .. math::
 
-  C'(Z_o) = (O - y) \cdot R'(Z_o)
+  C'(Z_o) = (\hat{y} - y) \cdot R'(Z_o)
 
-To simplify notation, ml practitioners typically replace the :math:`(O-y) * R'(Zo)` sequence with the term :math:`E_o`. So our formula for output layer error equals:
+To simplify notation, ml practitioners typically replace the :math:`(\hat{y}-y) * R'(Zo)` sequence with the term :math:`E_o`. So our formula for output layer error equals:
 
 .. math::
 
-  E_o = (O - y) \cdot R'(Z_o)
+  E_o = (\hat{y} - y) \cdot R'(Z_o)
 
 .. rubric:: Hidden layer error
 
@@ -124,7 +124,7 @@ To calculate hidden layer error we need to find the derivative of cost with resp
 
 .. math::
 
-  C'(Z_h) = (O - y) \cdot R'(Z_o) \cdot W_o \cdot R'(Z_h)
+  C'(Z_h) = (\hat{y} - y) \cdot R'(Z_o) \cdot W_o \cdot R'(Z_h)
 
 Next we can swap in the :math:`E_o` term above to avoid duplication and create a new simplified equation for Hidden layer error:
 
@@ -140,7 +140,7 @@ Let’s return to our formula for the derivative of cost with respect to the out
 
 .. math::
 
-  C'(W_O) = (O - y) \cdot R'(Z_O) \cdot H
+  C'(W_O) = (\hat{y} - y) \cdot R'(Z_O) \cdot H
 
 We know we can replace the first part with our equation for output layer error :math:`E_h`. H represents the hidden layer activation.
 

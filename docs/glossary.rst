@@ -90,7 +90,7 @@ Dimension
 .. _glossary_epoch:
 
 Epoch
-  Contribute a definition!
+  An epoch describes the number of times the algorithm sees the entire data set.
 
 .. _glossary_extrapolation:
 
@@ -105,7 +105,7 @@ Feature
 .. _glossary_feature_selection:
 
 Feature Selection
-  Contribute a definition!
+  Feature selection is the process of selecting relevant features from a data-set for creating a Machine Learning model. 
 
 .. _glossary_feature_vector:
 
@@ -115,7 +115,7 @@ Feature Vector
 .. _glossary_hyperparameters:
 
 Hyperparameters
-  Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+  Hyperparameters are higher-level properties of a model such as how fast it can learn (learning rate) or complexity of a model. The depth of trees in a Decision Tree or number of hidden layers in a Neural Networks are examples of hyper parameters.
 
 .. _glossary_induction:
 

@@ -80,6 +80,29 @@ TODO
 - `Deep Learning Book <http://www.deeplearningbook.org/contents/generative_models.html>`_
 
 
+MLP
+===
+
+A Multi Layer Perceptron (MLP) is a neural network with only fully connected layers. Figure from [5].
+
+.. image:: images/mlp.jpg
+      :align: center
+
+.. rubric:: Model
+
+An example implementation in Numpy or Pytorch?
+
+TODO
+
+.. rubric:: Training
+
+TODO
+
+.. rubric:: Further reading
+
+TODO
+
+
 RNN
 ===
 

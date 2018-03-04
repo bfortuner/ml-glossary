@@ -16,7 +16,6 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
     linear_regression
     gradient_descent
     logistic_regression
-    training
     glossary
 
 .. toctree::
@@ -25,8 +24,8 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
 
     calculus
     linear_algebra
-    Probability (empty) <probability>
-    Statistics (empty) <statistics>
+    Probability (TODO) <probability>
+    Statistics (TODO) <statistics>
     math_notation
 
 .. toctree::
@@ -45,7 +44,7 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
 
 .. toctree::
     :maxdepth: 1
-    :caption: Algorithms
+    :caption: Algorithms (TODO)
 
     Classification <classification_algos>
     Clustering <clustering_algos>

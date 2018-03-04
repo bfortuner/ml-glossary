@@ -41,15 +41,14 @@ Brief visual explanations of machine learning concepts with diagrams, code examp
     loss_functions
     optimizers
     regularization
+    architectures
 
 .. toctree::
     :maxdepth: 1
     :caption: Algorithms
 
-    Applications <applications>
     Classification <classification_algos>
     Clustering <clustering_algos>
-    Deep Learning <deep_learning>
     Regression <regression_algos>
     Reinforcement Learning <reinforcement_learning>
 

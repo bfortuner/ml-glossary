@@ -10,12 +10,12 @@ Layers
 BatchNorm
 ---------
 
-Accelerates convergence by reducing internal covariate shift inside each batch.
+BatchNorm accelerates convergence by reducing internal covariate shift inside each batch.
 If the individual observations in the batch are widely different, the gradient
 updates will be choppy and take longer to converge.
 
 The batch norm layer normalizes the incoming activations and outputs a new batch
-where the new mean equals 0 and standard deviation equals 1. It subtracts the mean
+where the mean equals 0 and standard deviation equals 1. It subtracts the mean
 and divides by the standard deviation of the batch.
 
 .. rubric:: Code

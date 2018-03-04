@@ -117,7 +117,11 @@ indices representing the class (language) of the name.
 VAE
 ===
 
-Variational Autoencoder. Use case and basic architecture. Figure from [4].
+Autoencoders can encode an input image to a latent vector and decode it, but they can't generate novel images.
+Variational Autoencoders (VAE) solve this problem by adding a constraint: the latent vector representation should model a unit gaussian distribution.
+The Encoder returns the mean and variance of the learned gaussian. To generate a new image, we pass a new mean and variance to the Decoder.
+In other words, we "sample a latent vector" from the gaussian and pass it to the Decoder.
+It also improves network generalization and avoids memorization. Figure from [4].
 
 .. image:: images/vae.png
       :align: center

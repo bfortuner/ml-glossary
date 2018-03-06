@@ -41,8 +41,23 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Momentum
 --------
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Used in conjunction Stochastic Gradient Descent (sgd) or Mini-Batch Gradient Descent, Momentum takes into account
+past gradients to smooth out the update. This is seen in variable :math:`v` which is an exponentially weighted average
+of the gradient on previous steps. This results in minimizing oscillations and faster convergence.
 
+.. math::
+
+
+    v_{dW} = \beta v_{dW} + (1 - \beta) dW \\
+    W = W - \alpha v_{dW}
+
+.. note::
+
+  - :math:`v` - the exponentially weighted average
+  - :math:`dW` - cost gradient with respect to current layer weight tensor
+  - :math:`W` - weight tensor
+  - :math:`\beta` - hyperparameter to be tuned
+  - :math:`\alpha` - the learning rate
 
 Nesterov Momentum
 -----------------

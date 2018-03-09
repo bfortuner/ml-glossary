@@ -21,7 +21,33 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Adam
 ----
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Adaptive Moment Estimation (Adam) combines ideas from both RMSProp and Momentum. It computes adaptive learning rates for each parameter and works as follows.
+
+- First, it computes the exponentially weighted average of past gradients (:math:`v_{dW}`).
+- Second, it computes the exponentially weighted average of the squares of past gradients (:math:`s_{dW}`).
+- Third, these averages have a bias towards zero and to counteract this a bias correction is applied (:math:`v_{dW}^{corrected}`, :math:`s_{dW}^{corrected}`).
+- Lastly, the parameters are updated using the information from the calculated averages.
+
+.. math::
+
+
+    v_{dW} = \beta_1 v_{dW} + (1 - \beta_1) \frac{\partial \mathcal{J} }{ \partial W } \\
+    s_{dW} = \beta_2 s_{dW} + (1 - \beta_2) (\frac{\partial \mathcal{J} }{\partial W })^2 \\
+    v^{corrected}_{dW} = \frac{v_{dW}}{1 - (\beta_1)^t} \\
+    s^{corrected}_{dW} = \frac{s_{dW}}{1 - (\beta_1)^t} \\
+    W = W - \alpha \frac{v^{corrected}_{dW}}{\sqrt{s^{corrected}_{dW}} + \varepsilon}
+
+.. note::
+
+  - :math:`v_{dW}` - the exponentially weighted average of past gradients
+  - :math:`s_{dW}` - the exponentially weighted average of past squares of gradients
+  - :math:`\beta_1` - hyperparameter to be tuned
+  - :math:`\beta_2` - hyperparameter to be tuned
+  - :math:`\frac{\partial \mathcal{J} }{ \partial W }` - cost gradient with respect to current layer
+  - :math:`W` - the weight matrix (parameter to be updated)
+  - :math:`\alpha` - the learning rate
+  - :math:`\epsilon` - very small value to avoid dividing by zero
+
 
 
 Conjugate Gradients

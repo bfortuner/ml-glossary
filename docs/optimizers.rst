@@ -43,7 +43,7 @@ Adaptive Moment Estimation (Adam) combines ideas from both RMSProp and Momentum.
   - :math:`s_{dW}` - the exponentially weighted average of past squares of gradients
   - :math:`\beta_1` - hyperparameter to be tuned
   - :math:`\beta_2` - hyperparameter to be tuned
-  - :math:`\frac{\partial \mathcal{J} }{ \partial W }` - cost gradient with respect to current layer
+  - :math:`\frac{\partial \mathcal{J} }{ \partial W }` - cost gradient with respect to current layer weight tensor
   - :math:`W` - the weight matrix (parameter to be updated)
   - :math:`\alpha` - the learning rate
   - :math:`\epsilon` - very small value to avoid dividing by zero
@@ -74,13 +74,13 @@ of the gradient on previous steps. This results in minimizing oscillations and f
 .. math::
 
 
-    v_{dW} = \beta v_{dW} + (1 - \beta) dW \\
+    v_{dW} = \beta v_{dW} + (1 - \beta) \frac{\partial \mathcal{J} }{ \partial W } \\
     W = W - \alpha v_{dW}
 
 .. note::
 
-  - :math:`v` - the exponentially weighted average
-  - :math:`dW` - cost gradient with respect to current layer weight tensor
+  - :math:`v` - the exponentially weighted average of past gradients
+  - :math:`\frac{\partial \mathcal{J} }{ \partial W }` - cost gradient with respect to current layer weight tensor
   - :math:`W` - weight tensor
   - :math:`\beta` - hyperparameter to be tuned
   - :math:`\alpha` - the learning rate
@@ -100,8 +100,24 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 RMSProp
 -------
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Another adaptive learning rate optimization algorithm, Root Mean Square Prop (RMSProp) works by keeping an exponentially weighted average of the squares of past gradients.
+RMSProp then divides the learning rate by this average to speed up convergence.
 
+
+.. math::
+
+
+    s_{dW} = \beta s_{dW} + (1 - \beta) (\frac{\partial \mathcal{J} }{\partial W })^2 \\
+    W = W - \alpha \frac{\frac{\partial \mathcal{J} }{\partial W }}{\sqrt{s^{corrected}_{dW}} + \varepsilon}
+
+.. note::
+
+  - :math:`s` - the exponentially weighted average of past squares of gradients
+  - :math:`\frac{\partial \mathcal{J} }{\partial W }` - cost gradient with respect to current layer weight tensor
+  - :math:`W` - weight tensor
+  - :math:`\beta` - hyperparameter to be tuned
+  - :math:`\alpha` - the learning rate
+  - :math:`\epsilon` - very small value to avoid dividing by zero
 
 SGD
 ---

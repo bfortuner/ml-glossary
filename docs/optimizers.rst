@@ -43,7 +43,7 @@ Adaptive Moment Estimation (Adam) combines ideas from both RMSProp and Momentum.
   - :math:`s_{dW}` - the exponentially weighted average of past squares of gradients
   - :math:`\beta_1` - hyperparameter to be tuned
   - :math:`\beta_2` - hyperparameter to be tuned
-  - :math:`\frac{\partial \mathcal{J} }{ \partial W }` - cost gradient with respect to current layer weight tensor
+  - :math:`\frac{\partial \mathcal{J} }{ \partial W }` - cost gradient with respect to current layer
   - :math:`W` - the weight matrix (parameter to be updated)
   - :math:`\alpha` - the learning rate
   - :math:`\epsilon` - very small value to avoid dividing by zero
@@ -73,6 +73,16 @@ of the gradient on previous steps. This results in minimizing oscillations and f
 
 .. math::
 
+    v_{dW} = \beta v_{dW} + (1 - \beta) dW \\
+    W = W - \alpha v_{dW}
+
+.. note::
+
+  - :math:`v` - the exponentially weighted average
+  - :math:`dW` - cost gradient with respect to current layer weight tensor
+  - :math:`W` - weight tensor
+  - :math:`\beta` - hyperparameter to be tuned
+  - :math:`\alpha` - the learning rate
 
     v_{dW} = \beta v_{dW} + (1 - \beta) \frac{\partial \mathcal{J} }{ \partial W } \\
     W = W - \alpha v_{dW}

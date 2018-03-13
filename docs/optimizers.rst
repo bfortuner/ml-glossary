@@ -73,17 +73,6 @@ of the gradient on previous steps. This results in minimizing oscillations and f
 
 .. math::
 
-    v_{dW} = \beta v_{dW} + (1 - \beta) dW \\
-    W = W - \alpha v_{dW}
-
-.. note::
-
-  - :math:`v` - the exponentially weighted average
-  - :math:`dW` - cost gradient with respect to current layer weight tensor
-  - :math:`W` - weight tensor
-  - :math:`\beta` - hyperparameter to be tuned
-  - :math:`\alpha` - the learning rate
-
     v_{dW} = \beta v_{dW} + (1 - \beta) \frac{\partial \mathcal{J} }{ \partial W } \\
     W = W - \alpha v_{dW}
 

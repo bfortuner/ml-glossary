@@ -149,7 +149,7 @@ The benefits of taking the logarithm reveal themselves when you look at the cost
 
 The key thing to note is the cost function penalizes confident and wrong predictions more than it rewards confident and right predictions! The corollary is increasing prediction accuracy (closer to 0 or 1) has diminishing returns on reducing cost due to the logistic nature of our cost function.
 
-..rubric:: Above functions compressed into one
+.. rubric:: Above functions compressed into one
 
 .. image:: images/logistic_cost_function_joined.png
     :align: center

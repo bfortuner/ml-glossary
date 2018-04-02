@@ -47,6 +47,7 @@ def feed_forward(X):
     Zh   - hidden layer weighted input
     Zo   - output layer weighted input
     H    - hidden layer activation
+    y    - output layer
     yHat - output layer predictions
     '''
 

@@ -87,12 +87,12 @@ Kullback-Leibler
       :pyobject: KLDivergence
 
 
-.. _l1_loss:
+.. _mae:
 
-L1
-=======
+MAE (L1)
+========
 
-Excellent overview below [6] and [10].
+Mean Absolute Error, or L1 loss. Excellent overview below [6] and [10].
 
 .. rubric:: Code
 
@@ -100,36 +100,12 @@ Excellent overview below [6] and [10].
       :pyobject: L1
 
 
-.. _l2_loss:
-
-L2
-==
-
-Excellent overview below [6] and [10].
-
-.. rubric:: Code
-
-.. literalinclude:: ../code/loss_functions.py
-      :pyobject: L2
-
-
-.. _mle:
-
-Maximum Likelihood
-==================
-
-.. rubric:: Code
-
-.. literalinclude:: ../code/loss_functions.py
-      :pyobject: MLE
-
-
 .. _mse:
 
-Mean Squared Error
-==================
+MSE (L2)
+========
 
-Description of MSE...
+Mean Squared Error, or L2 loss. Excellent overview below [6] and [10].
 
 .. literalinclude:: ../code/loss_functions.py
     :language: python

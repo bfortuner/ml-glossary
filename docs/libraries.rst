@@ -688,7 +688,7 @@ Python
 - `NLTK <http://www.nltk.org/>`__ - A leading platform for building Python programs to work with human language data.
 - `Pattern <http://www.clips.ua.ac.be/pattern>`__ - A web mining module for the Python programming language. It has tools for natural language processing, machine learning, among others.
 - `Quepy <https://github.com/machinalis/quepy>`__ - A python framework to transform natural language questions to queries in a database query language
-- `TextBlob <http://textblob.readthedocs.io/en/dev/) - Providing a consistent API for diving into common natural language processing (NLP>`__ tasks. Stands on the giant shoulders of NLTK and Pattern, and plays nicely with both.
+- `TextBlob <http://textblob.readthedocs.io/en/dev/>`__ - Providing a consistent API for diving into common natural language processing (NLP) tasks. Stands on the giant shoulders of NLTK and Pattern, and plays nicely with both.
 - `YAlign <https://github.com/machinalis/yalign>`__ - A sentence aligner, a friendly tool for extracting parallel sentences from comparable corpora.
 - `jieba <https://github.com/fxsjy/jieba#jieba-1>`__ - Chinese Words Segmentation Utilities.
 - `SnowNLP <https://github.com/isnowfy/snownlp>`__ - A library for processing Chinese text.
@@ -697,12 +697,12 @@ Python
 - `genius <https://github.com/duanhongyi/genius>`__ - A Chinese segment base on Conditional Random Field.
 - `KoNLPy <http://konlpy.org>`__ - A Python package for Korean natural language processing.
 - `nut <https://github.com/pprett/nut>`__ - Natural language Understanding Toolkit
-- `Rosetta <https://github.com/columbia-applied-data-science/rosetta) - Text processing tools and wrappers (e.g. Vowpal Wabbit>`__
-- `BLLIP Parser <https://pypi.python.org/pypi/bllipparser/) - Python bindings for the BLLIP Natural Language Parser (also known as the Charniak-Johnson parser>`__
-- `PyNLPl](https://github.com/proycon/pynlpl) - Python Natural Language Processing Library. General purpose NLP library for Python. Also contains some specific modules for parsing common NLP formats, most notably for [FoLiA <http://proycon.github.io/folia/>`__, but also ARPA language models, Moses phrasetables, GIZA++ alignments.
-- `python-ucto <https://github.com/proycon/python-ucto) - Python binding to ucto (a unicode-aware rule-based tokenizer for various languages>`__
-- `python-frog <https://github.com/proycon/python-frog) - Python binding to Frog, an NLP suite for Dutch. (pos tagging, lemmatisation, dependency parsing, NER>`__
-- `python-zpar](https://github.com/EducationalTestingService/python-zpar) - Python bindings for [ZPar <https://github.com/frcchang/zpar>`__, a statistical part-of-speech-tagger, constiuency parser, and dependency parser for English.
+- `Rosetta <https://github.com/columbia-applied-data-science/rosetta>`__ - Text processing tools and wrappers (e.g. Vowpal Wabbit
+- `BLLIP Parser <https://pypi.python.org/pypi/bllipparser/>`__ - Python bindings for the BLLIP Natural Language Parser (also known as the Charniak-Johnson parser>
+- `PyNLPl <https://github.com/proycon/pynlpl>`__ - Python Natural Language Processing Library. General purpose NLP library for Python. Also contains some specific modules for parsing common NLP formats, most notably for `FoLiA <http://proycon.github.io/folia/>`__, but also ARPA language models, Moses phrasetables, GIZA++ alignments.
+- `python-ucto <https://github.com/proycon/python-ucto>`__ - Python binding to ucto (a unicode-aware rule-based tokenizer for various languages
+- `python-frog <https://github.com/proycon/python-frog>`__ - Python binding to Frog, an NLP suite for Dutch. (pos tagging, lemmatisation, dependency parsing, NER
+- `python-zpar <https://github.com/EducationalTestingService/python-zpar>`__ - Python bindings for `ZPar <https://github.com/frcchang/zpar>`__, a statistical part-of-speech-tagger, constiuency parser, and dependency parser for English.
 - `colibri-core <https://github.com/proycon/colibri-core>`__ - Python binding to C++ library for extracting and working with with basic linguistic constructions such as n-grams and skipgrams in a quick and memory-efficient way.
 - `spaCy <https://github.com/honnibal/spaCy/>`__ - Industrial strength NLP with Python and Cython.
 - `PyStanfordDependencies <https://github.com/dmcc/PyStanfordDependencies>`__ - Python interface for converting Penn Treebank trees to Stanford Dependencies.
@@ -711,13 +711,13 @@ Python
 - `jellyfish <https://github.com/jamesturk/jellyfish>`__ - a python library for doing approximate and phonetic matching of strings.
 - `editdistance <https://pypi.python.org/pypi/editdistance>`__ - fast implementation of edit distance
 - `textacy <https://github.com/chartbeat-labs/textacy>`__ - higher-level NLP built on Spacy
-- `stanford-corenlp-python](https://github.com/dasmith/stanford-corenlp-python) - Python wrapper for [Stanford CoreNLP <https://github.com/stanfordnlp/CoreNLP>`__
+- `stanford-corenlp-python <https://github.com/dasmith/stanford-corenlp-python>`__ - Python wrapper for `Stanford CoreNLP <https://github.com/stanfordnlp/CoreNLP>`__
 
 
 .. rubric:: General-Purpose Machine Learning
 
 - `auto_ml <https://github.com/ClimbsRocks/auto_ml>`__ - Automated machine learning for production and analytics. Lets you focus on the fun parts of ML, while outputting production-ready code, and detailed analytics of your dataset and results. Includes support for NLP, XGBoost, LightGBM, and soon, deep learning.
-- `machine learning](https://github.com/jeff1evesque/machine-learning) - automated build consisting of a [web-interface](https://github.com/jeff1evesque/machine-learning#web-interface), and set of [programmatic-interface <https://github.com/jeff1evesque/machine-learning#programmatic-interface) API, for support vector machines.  Corresponding dataset(s) are stored into a SQL database, then generated model(s) used for prediction(s>`__, are stored into a NoSQL datastore.
+- `machine learning <https://github.com/jeff1evesque/machine-learning>`__ - automated build consisting of a `web-interface <https://github.com/jeff1evesque/machine-learning#web-interface>`__, and set of `programmatic-interface <https://github.com/jeff1evesque/machine-learning#programmatic-interface>`__ API, for support vector machines.  Corresponding dataset(s) are stored into a SQL database, then generated model(s) used for predictions, are stored into a NoSQL datastore.
 - `XGBoost <https://github.com/dmlc/xgboost) - Python bindings for eXtreme Gradient Boosting (Tree>`__ Library
 - `Bayesian Methods for Hackers <https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers>`__ - Book/iPython notebooks on Probabilistic Programming in Python
 - `Featureforge <https://github.com/machinalis/featureforge>`__ A set of tools for creating and testing machine learning features, with a scikit-learn compatible API
@@ -731,8 +731,8 @@ Python
 - `BigML <https://bigml.com>`__ - A library that contacts external servers.
 - `pattern <https://github.com/clips/pattern>`__ - Web mining module for Python.
 - `NuPIC <https://github.com/numenta/nupic>`__ - Numenta Platform for Intelligent Computing.
-- `Pylearn2](https://github.com/lisa-lab/pylearn2) - A Machine Learning library based on [Theano <https://github.com/Theano/Theano>`__.
-- `keras](https://github.com/fchollet/keras) - Modular neural network library based on [Theano <https://github.com/Theano/Theano>`__.
+- `Pylearn2 <https://github.com/lisa-lab/pylearn2>`__ - A Machine Learning library based on `Theano <https://github.com/Theano/Theano>`__.
+- `keras <https://github.com/fchollet/keras>`__ - Modular neural network library based on `Theano <https://github.com/Theano/Theano>`__.
 - `Lasagne <https://github.com/Lasagne/Lasagne>`__ - Lightweight library to build and train neural networks in Theano.
 - `hebel <https://github.com/hannes-brt/hebel>`__ - GPU-Accelerated Deep Learning Library in Python.
 - `Chainer <https://github.com/pfnet/chainer>`__ - Flexible neural network framework
@@ -744,7 +744,7 @@ Python
 - `Crab <https://github.com/muricoca/crab>`__ - A ﬂexible, fast recommender engine.
 - `python-recsys <https://github.com/ocelma/python-recsys>`__ - A Python library for implementing a Recommender System.
 - `thinking bayes <https://github.com/AllenDowney/ThinkBayes>`__ - Book on Bayesian Analysis
-- `Image-to-Image Translation with Conditional Adversarial Networks](https://github.com/williamFalcon/pix2pix-keras) - Implementation of image to image (pix2pix) translation from the paper by [isola et al <https://arxiv.org/pdf/1611.07004.pdf>`__.[DEEP LEARNING]
+- `Image-to-Image Translation with Conditional Adversarial Networks <https://github.com/williamFalcon/pix2pix-keras>`__ - Implementation of image to image (pix2pix) translation from the paper by `isola et al <https://arxiv.org/pdf/1611.07004.pdf>`__.[DEEP LEARNING]
 - `Restricted Boltzmann Machines <https://github.com/echen/restricted-boltzmann-machines>`__ -Restricted Boltzmann Machines in Python. [DEEP LEARNING]
 - `Bolt <https://github.com/pprett/bolt>`__ - Bolt Online Learning Toolbox
 - `CoverTree <https://github.com/patvarilly/CoverTree>`__ - Python implementation of cover trees, near-drop-in replacement for scipy.spatial.kdtree
@@ -754,7 +754,7 @@ Python
 - `Pyevolve <https://github.com/perone/Pyevolve>`__ - Genetic algorithm framework.
 - `Caffe <http://caffe.berkeleyvision.org>`__  - A deep learning framework developed with cleanliness, readability, and speed in mind.
 - `breze <https://github.com/breze-no-salt/breze>`__ - Theano based library for deep and recurrent neural networks
-- `pyhsmm <https://github.com/mattjj/pyhsmm) - library for approximate unsupervised inference in Bayesian Hidden Markov Models (HMMs) and explicit-duration Hidden semi-Markov Models (HSMMs>`__, focusing on the Bayesian Nonparametric extensions, the HDP-HMM and HDP-HSMM, mostly with weak-limit approximations.
+- `pyhsmm <https://github.com/mattjj/pyhsmm>`__ - library for approximate unsupervised inference in Bayesian Hidden Markov Models (HMMs) and explicit-duration Hidden semi-Markov Models HSMMs, focusing on the Bayesian Nonparametric extensions, the HDP-HMM and HDP-HSMM, mostly with weak-limit approximations.
 - `mrjob <https://pythonhosted.org/mrjob/>`__ - A library to let Python program run on Hadoop.
 - `SKLL <https://github.com/EducationalTestingService/skll>`__ - A wrapper around scikit-learn that makes it simpler to conduct experiments.
 - `neurolab <https://github.com/zueve/neurolab>`__ - https://github.com/zueve/neurolab
@@ -767,7 +767,7 @@ Python
 - `deap <https://github.com/deap/deap>`__ - Evolutionary algorithm framework.
 - `pydeep <https://github.com/andersbll/deeppy>`__ - Deep Learning In Python
 - `mlxtend <https://github.com/rasbt/mlxtend>`__ - A library consisting of useful tools for data science and machine learning tasks.
-- `neon](https://github.com/NervanaSystems/neon) - Nervana's [high-performance <https://github.com/soumith/convnet-benchmarks>`__ Python-based Deep Learning framework [DEEP LEARNING]
+- `neon <https://github.com/NervanaSystems/neon>`__ - Nervana's `high-performance <https://github.com/soumith/convnet-benchmarks>`__ Python-based Deep Learning framework [DEEP LEARNING]
 - `Optunity <http://optunity.readthedocs.io/en/latest/>`__ - A library dedicated to automated hyperparameter optimization with a simple, lightweight API to facilitate drop-in replacement of grid search.
 - `Neural Networks and Deep Learning <https://github.com/mnielsen/neural-networks-and-deep-learning>`__ - Code samples for my book "Neural Networks and Deep Learning" [DEEP LEARNING]
 - `Annoy <https://github.com/spotify/annoy>`__ - Approximate nearest neighbours implementation
@@ -780,7 +780,7 @@ Python
 - `milk <https://github.com/luispedro/milk>`__ - Machine learning toolkit focused on supervised classification.
 - `TFLearn <https://github.com/tflearn/tflearn>`__ - Deep learning library featuring a higher-level API for TensorFlow.
 - `REP <https://github.com/yandex/rep>`__ - an IPython-based environment for conducting data-driven research in a consistent and reproducible way. REP is not trying to substitute scikit-learn, but extends it and provides better user experience.
-- `rgf_python <https://github.com/fukatani/rgf_python) - Python bindings for Regularized Greedy Forest (Tree>`__ Library.
+- `rgf_python <https://github.com/fukatani/rgf_python>`__ - Python bindings for Regularized Greedy Forest Tree Library.
 - `gym <https://github.com/openai/gym>`__ - OpenAI Gym is a toolkit for developing and comparing reinforcement learning algorithms.
 - `skbayes <https://github.com/AmazaspShumik/sklearn-bayes>`__ - Python package for Bayesian Machine Learning with scikit-learn API
 - `fuku-ml <https://github.com/fukuball/fuku-ml>`__ - Simple machine learning library, including Perceptron, Regression, Support Vector Machine, Decision Tree and more, it's easy to use and easy to learn for beginners.
@@ -806,7 +806,7 @@ Python
 - `bokeh <https://github.com/bokeh/bokeh>`__ - Interactive Web Plotting for Python.
 - `plotly <https://plot.ly/python/>`__ - Collaborative web plotting for Python and matplotlib.
 - `vincent <https://github.com/wrobstory/vincent>`__ - A Python to Vega translator.
-- `d3py](https://github.com/mikedewar/d3py) - A plotting library for Python, based on [D3.js <https://d3js.org/>`__.
+- `d3py <https://github.com/mikedewar/d3py>`__ - A plotting library for Python, based on `D3.js <https://d3js.org/>`__.
 - `PyDexter <https://github.com/D3xterjs/pydexter>`__ - Simple plotting for Python. Wrapper for D3xterjs; easily render charts in-browser.
 - `ggplot <https://github.com/yhat/ggpy>`__ - Same API as ggplot2 for R.
 - `ggfortify <https://github.com/sinhrks/ggfortify>`__ - Unified interface to ggplot2 popular R packages.

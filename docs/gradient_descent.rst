@@ -60,7 +60,7 @@ The gradient can be calculated as:
        \frac{1}{N} \sum -2(y_i - (mx_i + b)) \\
       \end{bmatrix}
 
-To solve for the gradient, we iterate through our data points using our new :math:`m` and :math:`n` values and compute the partial derivatives. This new gradient tells us the slope of our cost function at our current position (current parameter values) and the direction we should move to update our parameters. The size of our update is controlled by the learning rate.
+To solve for the gradient, we iterate through our data points using our new :math:`m` and :math:`b` values and compute the partial derivatives. This new gradient tells us the slope of our cost function at our current position (current parameter values) and the direction we should move to update our parameters. The size of our update is controlled by the learning rate.
 
 
 .. rubric:: Code

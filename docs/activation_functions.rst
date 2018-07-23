@@ -122,11 +122,20 @@ Sigmoid takes a real value as input and outputs another value between 0 and 1. I
 
 .. rubric:: Pros
 
-- Pro 1
+- It is nonlinear in nature. Combinations of this function are also nonlinear!
+- It will give an analog activation unlike step function.
+- It has a smooth gradient too.
+- It’s good for a classifier.
+- The output of the activation function is always going to be in range (0,1) compared to (-inf, inf) of linear function. So we have our activations bound in a range. Nice, it won’t blow up the activations then.
+
 
 .. rubric:: Cons
 
-- Con 1
+- Towards either end of the sigmoid function, the Y values tend to respond very less to changes in X.
+- It gives rise to a problem of “vanishing gradients”.
+- Its output isn’t zero centered. It makes the gradient updates go too far in different directions. 0 < output < 1, and it makes optimization harder.
+- Sigmoids saturate and kill gradients.
+- The network refuses to learn further or is drastically slow ( depending on use case and until gradient /computation gets hit by floating point value limits ).
 
 .. rubric:: Further reading
 
@@ -159,11 +168,11 @@ Therefore, in practice the tanh non-linearity is always preferred to the sigmoid
 
 .. rubric:: Pros
 
-- Pro 1
+- The gradient is stronger for tanh than sigmoid ( derivatives are steeper).
 
 .. rubric:: Cons
 
-- Con 1
+- Tanh also has the vanishing gradient problem.
 
 
 Softmax

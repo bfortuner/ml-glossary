@@ -41,11 +41,15 @@ A recent invention which stands for Rectified Linear Units. The formula is decep
 
 .. rubric:: Pros
 
-- Pro 1
+- It avoids and rectifies vanishing gradient problem.
+- ReLu is less computationally expensive than tanh and sigmoid because it involves simpler mathematical operations.
 
 .. rubric:: Cons
 
-- Con 1
+- One of its limitation is that it should only be used within Hidden layers of a Neural Network Model.
+- Some gradients can be fragile during training and can die. It can cause a weight update which will makes it never activate on any data point again. Simply saying that ReLu could result in Dead Neurons.
+- In another words, For activations in the region (x<0) of ReLu, gradient will be 0 because of which the weights will not get adjusted during descent. That means, those neurons which go into that state will stop responding to variations in error/ input ( simply because gradient is 0, nothing changes ). This is called dying ReLu problem.
+- The range of ReLu is [0, inf). This means it can blow up the activation.
 
 .. rubric:: Further reading
 

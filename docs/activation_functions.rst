@@ -6,7 +6,7 @@ Activation Functions
 
 .. contents:: :local:
 
-.. _activation_elu:
+.. _activation_linear:
 
 Linear
 ===

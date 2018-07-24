@@ -9,7 +9,7 @@ Activation Functions
 .. _activation_linear:
 
 Linear
-===
+======
 
 A straight line function where activation is proportional to input ( which is the weighted sum from neuron ).
 

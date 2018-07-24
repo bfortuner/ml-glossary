@@ -7,6 +7,7 @@ Activation Functions
 .. contents:: :local:
 
 
+.. _activation_elu:
 
 ELU
 ===

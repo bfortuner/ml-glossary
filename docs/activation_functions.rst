@@ -11,7 +11,36 @@ Activation Functions
 ELU
 ===
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Exponential Linear Unit or its widely known name ELU is a function that tend to converge cost to zero faster and produce more accurate results. Different to other activation functions, ELU has a extra alpha constant which should be positive number.
+
+ELU is very similiar to RELU except negative inputs. They are both in identity function form for non-negative inputs. On the other hand, ELU becomes smooth slowly until its output equal to -α whereas RELU sharply smoothes.
+
++-------------------------------------------------------+------------------------------------------------------+
+| Function                                              | Derivative                                           |
++-------------------------------------------------------+------------------------------------------------------+
+| .. math::                                             | .. math::                                            |
+|      R(z) = \begin{Bmatrix} z & z > 0 \\              |       R'(z) = \begin{Bmatrix} 1 & z>0 \\             |
+|       α.( e^z – 1) & z <= 0 \end{Bmatrix}             |       α.e^z & z<0 \end{Bmatrix}                      |
++-------------------------------------------------------+------------------------------------------------------+
+| .. image:: images/elu.png                             | .. image:: images/elu_prime.png                      |
+|       :align: center                                  |      :align: center                                  |
+|       :width: 256 px                                  |      :width: 256 px                                  |
+|       :height: 256 px                                 |      :height: 256 px                                 |
++-------------------------------------------------------+------------------------------------------------------+
+| .. literalinclude:: ../code/activation_functions.py   | .. literalinclude:: ../code/activation_functions.py  |
+|       :pyobject: elu                                  |      :pyobject: elu_prime                            |
++-------------------------------------------------------+------------------------------------------------------+
+
+
+.. rubric:: Pros
+
+- ELU becomes smooth slowly until its output equal to -α whereas RELU sharply smoothes.
+- ELU is a strong alternative to ReLU.
+- Unlike to ReLU, ELU can produce negative outputs.
+
+.. rubric:: Cons
+
+- For x > 0, it can blow up the activation with the output range of [0, inf].
 
 
 .. _activation_relu:
@@ -86,11 +115,11 @@ LeakyRelu is a variant of ReLU. Instead of being 0 when :math:`z < 0`, a leaky R
 
 .. rubric:: Pros
 
-- Pro 1
+- Leaky ReLUs are one attempt to fix the "dying ReLU" problem by having a small negative slope (of 0.01, or so).
 
 .. rubric:: Cons
 
-- Con 1
+- As it possess linearity, it can't be used for the complex Classification. It lags behind the Sigmoid and Tanh for some of the use cases.
 
 .. rubric:: Further reading
 

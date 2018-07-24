@@ -8,6 +8,9 @@ import numpy as np
 
 ### Functions ###
 
+def elu(z,alpha)
+	return z if z >= 0 else alpha*(e^z -1)
+
 def leakyrelu(z, alpha):
 	return max(alpha * z, z)
 
@@ -25,6 +28,9 @@ def tanh(z):
 
 
 ### Derivatives ###
+
+def elu_prime(z,alpha)
+	return 1 if z > 0 else alpha*e^z
 
 def leakyrelu_prime(z, alpha):
 	return 1 if z > 0 else alpha

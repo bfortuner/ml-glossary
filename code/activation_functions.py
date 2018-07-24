@@ -8,6 +8,9 @@ import numpy as np
 
 ### Functions ###
 
+def linear(z,m)
+	return m*z
+
 def elu(z,alpha)
 	return z if z >= 0 else alpha*(e^z -1)
 
@@ -28,6 +31,9 @@ def tanh(z):
 
 
 ### Derivatives ###
+
+def linear_prime(z,m)
+	return m
 
 def elu_prime(z,alpha)
 	return 1 if z > 0 else alpha*e^z

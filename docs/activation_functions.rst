@@ -6,6 +6,42 @@ Activation Functions
 
 .. contents:: :local:
 
+.. _activation_elu:
+
+Linear
+===
+
+A straight line function where activation is proportional to input ( which is the weighted sum from neuron ).
+
++-------------------------------------------------------+------------------------------------------------------+
+| Function                                              | Derivative                                           |
++-------------------------------------------------------+------------------------------------------------------+
+| .. math::                                             | .. math::                                            |
+|      R(z,m) = \begin{Bmatrix} z*m    \\               |       R'(z,m) = \begin{Bmatrix} m     \\             |
+|                 \end{Bmatrix}                         |                   \end{Bmatrix}                      |
++-------------------------------------------------------+------------------------------------------------------+
+| .. image:: images/linear.png                          | .. image:: images/linear_prime.png                   |
+|       :align: center                                  |      :align: center                                  |
+|       :width: 256 px                                  |      :width: 256 px                                  |
+|       :height: 256 px                                 |      :height: 256 px                                 |
++-------------------------------------------------------+------------------------------------------------------+
+| .. literalinclude:: ../code/activation_functions.py   | .. literalinclude:: ../code/activation_functions.py  |
+|       :pyobject: linear                               |      :pyobject: linear_prime                         |
++-------------------------------------------------------+------------------------------------------------------+
+
+
+.. rubric:: Pros
+
+- It gives a range of activations, so it is not binary activation.
+- We can definitely connect a few neurons together and if more than 1 fires, we could take the max ( or softmax) and decide based on that.
+
+.. rubric:: Cons
+
+- For this function, derivative is a constant. That means, the gradient has no relationship with X.
+- It is a constant gradient and the descent is going to be on constant gradient.
+- If there is an error in prediction, the changes made by back propagation is constant and not depending on the change in input delta(x) !
+
+
 
 .. _activation_elu:
 

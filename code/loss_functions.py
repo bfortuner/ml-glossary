@@ -10,10 +10,10 @@ import numpy as np
 ### Functions ###
 
 def CrossEntropy(yHat, y):
-    if yHat == 1:
-      return -log(y)
+    if y == 1:
+      return -log(yHat)
     else:
-      return -log(1 - y)
+      return -log(1 - yHat)
 
 
 def Dice(yHat, y):

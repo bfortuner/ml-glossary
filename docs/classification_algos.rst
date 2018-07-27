@@ -20,7 +20,7 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Decision Trees
 ==============
 
-ID3 decision tree `click here <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/id3_decision_tree_simple.py>`__
+ID3 decision tree: `code example <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/id3_decision_tree_simple.py>`__
 
 K-Nearest Neighbor
 ==================

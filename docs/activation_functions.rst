@@ -244,7 +244,7 @@ Therefore, in practice the tanh non-linearity is always preferred to the sigmoid
 Softmax
 =======
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Softmax function calculates the probabilities distribution of the event over ‘n’ different events. In general way of saying, this function will calculate the probabilities of each target class over all possible target classes. Later the calculated probabilities will be helpful for determining the target class for the given inputs.
 
 
 .. rubric:: References

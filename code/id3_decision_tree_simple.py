@@ -115,7 +115,11 @@ class id3_Classifier():
             assert len(tmp_test_array.shape) == 2, \
                 "Make sure your test data is 2d array"
 
-            start_node = tree[0, :]
+            if isinstance(tree,list):
+                start_node = tree # only the 1 row in data
+            else:
+                start_node = tree[0,:] # Iteratively hit first row
+                
             test_feat, test_val, left_tree_jump, right_tree_jump = \
                 start_node[0], start_node[1], start_node[2], start_node[3]
 

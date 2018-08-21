@@ -44,6 +44,7 @@ Although we cannot view the four-dimensional data all at once, we can split up t
 Examining at the data, we should expect good performance at identifying the red flower type, as it is fairly easy to visualize a straight line separating the red type from the others on both the plots. However, we can expect more difficulty in separating the yellow and blue/gray flower types.
 
 The y data takes the shape of a multi-class label vector:
+
 +--------------+
 | **Yval**     |
 +--------------+
@@ -85,7 +86,7 @@ Using the matrix algebra tools in numpy, we'll be building functions that look v
 Multiclass Logistic Regressor
 ==============================
 
-We'll quickly work through the code for the multiclass logistic regressors here, but without too much detail as it is assumed that you've already learned the binary logistic regression in :doc:`logistic_regression`
+We'll quickly work through the code for the multiclass logistic regressors here, but without too much detail as it is assumed that you've already learned the binary logistic regression in :doc:`logistic_regression`.
 
 Sigmoid and Prediction
 ----------------------
@@ -116,7 +117,7 @@ Our current prediction function returns a probability score between 0 and 1 for 
 
 Thus we select the Logistic Regressor with the highest probability prediction as the 'True' classification, and use the actual softmax prediction as a way to quantify the confidence of the model's predictions if we so chose.
 
-The softmax can be used as a 'confidence' because it will give a smaller answer if the guesses are of similar magnitude. So, for example, max(softmax([1,10,1]))=0.999, and max(softmax([1,2,1]))=0.576.
+The softmax can be used as a 'confidence' because it will give a smaller answer if the guesses from the different models are of similar magnitude. So, for example, max(softmax([1,10,1]))=0.999, and max(softmax([1,2,1]))=0.576.
 
 Cost function
 -------------
@@ -131,7 +132,7 @@ Just as for the binary logistic regression, we use the cross entropy (a.k.a. log
 Gradient descent
 ----------------
 
-To minimize our cost, we use :doc:`gradient_descent` just like before in :doc:`logistic_regression`. 
+To minimize our cost, we use :doc:`gradient_descent` just like before in :doc:`logistic_regression`. The weights are updated in a step-wise fashion, as the negative of the gradient scaled by a learning rate.
 
 .. literalinclude:: ../code/multiclass_logistic_regression.py
     :language: python
@@ -149,7 +150,7 @@ The final metric of the success of our model is the accuracy of prediction, defi
 Training
 --------
 
-The training code is very similar to the code we used for :ref:`linear regression <simple_linear_regression_training>`.
+The training code is very similar to the code we used for :ref:`linear regression <simple_linear_regression_training>`. It iterates over the conjugate gradient steps, updating the weights and a record of the total cost and accuracy of the model as it goes.
 
 .. literalinclude:: ../code/logistic_regression.py
     :language: python
@@ -164,11 +165,11 @@ If our model is working, we should see our cost decrease after every iteration, 
 .. image:: images/multiclass_logistic_training.png
     :align: center
 
-The final accuracy of 81% isn't particularly great, but we already suspected that it would be difficult to separate this data with linear decision boundaries.
+The final accuracy of about 81% isn't particularly great, but we already suspected that it would be difficult to separate this data with linear decision boundaries.
 
-Using a similar function to plotIris, we can make a custom plot to compare the results of the multiclass logistic regression and confirm our suspicions. Just like the plotIris() function, the color is mapped by the class label, but for the predicted data the marker size directly corresponds to the confidence of the prediction- higher confidence leads to a larger marker size.
+Using a function similar to plotIris(), we can make a custom plot to compare the results of the multiclass logistic regression and confirm our suspicions. Just like the plotIris() function, the color is mapped by the class label, and additionally for the predicted data the marker size directly corresponds to the confidence of the prediction- higher confidence leads to a larger marker size.
 
 .. image:: images/multiclass_logistic_predict_versus_actual.png
     :align: center
 
-The logistic regressor in this case struggles to accurately identify many of the data points, even misclassifying many of the data points that should correspond to the yellow flower type as red, possibly due to the model for the yellow flower type having low predictive values overall. The logistic regression also does a relatively poor job at capturing the 'fuzzy' boundary of the yellow and blue/gray clusters. In general the model is about 50% more confident at classifying the data on the edges compared to the data in the center of the overall dataset.
+The logistic regressor in this case struggles to accurately identify many of the data points, even misclassifying many of the data points that should correspond to the yellow flower type as red, possibly due to the model for the yellow flower type having low predictive values overall. The logistic regression also does a relatively poor job at capturing the 'fuzzy' boundary of the yellow and blue/gray clusters. In general the model is about 50% more confident at classifying the data on the edges compared to the data in the center of the overall dataset, and the origins of the low accuracy are clearly coming from the central region.

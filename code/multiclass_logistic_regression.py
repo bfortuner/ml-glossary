@@ -141,24 +141,3 @@ def plotTraining(cost_record, acc_record):
     # bring it together
     plt.tight_layout()
     plt.show()
-    
-def plotDecisionBoundary(predicted, actual):
-    # only works for the Binary Classification Models
-    # plots the activation values of each sample versus the decision boundary
-    # colors points by the actual true classification
-    colors = ['r','b']
-    redblue = LinearSegmentedColormap.from_list('redblue', colors, N=2)
-    
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    size = predicted.shape[0]
-    ax.scatter(range(size), predicted, s=50, c=actual, cmap=redblue, marker="o")
-    ax.set_ylim((0,1))
-    ax.set_xlim((0,size))
-    ax.set_title("Decision Boundary", fontsize = 16)
-    ax.set_xlabel('Sample Number', fontsize = 14)
-    ax.set_ylabel('Predicted Probability', fontsize = 14)
-    ax.fill([0,size,size,0],[0,0,0.5,0.5],color = 'red', alpha = 0.2)
-    ax.fill([0,size,size,0],[0.5,0.5,1,1],color = 'blue', alpha = 0.2)
-    plt.axhline(.5, color = 'black')
-    plt.show()

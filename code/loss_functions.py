@@ -27,8 +27,8 @@ def Hinge(yHat, y):
     return np.max(0, 1 - yHat * y)
 
 
-def Huber(yHat, y):
-    pass
+def Huber(yHat, y, delta=1.):
+    return np.where(np.abs(y-yHat) < delta,.5*(y-yHat)**2 , delta*(np.abs(y-yHat)-0.5*delta))
 
 
 def KLDivergence(yHat, y):

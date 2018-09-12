@@ -68,13 +68,23 @@ Used for classification.
 Huber
 =====
 
-Typically used for regression. It's less sensitive to outliers than the MSE.
+Typically used for regression. It's less sensitive to outliers than the MSE as it treats error as square only inside an interval.
+
+.. math::
+
+  L_{\delta}=\left\{\begin{matrix}
+  \frac{1}{2}(y - \hat{y})^{2} & if \left | (y - \hat{y})  \right | < \delta\\
+  \delta (y - \hat{y}) - \frac1 2 \delta & otherwise
+  \end{matrix}\right.
 
 .. rubric:: Code
 
 .. literalinclude:: ../code/loss_functions.py
       :pyobject: Huber
 
+Further information can be found at `Huber Loss in Wikipedia`_.  
+
+.. _`Huber Loss in Wikipedia`: https://en.wikipedia.org/wiki/Huber_loss
 
 .. _kl_divergence:
 

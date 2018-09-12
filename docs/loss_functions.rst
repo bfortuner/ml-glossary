@@ -101,7 +101,7 @@ Assuming P as the objective (:math:`y`) and Q as the prediction (:math:`\hat{y}`
 
 .. rubric:: Code
 
-    .. literalinclude:: ../code/loss_functions.py
+.. literalinclude:: ../code/loss_functions.py
       :pyobject: KLDivergence
 
 Unfortunatelly, this implementation of Kullback-Leibler divergence (KL-divergence) cannot be applied directly to classification as it diverges on the occurence of 0.

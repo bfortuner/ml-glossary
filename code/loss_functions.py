@@ -28,11 +28,11 @@ def Hinge(yHat, y):
 
 
 def Huber(yHat, y, delta=1.):
-    return np.where(np.abs(y-yHat) < delta,.5*(y-yHat)**2 , delta*(np.abs(y-yHat)-0.5*delta))
+    return np.sum(np.where(np.abs(y-yHat) < delta,.5*(y-yHat)**2 , delta*(np.abs(y-yHat)-0.5*delta)))
 
 
 def KLDivergence(yHat, y):
-    pass
+    return np.sum(y*np.log(y/yHat))
 
 
 def L1(yHat, y):

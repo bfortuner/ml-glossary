@@ -65,3 +65,10 @@ def SGD(data, batch_size, lr):
 
 def SGD_Momentum():
     pass
+
+def Dropout(matrix,p=0.5):
+    D = np.identity(matrix.shape[0])
+    for i,n in enumerate(np.range.choice([0,1],size=D.shape[0],p=p)):
+        D[i,i] = n
+    return np.matmul(d,matrix)
+    return 

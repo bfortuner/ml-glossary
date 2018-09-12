@@ -16,7 +16,10 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Dropout
 =======
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Dropout became common in deep learning technics. It's principle is to randomly remove some connections between two layers when training your model in an effort to avoid an overfitting.
+As a matrix, Dropout can be implemented as:
+.. code::
+
 
 Early Stopping
 ==============

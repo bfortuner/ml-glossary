@@ -91,35 +91,11 @@ Further information can be found at `Huber Loss in Wikipedia`_.
 Kullback-Leibler
 ================
 
-Used in Regression and Classification. The kullback-Liebler Divergence compares similarity between two distributions. It's calculated as follows for discrete datasets:
-
-.. math::
-
-    D_{KL}(P|Q) = \sum_{i=1}^{N} {p_{i} \: log(\frac{p_{i}}{q_i})}
-
-Assuming P as the objective (:math:`y`) and Q as the prediction (:math:`\hat{y}`), the KL-divergence is implemented as:
-
 .. rubric:: Code
 
 .. literalinclude:: ../code/loss_functions.py
       :pyobject: KLDivergence
 
-Unfortunatelly, this implementation of Kullback-Leibler divergence (KL-divergence) cannot be applied directly to classification as it diverges on the occurence of 0.
-
-One way to avoid this divergence is to ignore elements with zero as suggested by Matus Telgarsky in `How to compute KL-divergence when PMF contains 0s?`_. This approach may lead to errors, as it may ignore errors in the prediction where the label is 0 (e.g.: logit classification).
-Another way to compute the Loss is suggested by user1417648 on `Calculate the Kullback-Leibler Divergence in practice?`_, since the KL-divergence is assimetric (:math:`D_{KL}(P|Q) \neq D_{KL}(Q|P)`, unless :math:`P=Q`), another way to calculate the loss function is: 
-
-.. math::
-
-    L_{KL} = \frac{D_{KL}(P|\frac{P+Q}{2}) + D_{KL}(Q|\frac{P+Q}{2})}{2}
-
-.. rubric:: Code
-
-    def KLDivergence(yHat,y):
-        return np.where(yHat*y == 0, np.zeros(shape=y.shape),(y*np.log(y/((yHat+y)/2))+yHat*np.log(yHat/((y+yHat/2)))/2)
-
-.. _`How to compute KL-divergence when PMF contains 0s?`: https://mathoverflow.net/questions/72668/how-to-compute-kl-divergence-when-pmf-contains-0s
-.. _`Calculate the Kullback-Leibler Divergence in practice?`: https://stats.stackexchange.com/questions/97938/calculate-the-kullback-leibler-divergence-in-practice
 
 .. _mae:
 

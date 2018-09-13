@@ -107,7 +107,7 @@ Assuming P as the objective (:math:`y`) and Q as the prediction (:math:`\hat{y}`
 Unfortunatelly, this implementation of Kullback-Leibler divergence (KL-divergence) cannot be applied directly to classification as it diverges on the occurence of 0.
 
 One way to avoid this divergence is to ignore elements with zero as suggested by Matus Telgarsky in `How to compute KL-divergence when PMF contains 0s?`_. This approach may lead to errors, as it may ignore errors in the prediction where the label is 0 (e.g.: logit classification).
-Another way to compute the Loss is suggested by user1417648 on `Calculate the Kullback-Leibler Divergence in practice?`_, since the KL-divergence is assimetric (:math:`D_{KL}(P|Q) \neq D_{KL}(Q|P)) and :math:`P + P`
+Another way to compute the Loss is suggested by user1417648 on `Calculate the Kullback-Leibler Divergence in practice?`_, since the KL-divergence is assimetric (:math:`D_{KL}(P|Q) \neq D_{KL}(Q|P)`, unless :math:`P=Q`), another way to calculate the loss function is: 
 
 .. math::
 

@@ -32,7 +32,7 @@ def Huber(yHat, y, delta=1.):
 
 
 def KLDivergence(yHat, y):
-    pass
+    return np.sum(y*np.log(y/yHat))
 
 
 def L1(yHat, y):

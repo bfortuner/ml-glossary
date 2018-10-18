@@ -66,6 +66,13 @@ Biology
 * `UniGene <http://www.ncbi.nlm.nih.gov/unigene>`_
 * `Universal Protein Resource (UnitProt) <http://www.uniprot.org/downloads>`_
 
+Chemistry/Materials Science
+---------------------------
+
+* `NIST Computational Chemistry Comparison and Benchmark Database - SRD 101 <https://catalog.data.gov/dataset/nist-computational-chemistry-comparison-and-benchmark-database-srd-101>`_
+* `Open Quantum Materials Database <http://oqmd.org/download/>`_
+* `Citrination Public Datasets <https://citrination.com/datasets#public>`_
+* `Khazana Project <https://khazana.gatech.edu/module_search/search.php?m=2>`_
 
 Climate/Weather
 ---------------

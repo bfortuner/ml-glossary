@@ -316,7 +316,7 @@ Softmax activation
 something about softmax here...
 
 
-Scipy example
+Scikit-Learn example
 -------------
 
 Let's compare our performance to the ``LogisticRegression`` model provided by scikit-learn [8]_.

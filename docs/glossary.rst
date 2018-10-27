@@ -80,7 +80,7 @@ Deduction
 .. _glossary_deep_learning:
 
 Deep Learning
-  Deep Learning is derived from one machine learning algorithm called perceptron or malti layer perceptron that gain more and more attention nowadays because of its success in different fields like, computer vision to signal processing and medical diagnosis to self-driving cars. As all other AI algorithms deep learning is from decades, but now today we have more and more data and cheap computing power that make this algorithm really powerful to achive state of the art acuracy. in modern world we knowns as artificial neural network. 
+  Deep Learning is derived from one machine learning algorithm called perceptron or malti layer perceptron that gain more and more attention nowadays because of its success in different fields like, computer vision to signal processing and medical diagnosis to self-driving cars. As all other AI algorithms deep learning is from decades, but now today we have more and more data and cheap computing power that make this algorithm really powerful to achive state of the art acuracy. in modern world this algorithm knowns as artificial neural network. deep learning is much more than traditional artificial neural network. but it was highly influenced by machine learning's neural network and perceptron network. 
 
 .. _glossary_dimension:
 

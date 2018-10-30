@@ -135,7 +135,7 @@ Learning Rate
 .. _glossary_loss:
 
 Loss
-  Contribute a definition!
+  Loss = true_value(from data-set)- predicted value(from ML-model)  The lower the loss, the better a model (unless the model has over-fitted to the training data). The loss is calculated on training and validation and its interperation is how well the model is doing for these two sets. Unlike accuracy, loss is not a percentage. It is a summation of the errors made for each example in training or validation sets. 
 
 .. _glossary_machine_learning:
 

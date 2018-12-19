@@ -155,8 +155,7 @@ Neural Networks
 .. _glossary_normalization:
 
 Normalization
-  Contribute a definition!
-
+  Restriction of the values of weights in regression to avoid overfitting and improving computation speed.
 .. _glossary_null_accuracy:
 
 Null Accuracy

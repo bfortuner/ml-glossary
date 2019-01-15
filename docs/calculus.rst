@@ -331,7 +331,6 @@ Here are the steps to calculate the gradient for a multivariable function:
                 & = \lim_{h\to0}\frac{b((x^2 + xh + hx + h^2)) - bx^2}{h} \\
                 & = \lim_{h\to0}\frac{bx^2 + 2bxh + bh^2 - bx^2}{h} \\
                 & = \lim_{h\to0}\frac{2bxh + bh^2}{h} \\
-                & = \lim_{h\to0}\frac{2bxh + bh^2}{h} \\
                 & = \lim_{h\to0} 2bx + bh \\
   \end{align}
 

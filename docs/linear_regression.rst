@@ -197,7 +197,7 @@ Before training we need to initializing our weights (set default values), set ou
           weight,bias = update_weights(radio, sales, weight, bias, learning_rate)
 
           #Calculate cost for auditing purposes
-          cost = cost_function(features, targets, weights)
+          cost = cost_function(radio, sales, weight, bias)
           cost_history.append(cost)
 
           # Log Progress

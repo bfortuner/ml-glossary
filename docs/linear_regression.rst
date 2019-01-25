@@ -146,6 +146,12 @@ We can calculate the gradient of this cost function as:
        \frac{df}{db}\\
       \end{bmatrix}
   =
+    \begin{bmatrix}
+      \frac{1}{N} \sum -x_i \cdot 2(y_i - (mx_i + b)) \\
+      \frac{1}{N} \sum -1 \cdot 2(y_i - (mx_i + b)) \\
+    \end{bmatrix}
+    
+  =
      \begin{bmatrix}
        \frac{1}{N} \sum -2x_i(y_i - (mx_i + b)) \\
        \frac{1}{N} \sum -2(y_i - (mx_i + b)) \\

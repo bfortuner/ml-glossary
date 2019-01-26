@@ -20,7 +20,7 @@ def cost_function(features, labels, weights):
     Labels: (100,1)
     Weights:(3,1)
     Returns 1D matrix of predictions
-    Cost = ( log(predictions) + (1-labels)*log(1-predictions) ) / len(labels)
+    Cost = (labels*log(predictions) + (1-labels)*log(1-predictions) ) / len(labels)
     '''
     observations = len(labels)
 
@@ -33,10 +33,10 @@ def cost_function(features, labels, weights):
     class2_cost = (1-labels)*np.log(1-predictions)
 
     #Take the sum of both costs
-    cost = class1_cost - class2_cost
+    cost = class1_cost + class2_cost
 
     #Take the average cost
-    cost = cost.sum()/observations
+    cost = cost.sum() / observations
 
     return cost
 

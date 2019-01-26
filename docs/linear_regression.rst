@@ -382,10 +382,10 @@ Now we need a cost function to audit how our model is performing. The math is th
 
   def cost_function(features, targets, weights):
       **
-      Features:(200,3)
-      Targets: (200,1)
-      Weights:(3,1)
-      Returns 1D matrix of predictions
+      features:(200,3)
+      targets: (200,1)
+      weights:(3,1)
+      returns average squared error among predictions
       **
       N = len(targets)
 

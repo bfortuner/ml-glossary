@@ -77,7 +77,7 @@ def decision_boundary(prob):
   return 1 if prob >= .5 else 0
 
 
-def classify(preds):
+def classify(predictions):
   '''
   input  - N element array of predictions between 0 and 1
   output - N element array of 0s (False) and 1s (True)

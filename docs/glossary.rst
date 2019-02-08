@@ -140,7 +140,11 @@ Loss
 .. _glossary_machine_learning:
 
 Machine Learning
-  Contribute a definition!
+   Mitchell (1997) provides a succinct definition: “A computer program is said to learn from experience E with respect to some
+class of tasks T and performance measure P, if its performance at tasks in T , as measured by P, improves with experience E.In
+simple language machine learning is a field in which human made algorithms have an ability learn by itself or predict future 
+for unseen data.
+
 
 .. _glossary_model:
 

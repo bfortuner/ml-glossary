@@ -147,8 +147,14 @@ We can calculate the gradient of this cost function as:
       \end{bmatrix}
   =
     \begin{bmatrix}
-      \frac{1}{N} \sum -2x_i(y_i - (mx_i + b)) \\
-      \frac{1}{N} \sum -2(y_i - (mx_i + b)) \\
+      \frac{1}{N} \sum -x_i \cdot 2(y_i - (mx_i + b)) \\
+      \frac{1}{N} \sum -1 \cdot 2(y_i - (mx_i + b)) \\
+    \end{bmatrix}
+    
+  =
+     \begin{bmatrix}
+       \frac{1}{N} \sum -2x_i(y_i - (mx_i + b)) \\
+       \frac{1}{N} \sum -2(y_i - (mx_i + b)) \\
       \end{bmatrix}
 
 .. rubric:: Code
@@ -377,10 +383,10 @@ Now we need a cost function to audit how our model is performing. The math is th
 
   def cost_function(features, targets, weights):
       **
-      Features:(200,3)
-      Targets: (200,1)
-      Weights:(3,1)
-      Returns 1D matrix of predictions
+      features:(200,3)
+      targets: (200,1)
+      weights:(3,1)
+      returns average squared error among predictions
       **
       N = len(targets)
 

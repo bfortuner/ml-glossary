@@ -205,11 +205,13 @@ The derivative of :math:`f(x)` would equal:
 
   \frac{dh}{db} = 3b^2
 
-3. Swap out the placeholder variable for the inner function
+3. Swap out the placeholder variable (b) for the inner function (g(x))
 
 .. math::
-
+  \begin{gathered}
+  3(x^2)^2 \\
   3x^4
+  \end{gathered}
 
 4. Return the product of the two derivatives
 

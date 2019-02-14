@@ -273,7 +273,7 @@ If our model is working, we should see our cost decrease after every iteration.
 
 .. rubric:: Accuracy
 
-:ref:`Accuracy <glossary_accuracy>` measures how correct our predictions were. In this case we simple compare predicted labels to true labels and divide by the total.
+:ref:`Accuracy <glossary_accuracy>` measures how correct our predictions were. In this case we simply compare predicted labels to true labels and divide by the total.
 
 .. literalinclude:: ../code/logistic_regression.py
     :language: python

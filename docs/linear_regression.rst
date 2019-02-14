@@ -139,23 +139,23 @@ Returning to our cost function:
 We can calculate the gradient of this cost function as:
 
 .. math::
-
+  \begin{align}
   f'(m,b) =
-     \begin{bmatrix}
-       \frac{df}{dm}\\
-       \frac{df}{db}\\
-      \end{bmatrix}
-  =
+    \begin{bmatrix}
+      \frac{df}{dm}\\
+      \frac{df}{db}\\
+    \end{bmatrix}
+  &=
     \begin{bmatrix}
       \frac{1}{N} \sum -x_i \cdot 2(y_i - (mx_i + b)) \\
       \frac{1}{N} \sum -1 \cdot 2(y_i - (mx_i + b)) \\
-    \end{bmatrix}
-    
-  =
-     \begin{bmatrix}
+    \end{bmatrix}\\
+  &=
+    \begin{bmatrix}
        \frac{1}{N} \sum -2x_i(y_i - (mx_i + b)) \\
        \frac{1}{N} \sum -2(y_i - (mx_i + b)) \\
-      \end{bmatrix}
+    \end{bmatrix}
+  \end{align}
 
 .. rubric:: Code
 
@@ -190,7 +190,7 @@ Training
 
 Training a model is the process of iteratively improving your prediction equation by looping through the dataset multiple times, each time updating the weight and bias values in the direction indicated by the slope of the cost function (gradient). Training is complete when we reach an acceptable error threshold, or when subsequent training iterations fail to reduce our cost.
 
-Before training we need to initializing our weights (set default values), set our :ref:`hyperparameters <glossary_hyperparameters>` (learning rate and number of iterations), and prepare to log our progress over each iteration.
+Before training we need to initialize our weights (set default values), set our :ref:`hyperparameters <glossary_hyperparameters>` (learning rate and number of iterations), and prepare to log our progress over each iteration.
 
 .. rubric:: Code
 
@@ -208,7 +208,7 @@ Before training we need to initializing our weights (set default values), set ou
 
           # Log Progress
           if i % 10 == 0:
-              print "iter: "+str(i) + " cost: "+str(cost)
+              print "iter={:d}    weight={:.2f}    bias={:.4f}    cost={:.2}".format(i, weight, bias, cost)
 
       return weight, bias, cost_history
 
@@ -352,7 +352,8 @@ Our predict function outputs an estimate of sales given our current weights (coe
     weights - (3, 1)
     predictions - (200,1)
     **
-    return np.dot(features,weights)
+    predictions = np.dot(features, weights)
+    return predictions
 
 
 Initialize weights
@@ -447,7 +448,7 @@ And that's it! Multivariate linear regression.
 Simplifying with matrices
 -------------------------
 
-The gradient descent code above has a lot of duplication. Can we improve it somehow? One way to refactor would be to loop through our features and weights--allowing our function handle any number of features. However there is another even better technique: *vectorized gradient descent*.
+The gradient descent code above has a lot of duplication. Can we improve it somehow? One way to refactor would be to loop through our features and weights--allowing our function to handle any number of features. However there is another even better technique: *vectorized gradient descent*.
 
 .. rubric:: Math
 
@@ -464,6 +465,9 @@ We use the same formula as above, but instead of operating on a single feature a
   X = [
       [x1, x2, x3]
       [x1, x2, x3]
+      .
+      .
+      .
       [x1, x2, x3]
   ]
 

@@ -139,23 +139,23 @@ Returning to our cost function:
 We can calculate the gradient of this cost function as:
 
 .. math::
-
+  \begin{align}
   f'(m,b) =
     \begin{bmatrix}
       \frac{df}{dm}\\
       \frac{df}{db}\\
-      \end{bmatrix}
-  =
+    \end{bmatrix}
+  &=
     \begin{bmatrix}
       \frac{1}{N} \sum -x_i \cdot 2(y_i - (mx_i + b)) \\
       \frac{1}{N} \sum -1 \cdot 2(y_i - (mx_i + b)) \\
-    \end{bmatrix}
-    
-  =
-     \begin{bmatrix}
+    \end{bmatrix}\\
+  &=
+    \begin{bmatrix}
        \frac{1}{N} \sum -2x_i(y_i - (mx_i + b)) \\
        \frac{1}{N} \sum -2(y_i - (mx_i + b)) \\
-      \end{bmatrix}
+    \end{bmatrix}
+  \end{align}
 
 .. rubric:: Code
 

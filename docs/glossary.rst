@@ -80,7 +80,7 @@ Deduction
 .. _glossary_deep_learning:
 
 Deep Learning
-  Deep Learning is derived from one machine learning algorithm called perceptron or malti layer perceptron that gain more and more attention nowadays because of its success in different fields like, computer vision to signal processing and medical diagnosis to self-driving cars. As all other AI algorithms deep learning is from decades, but now today we have more and more data and cheap computing power that make this algorithm really powerful to achive state of the art acuracy. in modern world this algorithm knowns as artificial neural network. deep learning is much more than traditional artificial neural network. but it was highly influenced by machine learning's neural network and perceptron network. 
+  Deep Learning is derived from one machine learning algorithm called perceptron or malti layer perceptron that gain more and more attention nowadays because of its success in different fields like, computer vision to signal processing and medical diagnosis to self-driving cars. As all other AI algorithms deep learning is from decades, but now today we have more and more data and cheap computing power that make this algorithm really powerful to achive state of the art acuracy. in modern world this algorithm knowns as artificial neural network. deep learning is much more than traditional artificial neural network. but it was highly influenced by machine learning's neural network and perceptron network.
 
 .. _glossary_dimension:
 
@@ -105,7 +105,7 @@ Feature
 .. _glossary_feature_selection:
 
 Feature Selection
-  Feature selection is the process of selecting relevant features from a data-set for creating a Machine Learning model. 
+  Feature selection is the process of selecting relevant features from a data-set for creating a Machine Learning model.
 
 .. _glossary_feature_vector:
 
@@ -135,14 +135,14 @@ Learning Rate
 .. _glossary_loss:
 
 Loss
-  Loss = true_value(from data-set)- predicted value(from ML-model)  The lower the loss, the better a model (unless the model has over-fitted to the training data). The loss is calculated on training and validation and its interperation is how well the model is doing for these two sets. Unlike accuracy, loss is not a percentage. It is a summation of the errors made for each example in training or validation sets. 
+  Loss = true_value(from data-set)- predicted value(from ML-model)  The lower the loss, the better a model (unless the model has over-fitted to the training data). The loss is calculated on training and validation and its interperation is how well the model is doing for these two sets. Unlike accuracy, loss is not a percentage. It is a summation of the errors made for each example in training or validation sets.
 
 .. _glossary_machine_learning:
 
 Machine Learning
    Mitchell (1997) provides a succinct definition: “A computer program is said to learn from experience E with respect to some
 class of tasks T and performance measure P, if its performance at tasks in T , as measured by P, improves with experience E.In
-simple language machine learning is a field in which human made algorithms have an ability learn by itself or predict future 
+simple language machine learning is a field in which human made algorithms have an ability learn by itself or predict future
 for unseen data.
 
 
@@ -154,7 +154,8 @@ Model
 .. _glossary_neural_networks:
 
 Neural Networks
-  Contribute a definition!
+  A model that, taking inspiration from the brain, is composed of layers (at least one of which is hidden) consisting of simple connected units or neurons followed by nonlinearities.
+  It can be trained to recognize patterns. Neurons in each layer learn increasingly abstract representations of the data.
 
 .. _glossary_normalization:
 

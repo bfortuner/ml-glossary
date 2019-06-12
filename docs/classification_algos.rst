@@ -4,8 +4,7 @@
 Classification Algorithms
 =========================
 
-Many of these overlap with other algorithm categories...
-
+Classification problems is when our output Y is always in categories like positive vs negative in terms of sentiment analysis, dog vs cat in terms of image classification and disease vs no disease in terms of medical diagnosis.
 
 Bayesian
 =======

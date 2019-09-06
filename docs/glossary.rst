@@ -254,7 +254,7 @@ Training Set
 .. _glossary_transfer_learning:
 
 Transfer Learning
-  Contribute a definition!
+  A machine learning method where a model developed for a task is reused as the starting point for a model on a second task. In transfer learning, we take the pre-trained weights of an already trained model (one that has been trained on millions of images belonging to 1000’s of classes, on several high power GPU’s for several days) and use these already learned features to predict new classes.
 
 .. _glossary_type_1_error:
 

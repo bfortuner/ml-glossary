@@ -35,8 +35,55 @@ Code example from `Agustinus Kristiadi <https://wiseodd.github.io/techblog/2016/
 Convolution
 -----------
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+In CNN, a convolution is a linear operation that involves multiplication of weight (kernel/filter) with the input and it does most of the heavy lifting job.
 
+Convolution layer consists of 2 major component 1. Kernel(Filter) 2. Stride 
+
+1. Kernel (Filter): A convolution layer can have more than one filter. The size of the filter should be smaller than the size of input dimension. It is intentional as it allows filter to be applied multiple times at difference point (position) on the input.Filters are helpful in understanding and identifying important features from given input. By applying different filters (more than one filter) on the same input helps in extracting different features from given input. Output from multiplying filter with the input gives Two dimensional array. As such, the output array from this operation is called "Feature Map".  
+
+2. Stride: This property controls the movement of filter over input. when the value is set to 1, then filter moves 1 column at a time over input. When the value is set to 2 then the filer jump 2 columns at a time as filter moves over the input. 
+
+
+.. rubric:: Code
+
+.. code-block:: python
+
+      # this code demonstate on how Convolution works
+      # Assume we have a image of 4 X 4 and a filter fo 2 X 2 and Stride = 1 
+      
+      def conv_filter_ouput(input_img_section,filter_value):
+            # this method perfromas the multiplication of input and filter 
+            # returns singular value
+
+            value = 0 
+            for i in range(len(filter_value)):
+                  for j in range(len(filter_value[0])):
+                        value = value + (input_img_section[i][j]*filter_value[i][j])
+            return value
+
+      img_input = [[260.745, 261.332, 112.27 , 262.351],
+       [260.302, 208.802, 139.05 , 230.709],
+       [261.775,  93.73 , 166.118, 122.847],
+       [259.56 , 232.038, 262.351, 228.937]]   
+
+      filter = [[1,0],
+         [0,1]]
+      
+      filterX,filterY = len(filter),len(filter[0])
+      filtered_result = [] 
+      for i in range(0,len(img_mx)-filterX+1):
+      clm = []
+      for j in range(0,len(img_mx[0])-filterY+1):
+            clm.append(conv_filter_ouput(img_mx[i:i+filterX,j:j+filterY],filter))
+      filtered_result.append(clm)
+      
+      print(filtered_result)
+
+.. image:: images/cnn_filter_output.png
+      :align: center
+
+.. rubric:: Further reading
+- `cs231n reference  <http://cs231n.github.io/convolutional-networks/>`_
 
 Dropout
 -------

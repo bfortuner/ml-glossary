@@ -33,7 +33,7 @@ def cost_function(features, labels, weights):
     class2_cost = (1-labels)*np.log(1-predictions)
 
     #Take the sum of both costs
-    cost = class1_cost + class2_cost
+    cost = class1_cost - class2_cost
 
     #Take the average cost
     cost = cost.sum() / observations

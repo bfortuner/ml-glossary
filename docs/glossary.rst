@@ -154,8 +154,7 @@ Model
 .. _glossary_neural_networks:
 
 Neural Networks
-  A model that, taking inspiration from the brain, is composed of layers (at least one of which is hidden) consisting of simple connected units or neurons followed by nonlinearities.
-  It can be trained to recognize patterns. Neurons in each layer learn increasingly abstract representations of the data.
+  Neural Networks are mathematical algorithms modeled after the brain's architecture, designed to recognize patterns and relationships in data. 
 
 .. _glossary_normalization:
 
@@ -179,7 +178,14 @@ Overfitting
 .. _glossary_parameters:
 
 Parameters
-  Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+  Parameters are properties of training data learned by training a machine learning model or classifier. They are adjusted using optimization algorithms and unique to each experiment. 
+
+  Examples of parameters include:
+
+  - weights in an artificial neural network
+  - support vectors in a support vector machine
+  - coefficients in a linear or logistic regression
+  
 
 .. _glossary_precision:
 
@@ -216,7 +222,7 @@ Regression
 .. _glossary_regularization:
 
 Regularization
-  Contribute a definition!
+  Regularization is a technique utilized to combat the overfitting problem. This is achieved by adding a complexity term to the loss function that gives a bigger loss for more complex models 
 
 .. _glossary_reinforcement_learning:
 

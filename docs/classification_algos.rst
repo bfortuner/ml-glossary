@@ -34,7 +34,7 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Random Forests
 ==============
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Random Forest Classifier using ID3 Tree: `code example <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/random_forest_classifier.py>`__
 
 Support Vector Machines
 =======================

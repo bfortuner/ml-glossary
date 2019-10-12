@@ -8,10 +8,10 @@ import numpy as np
 
 ### Functions ###
 
-def linear(z,m)
+def linear(z,m):
 	return m*z
 
-def elu(z,alpha)
+def elu(z,alpha):
 	return z if z >= 0 else alpha*(e^z -1)
 
 def leakyrelu(z, alpha):
@@ -24,19 +24,18 @@ def sigmoid(z):
   return 1.0 / (1 + np.exp(-z))
 
 def tanh(z):
-	return (np.exp(z) - np.exp(-z)) 
-	/ (np.exp(z) + np.exp(-z))
+	return (np.exp(z) - np.exp(-z)) / (np.exp(z) + np.exp(-z))
 
 
 
 
 ### Derivatives ###
 
-def linear_prime(z,m)
+def linear_prime(z,m):
 	return m
 
-def elu_prime(z,alpha)
-	return 1 if z > 0 else alpha*e^z
+def elu_prime(z,alpha):
+	return 1 if z > 0 else alpha*np.exp(z)
 
 def leakyrelu_prime(z, alpha):
 	return 1 if z > 0 else alpha

@@ -1,6 +1,9 @@
-# Machine Learning Cheatsheet
+# Machine Learning Glossary
 
-[View The Cheatsheet](http://ml-cheatsheet.readthedocs.io/en/latest/)
+## Looking for fellow maintainers!
+Apologies for my non-responsiveness. :( I've been heads down at Cruise, buiding ML infra for self-driving cars, and haven't reviewed this repo in forever. Looks like we're getting `54k monthly active users` now and I think the repo deserves more attention. Let me know if you would be interested in joining as a maintainer with priviledges to merge PRs. 
+
+[View The Glossary](http://ml-cheatsheet.readthedocs.io/en/latest/)
 
 ## How To Contribute
 
@@ -52,7 +55,7 @@ Excellent entries will also include:
 2. **Code** - python/numpy snippets, classes, or functions
 3. **Equations** - Formatted with Latex
 
-The goal of the cheatsheet is to present content in the most accessible way possible, with a heavy emphasis on visuals and interactive diagrams. That said, in the spirit of rapid prototyping, it's okay to to submit a "rough draft" without visuals or code. We expect other readers will enhance your submission over time.
+The goal of the glossary is to present content in the most accessible way possible, with a heavy emphasis on visuals and interactive diagrams. That said, in the spirit of rapid prototyping, it's okay to to submit a "rough draft" without visuals or code. We expect other readers will enhance your submission over time.
 
 
 ## Why RST and not Markdown?

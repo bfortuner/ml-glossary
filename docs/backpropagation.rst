@@ -142,7 +142,7 @@ Let’s return to our formula for the derivative of cost with respect to the out
 
   C'(W_O) = (\hat{y} - y) \cdot R'(Z_O) \cdot H
 
-We know we can replace the first part with our equation for output layer error :math:`E_h`. H represents the hidden layer activation.
+We know we can replace the first part with our equation for output layer error :math:`E_o`. H represents the hidden layer activation.
 
 .. math::
 

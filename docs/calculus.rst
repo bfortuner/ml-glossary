@@ -130,7 +130,7 @@ Let's write code to calculate the derivative of any function :math:`f(x)`. We te
   computed, actual   # = 6.0001, 6        # pretty close if you ask me...
 
 
-In general it's preferable to use the math to obtain exact derivative formulas, but keep in mind you can always compute derivatives numerically by computing the rise-over-run for a "small step" :math:`h`. 
+In general it's preferable to use the math to obtain exact `derivative formulas <https://www.teachoo.com/9722/1227/Differentiation-Formulas/category/Finding-derivative-of-a-function-by-chain-rule/>`_, but keep in mind you can always compute derivatives numerically by computing the rise-over-run for a "small step" :math:`h`. 
 
 
 Machine learning use cases
@@ -531,8 +531,7 @@ Solving :math:`3c=1`, we find :math:`c=\frac{1}{3}` and so the integral function
 
 You can verify that :math:`\frac{d}{dx}\left[\frac{1}{3}x^3 + C\right] = x^2`.
 
-
-
+You can also verify Integrals using maths. Here is a set of `formulas <https://www.teachoo.com/5643/728/Integration-Formulas---Trig--Definite-Integrals-Properties-and-more/category/Miscellaneous/>`_ for your reference 
 
 
 Applications of integration

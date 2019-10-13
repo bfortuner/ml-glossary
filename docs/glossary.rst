@@ -45,7 +45,11 @@ Categorical Variables
 .. _glossary_classification:
 
 Classification
-  Predicting a categorical output (e.g. yes or no?, blue, green or red?).
+  Predicting a categorical output.
+
+  - **Binary classification** predicts one of two possible outcomes (e.g. is the email spam or not spam?)
+
+  - **Multi-class classification** predicts one of multiple possible outcomes (e.g. is this a photo of a cat, dog, horse or human?)
 
 .. _glossary_classification_threshold:
 
@@ -72,6 +76,11 @@ Confusion Matrix
 Continuous Variables
   Variables with a range of possible values defined by a number scale (e.g. sales, lifespan).
 
+.. _glossary_convergence:
+
+Convergence
+  A state reached during the training of a model when the :ref:`loss <glossary_loss>` changes very little between each iteration.
+
 .. _glossary_deduction:
 
 Deduction
@@ -96,6 +105,17 @@ Epoch
 
 Extrapolation
   Making predictions outside the range of a dataset. E.g. My dog barks, so all dogs must bark. In machine learning we often run into trouble when we extrapolate outside the range of our training data.
+
+.. _glossary_false_positive_rate:
+
+False Positive Rate
+  Defined as
+
+  .. math::
+
+    FPR = 1 - Specificity = \frac{False Positives}{False Positives + True Negatives}
+
+  The False Positive Rate forms the x-axis of the :ref:`ROC curve <glossary_roc_curve>`.
 
 .. _glossary_feature:
 
@@ -127,6 +147,11 @@ Induction
 Instance
   A data point, row, or sample in a dataset. Another term for :ref:`observation <glossary_observation>`.
 
+.. _glossary_label:
+
+Label
+  The "answer" portion of an :ref:`observation <glossary_observation>` in :ref:`supervised learning <glossary_supervised_learning>`. For example, in a dataset used to classify flowers into different species, the features might include the petal length and petal width, while the label would be the flower's species.
+
 .. _glossary_learning_rate:
 
 Learning Rate
@@ -140,11 +165,7 @@ Loss
 .. _glossary_machine_learning:
 
 Machine Learning
-   Mitchell (1997) provides a succinct definition: “A computer program is said to learn from experience E with respect to some
-class of tasks T and performance measure P, if its performance at tasks in T , as measured by P, improves with experience E.In
-simple language machine learning is a field in which human made algorithms have an ability learn by itself or predict future
-for unseen data.
-
+   Mitchell (1997) provides a succinct definition: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E." In simple language machine learning is a field in which human made algorithms have an ability learn by itself or predict future for unseen data.
 
 .. _glossary_model:
 
@@ -160,6 +181,12 @@ Neural Networks
 
 Normalization
   Restriction of the values of weights in regression to avoid overfitting and improving computation speed.
+
+.. _glossary_noise:
+
+Noise
+  Any irrelevant information or randomness in a dataset which obscures the underlying pattern.
+
 .. _glossary_null_accuracy:
 
 Null Accuracy
@@ -169,6 +196,11 @@ Null Accuracy
 
 Observation
   A data point, row, or sample in a dataset. Another term for :ref:`instance <glossary_instance>`.
+
+.. _glossary_outlier:
+
+Outlier
+  An observation that deviates significantly from other observations in the dataset.
 
 .. _glossary_overfitting:
 
@@ -229,6 +261,11 @@ Regularization
 Reinforcement Learning
   Training a model to maximize a reward via iterative trial and error.
 
+.. _glossary_roc_curve:
+
+ROC (Receiver Operating Characteristic) Curve
+  A plot of the :ref:`true positive rate <glossary_true_positive_rate>` against the :ref:`false positive rate <glossary_false_positive_rate>` at all :ref:`classification thresholds <glossary_classification_threshold>`. This is used to evaluate the performance of a classification model at different classification thresholds. The area under the ROC curve can be interpreted as the probability that the model correctly distinguishes between a randomly chosen positive observation (e.g. "spam") and a randomly chosen negative observation (e.g. "not spam").
+
 .. _glossary_segmentation:
 
 Segmentation
@@ -262,6 +299,17 @@ Training Set
 
 Transfer Learning
   A machine learning method where a model developed for a task is reused as the starting point for a model on a second task. In transfer learning, we take the pre-trained weights of an already trained model (one that has been trained on millions of images belonging to 1000’s of classes, on several high power GPU’s for several days) and use these already learned features to predict new classes.
+
+.. _glossary_true_positive_rate:
+
+True Positive Rate
+  Another term for :ref:`recall <glossary_recall>`, i.e.
+
+  .. math::
+
+    TPR = \frac{True Positives}{True Positives + False Negatives}
+
+  The True Positive Rate forms the y-axis of the :ref:`ROC curve <glossary_roc_curve>`.
 
 .. _glossary_type_1_error:
 
@@ -306,3 +354,4 @@ Variance
 .. rubric:: References
 
 .. [1] http://robotics.stanford.edu/~ronnyk/glossary.html
+.. [2] https://developers.google.com/machine-learning/glossary

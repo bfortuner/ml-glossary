@@ -47,7 +47,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'ML Cheatsheet'
+project = 'ML Glossary'
 copyright = '2017'
 author = 'Team'
 

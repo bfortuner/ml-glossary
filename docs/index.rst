@@ -1,7 +1,7 @@
 
-===========================
-Machine Learning Cheatsheet
-===========================
+=========================
+Machine Learning Glossary
+=========================
 
 Brief visual explanations of machine learning concepts with diagrams, code examples and links to resources for learning more.
 

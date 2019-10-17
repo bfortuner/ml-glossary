@@ -74,7 +74,7 @@ Typically used for regression. It's less sensitive to outliers than the MSE as i
 
   L_{\delta}=\left\{\begin{matrix}
   \frac{1}{2}(y - \hat{y})^{2} & if \left | (y - \hat{y})  \right | < \delta\\
-  \delta (y - \hat{y}) - \frac1 2 \delta & otherwise
+  \delta ((y - \hat{y}) - \frac1 2 \delta) & otherwise
   \end{matrix}\right.
 
 .. rubric:: Code

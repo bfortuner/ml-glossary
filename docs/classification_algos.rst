@@ -4,8 +4,7 @@
 Classification Algorithms
 =========================
 
-Many of these overlap with other algorithm categories...
-
+Classification problems is when our output Y is always in categories like positive vs negative in terms of sentiment analysis, dog vs cat in terms of image classification and disease vs no disease in terms of medical diagnosis.
 
 Bayesian
 =======
@@ -35,7 +34,7 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Random Forests
 ==============
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Random Forest Classifier using ID3 Tree: `code example <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/random_forest_classifier.py>`__
 
 Support Vector Machines
 =======================

@@ -45,7 +45,11 @@ Categorical Variables
 .. _glossary_classification:
 
 Classification
-  Predicting a categorical output (e.g. yes or no?, blue, green or red?).
+  Predicting a categorical output.
+
+  - **Binary classification** predicts one of two possible outcomes (e.g. is the email spam or not spam?)
+
+  - **Multi-class classification** predicts one of multiple possible outcomes (e.g. is this a photo of a cat, dog, horse or human?)
 
 .. _glossary_classification_threshold:
 
@@ -72,6 +76,11 @@ Confusion Matrix
 Continuous Variables
   Variables with a range of possible values defined by a number scale (e.g. sales, lifespan).
 
+.. _glossary_convergence:
+
+Convergence
+  A state reached during the training of a model when the :ref:`loss <glossary_loss>` changes very little between each iteration.
+
 .. _glossary_deduction:
 
 Deduction
@@ -80,12 +89,12 @@ Deduction
 .. _glossary_deep_learning:
 
 Deep Learning
-  Deep Learning is derived from one machine learning algorithm called perceptron or malti layer perceptron that gain more and more attention nowadays because of its success in different fields like, computer vision to signal processing and medical diagnosis to self-driving cars. As all other AI algorithms deep learning is from decades, but now today we have more and more data and cheap computing power that make this algorithm really powerful to achive state of the art acuracy. in modern world this algorithm knowns as artificial neural network. deep learning is much more than traditional artificial neural network. but it was highly influenced by machine learning's neural network and perceptron network. 
+  Deep Learning is derived from one machine learning algorithm called perceptron or multi layer perceptron that gain more and more attention nowadays because of its success in different fields like, computer vision to signal processing and medical diagnosis to self-driving cars. As all other AI algorithms deep learning is from decades, but now today we have more and more data and cheap computing power that make this algorithm really powerful to achieve state of the art accuracy. In modern world this algorithm knowns as artificial neural network. deep learning is much more than traditional artificial neural network. But it was highly influenced by machine learning's neural network and perceptron network.
 
 .. _glossary_dimension:
 
 Dimension
-  Dimention for machine learning and data scientist is differ from physics, here Dimention of data means how much feature you have in you data ocean(data-set). e.g in case of object detection application, flatten image size and color channel(e.g 28*28*3) is a feature of the input set.  in case of house price pridiction (maybe) house size is the data-set so we call it 1 dimentional data.
+  Dimention for machine learning and data scientist is differ from physics, here Dimention of data means how much feature you have in you data ocean(data-set). e.g in case of object detection application, flatten image size and color channel(e.g 28*28*3) is a feature of the input set. In case of house price prediction (maybe) house size is the data-set so we call it 1 dimentional data.
 
 .. _glossary_epoch:
 
@@ -97,6 +106,17 @@ Epoch
 Extrapolation
   Making predictions outside the range of a dataset. E.g. My dog barks, so all dogs must bark. In machine learning we often run into trouble when we extrapolate outside the range of our training data.
 
+.. _glossary_false_positive_rate:
+
+False Positive Rate
+  Defined as
+
+  .. math::
+
+    FPR = 1 - Specificity = \frac{False Positives}{False Positives + True Negatives}
+
+  The False Positive Rate forms the x-axis of the :ref:`ROC curve <glossary_roc_curve>`.
+
 .. _glossary_feature:
 
 Feature
@@ -105,7 +125,7 @@ Feature
 .. _glossary_feature_selection:
 
 Feature Selection
-  Feature selection is the process of selecting relevant features from a data-set for creating a Machine Learning model. 
+  Feature selection is the process of selecting relevant features from a data-set for creating a Machine Learning model.
 
 .. _glossary_feature_vector:
 
@@ -120,12 +140,17 @@ Hyperparameters
 .. _glossary_induction:
 
 Induction
-  A bottoms-up approach to answering questions or solving problems. A logic technique that goes from observations to theory. E.g. We keep observing X, so we <b><i>infer</i></b> that Y must be True.
+  A bottoms-up approach to answering questions or solving problems. A logic technique that goes from observations to theory. E.g. We keep observing X, so we infer that Y must be True.
 
 .. _glossary_instance:
 
 Instance
   A data point, row, or sample in a dataset. Another term for :ref:`observation <glossary_observation>`.
+
+.. _glossary_label:
+
+Label
+  The "answer" portion of an :ref:`observation <glossary_observation>` in :ref:`supervised learning <glossary_supervised_learning>`. For example, in a dataset used to classify flowers into different species, the features might include the petal length and petal width, while the label would be the flower's species.
 
 .. _glossary_learning_rate:
 
@@ -135,16 +160,12 @@ Learning Rate
 .. _glossary_loss:
 
 Loss
-  Loss = true_value(from data-set)- predicted value(from ML-model)  The lower the loss, the better a model (unless the model has over-fitted to the training data). The loss is calculated on training and validation and its interperation is how well the model is doing for these two sets. Unlike accuracy, loss is not a percentage. It is a summation of the errors made for each example in training or validation sets. 
+  Loss = true_value(from data-set)- predicted value(from ML-model)  The lower the loss, the better a model (unless the model has over-fitted to the training data). The loss is calculated on training and validation and its interpretation is how well the model is doing for these two sets. Unlike accuracy, loss is not a percentage. It is a summation of the errors made for each example in training or validation sets.
 
 .. _glossary_machine_learning:
 
 Machine Learning
-   Mitchell (1997) provides a succinct definition: “A computer program is said to learn from experience E with respect to some
-class of tasks T and performance measure P, if its performance at tasks in T , as measured by P, improves with experience E.In
-simple language machine learning is a field in which human made algorithms have an ability learn by itself or predict future 
-for unseen data.
-
+   Mitchell (1997) provides a succinct definition: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E." In simple language machine learning is a field in which human made algorithms have an ability learn by itself or predict future for unseen data.
 
 .. _glossary_model:
 
@@ -154,21 +175,32 @@ Model
 .. _glossary_neural_networks:
 
 Neural Networks
-  Contribute a definition!
+  Neural Networks are mathematical algorithms modeled after the brain's architecture, designed to recognize patterns and relationships in data. 
 
 .. _glossary_normalization:
 
 Normalization
   Restriction of the values of weights in regression to avoid overfitting and improving computation speed.
+
+.. _glossary_noise:
+
+Noise
+  Any irrelevant information or randomness in a dataset which obscures the underlying pattern.
+
 .. _glossary_null_accuracy:
 
 Null Accuracy
-  Baseline accuracy that can be acheived by always predicting the most frequent class ("B has the highest frequency, so lets guess B every time").
+  Baseline accuracy that can be achieved by always predicting the most frequent class ("B has the highest frequency, so lets guess B every time").
 
 .. _glossary_observation:
 
 Observation
   A data point, row, or sample in a dataset. Another term for :ref:`instance <glossary_instance>`.
+
+.. _glossary_outlier:
+
+Outlier
+  An observation that deviates significantly from other observations in the dataset.
 
 .. _glossary_overfitting:
 
@@ -178,7 +210,14 @@ Overfitting
 .. _glossary_parameters:
 
 Parameters
-  Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+  Parameters are properties of training data learned by training a machine learning model or classifier. They are adjusted using optimization algorithms and unique to each experiment. 
+
+  Examples of parameters include:
+
+  - weights in an artificial neural network
+  - support vectors in a support vector machine
+  - coefficients in a linear or logistic regression
+  
 
 .. _glossary_precision:
 
@@ -215,12 +254,17 @@ Regression
 .. _glossary_regularization:
 
 Regularization
-  Contribute a definition!
+  Regularization is a technique utilized to combat the overfitting problem. This is achieved by adding a complexity term to the loss function that gives a bigger loss for more complex models 
 
 .. _glossary_reinforcement_learning:
 
 Reinforcement Learning
   Training a model to maximize a reward via iterative trial and error.
+
+.. _glossary_roc_curve:
+
+ROC (Receiver Operating Characteristic) Curve
+  A plot of the :ref:`true positive rate <glossary_true_positive_rate>` against the :ref:`false positive rate <glossary_false_positive_rate>` at all :ref:`classification thresholds <glossary_classification_threshold>`. This is used to evaluate the performance of a classification model at different classification thresholds. The area under the ROC curve can be interpreted as the probability that the model correctly distinguishes between a randomly chosen positive observation (e.g. "spam") and a randomly chosen negative observation (e.g. "not spam").
 
 .. _glossary_segmentation:
 
@@ -254,7 +298,18 @@ Training Set
 .. _glossary_transfer_learning:
 
 Transfer Learning
-  Contribute a definition!
+  A machine learning method where a model developed for a task is reused as the starting point for a model on a second task. In transfer learning, we take the pre-trained weights of an already trained model (one that has been trained on millions of images belonging to 1000’s of classes, on several high power GPU’s for several days) and use these already learned features to predict new classes.
+
+.. _glossary_true_positive_rate:
+
+True Positive Rate
+  Another term for :ref:`recall <glossary_recall>`, i.e.
+
+  .. math::
+
+    TPR = \frac{True Positives}{True Positives + False Negatives}
+
+  The True Positive Rate forms the y-axis of the :ref:`ROC curve <glossary_roc_curve>`.
 
 .. _glossary_type_1_error:
 
@@ -299,3 +354,4 @@ Variance
 .. rubric:: References
 
 .. [1] http://robotics.stanford.edu/~ronnyk/glossary.html
+.. [2] https://developers.google.com/machine-learning/glossary

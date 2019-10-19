@@ -115,32 +115,32 @@ Simple python implementation
 .. code-block:: python
 
    def update_weights_with_l1_regularization(features, targets, weights, lr,lambda):
-    '''
-    Features:(200, 3)
-    Targets: (200, 1)
-    Weights:(3, 1)
-    '''
-    predictions = predict(features, weights)
+        '''
+        Features:(200, 3)
+        Targets: (200, 1)
+        Weights:(3, 1)
+        '''
+        predictions = predict(features, weights)
 
-    #Extract our features
-    x1 = features[:,0]
-    x2 = features[:,1]
-    x3 = features[:,2]
+        #Extract our features
+        x1 = features[:,0]
+        x2 = features[:,1]
+        x3 = features[:,2]
 
-    # Use matrix cross product (*) to simultaneously
-    # calculate the derivative for each weight
-    d_w1 = -x1*(targets - predictions)
-    d_w2 = -x2*(targets - predictions)
-    d_w3 = -x3*(targets - predictions)
+        # Use matrix cross product (*) to simultaneously
+        # calculate the derivative for each weight
+        d_w1 = -x1*(targets - predictions)
+        d_w2 = -x2*(targets - predictions)
+        d_w3 = -x3*(targets - predictions)
 
-    # Multiply the mean derivative by the learning rate
-    # and subtract from our weights (remember gradient points in direction of steepest ASCENT)
-	
-	weights[0][0] = (weights[0][0] - lr * np.mean(d_w1) - lambda) if weights[0][0] > 0 else (weights[0][0] - lr * np.mean(d_w1) + lambda)
+        # Multiply the mean derivative by the learning rate
+        # and subtract from our weights (remember gradient points in direction of steepest ASCENT)
+        
+        weights[0][0] = (weights[0][0] - lr * np.mean(d_w1) - lambda) if weights[0][0] > 0 else (weights[0][0] - lr * np.mean(d_w1) + lambda)
         weights[1][0] = (weights[1][0] - lr * np.mean(d_w2) - lambda) if weights[1][0] > 0 else (weights[1][0] - lr * np.mean(d_w2) + lambda)
-	weights[2][0] = (weights[2][0] - lr * np.mean(d_w3) - lambda) if weights[2][0] > 0 else (weights[2][0] - lr * np.mean(d_w3) + lambda)
-	
-    return weights
+        weights[2][0] = (weights[2][0] - lr * np.mean(d_w3) - lambda) if weights[2][0] > 0 else (weights[2][0] - lr * np.mean(d_w3) + lambda)
+        
+        return weights
 
 
 .. rubric:: Further reading

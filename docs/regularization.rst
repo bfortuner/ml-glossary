@@ -142,6 +142,9 @@ Simple python implementation
         
         return weights
 
+.. rubric:: Use Case
+
+L1 Regularization (or varient of this concept) is a model of choice when the number of features are high, Since it provides sparse solutions. We can get computational advantage as the features with zero coefficients can simply be ignored.
 
 .. rubric:: Further reading
 

@@ -6,7 +6,7 @@ Regularization
 
 .. contents:: :local:
 
-What is overfitting?
+.. rubric:: What is overfitting?
 
 From Wikipedia `overfitting <https://en.wikipedia.org/wiki/Overfitting>`__ is, 
 
@@ -14,7 +14,7 @@ The production of an analysis that corresponds too closely or exactly to a parti
 of data, and may therefore fail to fit additional data or predict future observations 
 reliably
 
-What is Regularization?
+.. rubric:: What is Regularization?
 
 It is a Techniques for combating overfitting and improving training.
 
@@ -112,7 +112,8 @@ From the above formula,
 
 Simple python implementation
 
-::
+.. code-block:: python
+
    def update_weights_with_l1_regularization(features, targets, weights, lr,lambda):
     '''
     Features:(200, 3)
@@ -136,7 +137,7 @@ Simple python implementation
     # and subtract from our weights (remember gradient points in direction of steepest ASCENT)
 	
 	weights[0][0] = (weights[0][0] - lr * np.mean(d_w1) - lambda) if weights[0][0] > 0 else (weights[0][0] - lr * np.mean(d_w1) + lambda)
-    weights[1][0] = (weights[1][0] - lr * np.mean(d_w2) - lambda) if weights[1][0] > 0 else (weights[1][0] - lr * np.mean(d_w2) + lambda)
+        weights[1][0] = (weights[1][0] - lr * np.mean(d_w2) - lambda) if weights[1][0] > 0 else (weights[1][0] - lr * np.mean(d_w2) + lambda)
 	weights[2][0] = (weights[2][0] - lr * np.mean(d_w3) - lambda) if weights[2][0] > 0 else (weights[2][0] - lr * np.mean(d_w3) + lambda)
 	
     return weights

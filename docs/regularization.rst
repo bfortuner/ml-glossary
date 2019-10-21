@@ -157,7 +157,7 @@ L2 Regularization
 
 A regression model that uses L2 regularization technique is called *Ridge Regression*. Main difference between L1 and L2 regularization is, L2 regularization uses “squared magnitude” of coefficient as penalty term to the loss function. 
 
-.. rubric:: Mathematical formula for L1 Regularization. 
+.. rubric:: Mathematical formula for L2 Regularization. 
 
 Let's define a model to see how L2 Regularization works. For simplicity, We define a simple linear regression model Y with one independent variable. 
 
@@ -234,9 +234,9 @@ Simple python implementation
         # Multiply the mean derivative by the learning rate
         # and subtract from our weights (remember gradient points in direction of steepest ASCENT)
         
-        weights[0][0] = weights[0][0] - lr * np.mean(d_w1) - 2 * lambda* weights[0][0]
-        weights[1][0] = weights[1][0] - lr * np.mean(d_w2) - 2 * lambda* weights[1][0]
-        weights[2][0] = weights[2][0] - lr * np.mean(d_w3) - 2 * lambda* weights[2][0]
+        weights[0][0] = weights[0][0] - lr * np.mean(d_w1) - 2 * lambda * weights[0][0]
+        weights[1][0] = weights[1][0] - lr * np.mean(d_w2) - 2 * lambda * weights[1][0]
+        weights[2][0] = weights[2][0] - lr * np.mean(d_w3) - 2 * lambda * weights[2][0]
         
         return weights
 

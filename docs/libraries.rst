@@ -666,6 +666,7 @@ PHP
 
 - `PHP-ML <https://github.com/php-ai/php-ml>`__ - Machine Learning library for PHP. Algorithms, Cross Validation, Neural Network, Preprocessing, Feature Extraction and much more in one library.
 - `PredictionBuilder <https://github.com/denissimon/prediction-builder>`__ - A library for machine learning that builds predictions using a linear regression.
+- `Rubix ML <https://github.com/RubixML/RubixML>`__ - A high-level machine learning and deep learning library for the PHP language.
 
 
 Python

@@ -22,7 +22,15 @@ It is a Techniques for combating overfitting and improving training.
 Data Augmentation
 =================
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Having more data (dataset / samples) is the best way to get better consistent estimators (ML model). In the real world getting a large volume of useful data for training a model is cumbersome and labelling is an extremely tedious task. 
+
+Either labelling requires more manual annotation, example - For creating a better image classifier we can use Mturk and involve more man power to generate dataset or doing survey in social media and asking people to participate and generate dataset.  
+Above process can yield good dataset however those are difficult to carry and expensive.  Having small dataset will lead to the well know Over fitting problem.  
+
+Data Augmentation is one of the interesting regularization technique to resolve the above problem. The concept is very simple, this technique generates new training data from given original dataset. Dataset Augmentation provides a cheap and easy way to
+increase the amount of your training data.
+
+This technique can be used for both NLP and CV.
 
 Dropout
 =======

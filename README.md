@@ -9,7 +9,7 @@ Apologies for my non-responsiveness. :( I've been heads down at Cruise, buiding 
 
 1. Clone Repo
 ```
-git clone https://github.com/bfortuner/ml-cheatsheet.git
+git clone https://github.com/bfortuner/ml-glossary.git
 ```
 
 2. Install Dependencies
@@ -27,7 +27,7 @@ pip3 install recommonmark
 ```
 3. Preview Changes
 ```
-cd ml-cheatsheet
+cd ml-glossary
 cd docs
 make html
 ```
@@ -39,7 +39,7 @@ make html
 
 ### Short for time?
 
-Feel free to raise an [issue](https://github.com/bfortuner/ml-cheatsheet/issues) to correct errors or contribute content without a pull request.
+Feel free to raise an [issue](https://github.com/bfortuner/ml-glossary/issues) to correct errors or contribute content without a pull request.
 
 
 ## Style Guide

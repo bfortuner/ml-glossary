@@ -43,7 +43,7 @@ Let’s write a method feed_forward() to propagate input data through our simple
 Larger Network
 ==============
 
-The simple network above is helpful for learning purposes, but in reality neural networks are much larger and more complex. Modern neural networks many more hidden layers, more neurons per layer, more variables per input, more inputs per training set, and more output variables to predict. Here is a slightly larger network that will introduce us to matrices and the matrix operations used to train arbitrarily large neural networks.
+The simple network above is helpful for learning purposes, but in reality neural networks are much larger and more complex. Modern neural networks have many more hidden layers, more neurons per layer, more variables per input, more inputs per training set, and more output variables to predict. Here is a slightly larger network that will introduce us to matrices and the matrix operations used to train arbitrarily large neural networks.
 
 .. image:: images/neural_network_w_matrices.png
     :align: center

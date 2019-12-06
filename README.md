@@ -37,6 +37,7 @@ make html
 
 For Windows. 
 
+```
 cd ml-glossary
 cd docs
 build.bat html

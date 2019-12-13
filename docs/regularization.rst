@@ -76,7 +76,64 @@ Furthermore, when comparing two machine learning algorithms train both with eith
 Dropout
 =======
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+.. rubric:: What is Dropout? 
+
+Dropout is a regularization technique for reducing overfitting in neural networks by preventing complex co-adaptations on training data
+
+Dropout is a technique where randomly selected neurons are ignored during training. They are “dropped-out” randomly. This means that their contribution to the activation of downstream neurons is temporally removed on the forward pass and any weight updates are not applied to the neuron on the backward pass.
+
+Simply put, It is the process of ignoring some of the neurons in particular forward or backward pass. 
+
+Dropout can be easily implemented by randomly selecting nodes to be dropped-out with a given probability (e.g. .1%) each weight update cycle. 
+
+Most importantly Dropout is only used during the training of a model and is not used when evaluating the model. 
+
+.. image:: images/regularization-dropout.png
+      :align: center
+
+image from `<https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf>`_
+
+.. code-block:: python
+
+  import numpy as np 
+  A = np.arange(20).reshape((5,4))
+
+  print("Given input: ")
+  print(A)
+
+  def dropout(X, drop_probability):
+      keep_probability = 1 - drop_probability
+      mask = np.random.uniform(0, 1.0, X.shape) < keep_probability
+      if keep_probability > 0.0:
+          scale = (1/keep_probability)
+      else:
+          scale = 0.0
+      return mask * X * scale
+
+  print("\n After Dropout: ")
+  print(dropout(A,0.5))
+
+output from above code
+
+.. code-block:: python
+
+  Given input: 
+  [[ 0  1  2  3]
+  [ 4  5  6  7]
+  [ 8  9 10 11]
+  [12 13 14 15]
+  [16 17 18 19]]
+
+  After Dropout: 
+  [[ 0.  2.  0.  0.]
+  [ 8.  0.  0. 14.]
+  [16. 18.  0. 22.]
+  [24.  0.  0.  0.]
+  [32. 34. 36.  0.]]
+
+.. rubric:: Further reading
+- Dropout `<https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf>`_
+
 
 Early Stopping
 ==============

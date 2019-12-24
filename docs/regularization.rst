@@ -221,7 +221,29 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Injecting Noise
 ===============
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Noise is often introduced to the inputs as a dataset augmentation strategy. When we have a small dataset the network may effectively memorize the training dataset. Instead of learning a general mapping from inputs to outputs, the model may learn the specific input examples and their associated outputs. One approach for improving generalization error and improving the structure of the mapping problem is to add random noise.
+
+Adding noise means that the network is less able to memorize training samples because they are changing all of the time, resulting in smaller network weights and a more robust network that has lower generalization error.
+
+Noise is only added during training. No noise is added during the evaluation of the model or when the model is used to make predictions on new data.
+
+Random noise can be added to other parts of the network during training. Some examples include:
+
+.. rubric:: Noise Injection on Weights
+
+- Noise added to weights can be interpreted as a more traditional form of regularization.
+
+- In other words, it pushes the model to be relatively insensitive to small variations in the weights, finding points that are not merely minima, but minima surrounded by flat regions.
+	
+.. rubric:: Noise Injection on Outputs
+
+- In the real world dataset, We can expect some amount of mistakes in the output labels.  One way to remedy this is to explicitly model the noise on labels. 
+	
+- An example for Noise Injection on Outputs is **label smoothing**
+
+.. rubric:: Further reading
+
+- `Regularization <http://wavelab.uwaterloo.ca/wp-content/uploads/2017/04/Lecture_3.pdf>`_
 
 L1 Regularization
 =================

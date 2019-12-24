@@ -88,7 +88,7 @@ Dropout can be easily implemented by randomly selecting nodes to be dropped-out 
 
 Most importantly Dropout is only used during the training of a model and is not used when evaluating the model. 
 
-.. image:: images/regularization-dropout.png
+.. image:: images/regularization-dropout.PNG
       :align: center
 
 image from `<https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf>`_
@@ -216,7 +216,23 @@ Python implementation for Early stopping,
 Ensembling
 ==========
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Ensemble methods combine several machine learning techniques into one predictive model. There are a few different methods for ensembling, but the two most common are:
+
+.. rubric:: Bagging
+
+- Bagging stands for bootstrap aggregation. One way to reduce the variance of an estimate is to average together multiple estimates.
+- It trains a large number of "strong" learners in parallel.
+- A strong learner is a model that's relatively unconstrained.
+- Bagging then combines all the strong learners together in order to "smooth out" their predictions.
+
+.. rubric:: Boosting
+
+- Boosting refers to a family of algorithms that are able to convert weak learners to strong learners.
+- Each one in the sequence focuses on learning from the mistakes of the one before it.
+- Boosting then combines all the weak learners into a single strong learner.
+
+Bagging uses complex base models and tries to "smooth out" their predictions, while boosting uses simple base models and tries to "boost" their aggregate complexity.
+
 
 Injecting Noise
 ===============

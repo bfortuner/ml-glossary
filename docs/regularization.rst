@@ -76,7 +76,64 @@ Furthermore, when comparing two machine learning algorithms train both with eith
 Dropout
 =======
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+.. rubric:: What is Dropout? 
+
+Dropout is a regularization technique for reducing overfitting in neural networks by preventing complex co-adaptations on training data
+
+Dropout is a technique where randomly selected neurons are ignored during training. They are “dropped-out” randomly. This means that their contribution to the activation of downstream neurons is temporally removed on the forward pass and any weight updates are not applied to the neuron on the backward pass.
+
+Simply put, It is the process of ignoring some of the neurons in particular forward or backward pass. 
+
+Dropout can be easily implemented by randomly selecting nodes to be dropped-out with a given probability (e.g. .1%) each weight update cycle. 
+
+Most importantly Dropout is only used during the training of a model and is not used when evaluating the model. 
+
+.. image:: images/regularization-dropout.PNG
+      :align: center
+
+image from `<https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf>`_
+
+.. code-block:: python
+
+  import numpy as np 
+  A = np.arange(20).reshape((5,4))
+
+  print("Given input: ")
+  print(A)
+
+  def dropout(X, drop_probability):
+      keep_probability = 1 - drop_probability
+      mask = np.random.uniform(0, 1.0, X.shape) < keep_probability
+      if keep_probability > 0.0:
+          scale = (1/keep_probability)
+      else:
+          scale = 0.0
+      return mask * X * scale
+
+  print("\n After Dropout: ")
+  print(dropout(A,0.5))
+
+output from above code
+
+.. code-block:: python
+
+  Given input: 
+  [[ 0  1  2  3]
+  [ 4  5  6  7]
+  [ 8  9 10 11]
+  [12 13 14 15]
+  [16 17 18 19]]
+
+  After Dropout: 
+  [[ 0.  2.  0.  0.]
+  [ 8.  0.  0. 14.]
+  [16. 18.  0. 22.]
+  [24.  0.  0.  0.]
+  [32. 34. 36.  0.]]
+
+.. rubric:: Further reading
+- Dropout `<https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf>`_
+
 
 Early Stopping
 ==============
@@ -159,12 +216,50 @@ Python implementation for Early stopping,
 Ensembling
 ==========
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Ensemble methods combine several machine learning techniques into one predictive model. There are a few different methods for ensembling, but the two most common are:
+
+.. rubric:: Bagging
+
+- Bagging stands for bootstrap aggregation. One way to reduce the variance of an estimate is to average together multiple estimates.
+- It trains a large number of "strong" learners in parallel.
+- A strong learner is a model that's relatively unconstrained.
+- Bagging then combines all the strong learners together in order to "smooth out" their predictions.
+
+.. rubric:: Boosting
+
+- Boosting refers to a family of algorithms that are able to convert weak learners to strong learners.
+- Each one in the sequence focuses on learning from the mistakes of the one before it.
+- Boosting then combines all the weak learners into a single strong learner.
+
+Bagging uses complex base models and tries to "smooth out" their predictions, while boosting uses simple base models and tries to "boost" their aggregate complexity.
+
 
 Injecting Noise
 ===============
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Noise is often introduced to the inputs as a dataset augmentation strategy. When we have a small dataset the network may effectively memorize the training dataset. Instead of learning a general mapping from inputs to outputs, the model may learn the specific input examples and their associated outputs. One approach for improving generalization error and improving the structure of the mapping problem is to add random noise.
+
+Adding noise means that the network is less able to memorize training samples because they are changing all of the time, resulting in smaller network weights and a more robust network that has lower generalization error.
+
+Noise is only added during training. No noise is added during the evaluation of the model or when the model is used to make predictions on new data.
+
+Random noise can be added to other parts of the network during training. Some examples include:
+
+.. rubric:: Noise Injection on Weights
+
+- Noise added to weights can be interpreted as a more traditional form of regularization.
+
+- In other words, it pushes the model to be relatively insensitive to small variations in the weights, finding points that are not merely minima, but minima surrounded by flat regions.
+	
+.. rubric:: Noise Injection on Outputs
+
+- In the real world dataset, We can expect some amount of mistakes in the output labels.  One way to remedy this is to explicitly model the noise on labels. 
+	
+- An example for Noise Injection on Outputs is **label smoothing**
+
+.. rubric:: Further reading
+
+- `Regularization <http://wavelab.uwaterloo.ca/wp-content/uploads/2017/04/Lecture_3.pdf>`_
 
 L1 Regularization
 =================

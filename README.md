@@ -26,11 +26,23 @@ pip3 install sphinx_rtd_theme
 pip3 install recommonmark
 ```
 3. Preview Changes
+
+If you are using make build.
+
 ```
 cd ml-glossary
 cd docs
 make html
 ```
+
+For Windows. 
+
+```
+cd ml-glossary
+cd docs
+build.bat html
+```
+
 
 4. Verify your changes by opening the `index.html` file in `_build/`
 

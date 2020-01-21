@@ -122,17 +122,27 @@ Optimization Algorithms
 Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 
+Gradient Accumulation
+=====================
+
+Gradient accumulation is a mechanism to split the batch of samples—used for training a neural network—into several mini-batches of samples that will be run sequentially.
+
+This is used to enable using large batch sizes that require more GPU memory than available. Gradient accumulation helps in doing so by using mini-batches that require an amount of GPU memory that can be satisfied.
+
+Gradient accumulation means running all mini-batches sequentially (generally on the same GPU) while accumulating their calculated gradients and not updating the model variables - the weights and biases of the model.
+The model variables must not be updated during the accumulation in order to ensure all mini-batches use the same model variable values to calculate their gradients.
+Only after accumulating the gradients of all those mini-batches will we generate and apply the updates for the model variables.
+
+This results in the same updates for the model parameters as if we were to use the global batch.
+
+.. image:: images/gradient_accumulation.png
+    :align: center
+
+More details, a technical and algorithmical deep-dive, how-to tutorials, and examples can be found at [2].
+
+
 
 .. rubric:: References
 
 .. [1] http://sebastianruder.com/optimizing-gradient-descent/
-
-
-
-
-
-
-
-
-
-
+.. [2] https://github.com/run-ai/runai/tree/master/runai/ga/

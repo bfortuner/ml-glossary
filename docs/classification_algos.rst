@@ -24,7 +24,7 @@ ID3 decision tree: `code example <https://github.com/bfortuner/ml-cheatsheet/blo
 K-Nearest Neighbor
 ==================
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/knn.py>`__
 
 Logistic Regression
 ===================

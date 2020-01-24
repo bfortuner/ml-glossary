@@ -132,6 +132,11 @@ Feature Selection
 Feature Vector
   A list of features describing an observation with multiple attributes. In Excel we call this a row.
 
+.. _glossary_gradient_accumulation:
+
+Gradient Accumulation
+  A mechanism to split the batch of samples—used for training a neural network—into several mini-batches of samples that will be run sequentially. This is used to enable using large batch sizes that require more GPU memory than available.
+
 .. _glossary_hyperparameters:
 
 Hyperparameters

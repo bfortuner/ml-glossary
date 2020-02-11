@@ -15,7 +15,29 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Adagrad
 -------
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Adagrad (short for adaptive gradient) adaptively sets the learning rate according to a parameter.
+
+- Parameters that have higher gradients or frequent updates should have slower learning rate so that we do not overshoot the minimum value.
+- Parameters that have low gradients or infrequent updates should faster learning rate so that they get trained quickly.
+- It divides the learning rate by the sum of squares of all previous gradients of the parameter.
+- When the sum of the squared past gradients has a high value, it basically divides the learning rate by a high value, so the learning rate will become less. 
+- Similarly, if the sum of the squared past gradients has a low value, it divides the learning rate by a lower value, so the learning rate value will become high. 
+- This implies that the learning rate is inversely proportional to the sum of the squares of all the previous gradients of the parameter.
+
+.. math::
+
+    g_{t}^{i} = \frac{\partial \mathcal{J}(w_{t}^{i})}{\partial W} \\
+    W = W - \alpha \frac{\partial \mathcal{J}(w_{t}^{i})}{\sqrt{\sum_{r=1}^{t}\left ( g_{r}^{i} \right )^{2} + \varepsilon }}
+    
+.. note::
+  
+  - :math:`g_{t}^{i}` - the gradient of a parameter, :math: `\Theta `  at an iteration t.
+  - :math:`\alpha` - the learning rate
+  - :math:`\epsilon` - very small value to avoid dividing by zero
+
+.. literalinclude:: ../code/optimizers.py
+    :language: python
+    :pyobject: Adagrad
 
 
 Adam

@@ -7,7 +7,13 @@ def Adadelta(data):
 
 
 def Adagrad(data):
-    pass
+    gradient_sums = np.zeros(theta.shape[0])
+    for t in range(num_iterations):
+        gradients = compute_gradients(data, weights)
+        gradient_sums += gradients ** 2
+        gradient_update = gradients / (np.sqrt(gradient_sums + epsilon))
+        weights = weights - lr * gradient_update
+    return weights
 
 
 def Adam(data):

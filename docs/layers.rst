@@ -148,9 +148,40 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 Pooling
 -------
 
-Max and average pooling layers.
+Pooling layers often take convolution layers as input. A complicated dataset with many object will require a large number of filters, each responsible finding pattern in an image so the dimensionally of convolutional layer can get large. It will cause an increase of parameters, which can lead to over-fitting. Pooling layers are methods for reducing this high dimensionally. Just like the convolution layer, there is kernel size and stride. The size of the kernel is smaller than the feature map. For most of the cases the size of the kernel will be 2X2 and the stride of 2. There are mainly two types of pooling layers.
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+The first type is max pooling layer.
+Max pooling layer will take a stack of feature maps (convolution layer) as input. The value of the node in the max pooling layer is calculated by just the maximum of the pixels contained in the window.
+
+The other type of pooling layer is the Average Pooling layer.
+Average pooling layer calculates the average of pixels contained in the window. Its not used often but you may see this used in applications for which smoothing an image is preferable.
+
+.. rubric:: Code
+.. code-block:: python
+
+    def max_pooling(feature_map, size=2, stride=2):
+    	"""
+	:param feature_map: Feature matrix of shape (height, width, layers)
+    	:param size: size of kernal
+    	:param stride: movement speed of kernal
+    	:return: max-pooled feature vector
+	""" 
+    	pool_shape = (feature_map.shape[0]//stride, feature_map.shape[1]//stride, feature_map.shape[-1]) #shape of output
+    	pool_out = numpy.zeros(pool_shape) 
+    	for layer in range(feature_map.shape[-1]):
+        	#for each layer
+        	row = 0
+        	for r in numpy.arange(0,feature_map.shape[0], stride):
+        	    col = 0
+        	    for c in numpy.arange(0, feature_map.shape[1], stride):
+        	        pool_out[row, col, layer] = numpy.max([feature_map[c:c+size,  r:r+size, layer]])
+        	        col = col + 1
+        	    row = row +1
+    	return pool_out
+
+.. image:: images/maxpool.png                       
+       :align: center                              
+       :width: 512 px  
 
 
 RNN

@@ -90,13 +90,16 @@ A Multi Layer Perceptron (MLP) is a neural network with only fully connected lay
 
 .. rubric:: Model
 
-An example implementation in Numpy or Pytorch?
+An example implementation in PyTorch.
 
-TODO
+.. literalinclude:: ../code/mlp.py
+      :pyobject: MLP
 
 .. rubric:: Training
 
-TODO
+.. literalinclude:: ../code/mlp.py
+      :pyobject: train
+
 
 .. rubric:: Further reading
 

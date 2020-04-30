@@ -2,8 +2,15 @@ import math
 import numpy as np
 
 
-def Adadelta(data):
-    pass
+def Adadelta(weights, sqrs, deltas, rho, batch_size):
+    eps_stable = 1e-5
+    for weight, sqr, delta in zip(weights, sqrs, deltas):
+        g = weight.grad / batch_size
+        sqr[:] = rho * sqr + (1. - rho) * nd.square(g)
+        cur_delta = nd.sqrt(delta + eps_stable) / nd.sqrt(sqr + eps_stable) * g
+        delta[:] = rho * delta + (1. - rho) * cur_delta * cur_delta
+        # update weight in place.
+        weight[:] -= cur_delta
 
 
 def Adagrad(data):

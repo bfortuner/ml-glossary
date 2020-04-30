@@ -4,13 +4,20 @@
 Optimizers
 ==========
 
+.. rubric:: What is Optimizer ? 
+
+It is very important to tweak the weights of the model during the training process, to make our predictions as correct and optimized as possible. But how exactly do you do that? How do you change the parameters of your model, by how much, and when?
+
+Best answer to all above question is *optimizers*. They tie together the loss function and model parameters by updating the model in response to the output of the loss function. In simpler terms, optimizers shape and mold your model into its most accurate possible form by futzing with the weights. The loss function is the guide to the terrain, telling the optimizer when it’s moving in the right or wrong direction.
+
+Below are list of example optimizers
+
 .. contents:: :local:
 
-Adadelta
---------
+.. image:: images/optimizers.gif
+      :align: center
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
-
+Image Credit: `CS231n <https://cs231n.github.io/neural-networks-3/>`_
 
 Adagrad
 -------
@@ -39,6 +46,29 @@ Adagrad (short for adaptive gradient) adaptively sets the learning rate accordin
     :language: python
     :pyobject: Adagrad
 
+Adadelta
+--------
+
+AdaDelta belongs to the family of stochastic gradient descent algorithms, that provide adaptive techniques for hyperparameter tuning. Adadelta is probably short for ‘adaptive delta’, where delta here refers to the difference between the current weight and the newly updated weight. 
+
+The main disadvantage in Adagrand is its accumulation of the squared gradients. During the training process, the accumulated sum keeps growing. From the above formala we can see that, As the accumulated sum increases learning rate to shrink and eventually become infinitesimally small, at which point the algorithm is no longer able to acquire additional knowledge.
+
+Adadelta is a more robust extension of Adagrad that adapts learning rates based on a moving window of gradient updates, instead of accumulating all past gradients. This way, Adadelta continues learning even when many updates have been done.
+
+With Adadelta, we do not even need to set a default learning rate, as it has been eliminated from the update rule.
+
+Implementation is something like this, 
+
+.. math::
+
+  v_t = \rho v_{t-1} + (1-\rho) \nabla_\theta^2 J( \theta) \\ 
+  \Delta\theta &= \dfrac{\sqrt{w_t + \epsilon}}{\sqrt{v_t + \epsilon}} \nabla_\theta J( \theta) \\
+  \theta &= \theta - \eta \Delta\theta \\ 
+  w_t = \rho w_{t-1} + (1-\rho) \Delta\theta^2
+
+.. literalinclude:: ../code/optimizers.py
+    :language: python
+    :pyobject: Adadelta
 
 Adam
 ----

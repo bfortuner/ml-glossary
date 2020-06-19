@@ -27,7 +27,7 @@ pip3 install recommonmark
 ```
 3. Preview Changes
 
-If you are using make build.
+If you are using, make build.
 
 ```
 cd ml-glossary

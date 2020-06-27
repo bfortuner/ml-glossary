@@ -124,7 +124,7 @@ Given our simple linear equation :math:`y = mx + b`, we can calculate MSE as:
 Gradient descent
 ----------------
 
-To minimize MSE we use :doc:`gradient_descent` to calculate the gradient of our cost function. [TODO: Slightly longer explanation].
+To minimize MSE we use :doc:`gradient_descent` to calculate the gradient of our cost function. Gradient descent consists of looking at the error that our weight currently gives us, using the derivative of the cost function to find the gradient (The slope of the cost function using our current weight), and then changing our weight to move in the direction opposite of the gradient. We need to move in the opposite direction of the gradient since the gradient points up the slope instead of down it, so we move in the opposite direction to try to decrease our error. 
 
 .. rubric:: Math
 

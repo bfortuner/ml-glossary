@@ -4,13 +4,20 @@
 Optimizers
 ==========
 
+.. rubric:: What is Optimizer ? 
+
+It is very important to tweak the weights of the model during the training process, to make our predictions as correct and optimized as possible. But how exactly do you do that? How do you change the parameters of your model, by how much, and when?
+
+Best answer to all above question is *optimizers*. They tie together the loss function and model parameters by updating the model in response to the output of the loss function. In simpler terms, optimizers shape and mold your model into its most accurate possible form by futzing with the weights. The loss function is the guide to the terrain, telling the optimizer when it’s moving in the right or wrong direction.
+
+Below are list of example optimizers
+
 .. contents:: :local:
 
-Adadelta
---------
+.. image:: images/optimizers.gif
+      :align: center
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
-
+Image Credit: `CS231n <https://cs231n.github.io/neural-networks-3/>`_
 
 Adagrad
 -------
@@ -39,6 +46,29 @@ Adagrad (short for adaptive gradient) adaptively sets the learning rate accordin
     :language: python
     :pyobject: Adagrad
 
+Adadelta
+--------
+
+AdaDelta belongs to the family of stochastic gradient descent algorithms, that provide adaptive techniques for hyperparameter tuning. Adadelta is probably short for ‘adaptive delta’, where delta here refers to the difference between the current weight and the newly updated weight. 
+
+The main disadvantage in Adagrand is its accumulation of the squared gradients. During the training process, the accumulated sum keeps growing. From the above formala we can see that, As the accumulated sum increases learning rate to shrink and eventually become infinitesimally small, at which point the algorithm is no longer able to acquire additional knowledge.
+
+Adadelta is a more robust extension of Adagrad that adapts learning rates based on a moving window of gradient updates, instead of accumulating all past gradients. This way, Adadelta continues learning even when many updates have been done.
+
+With Adadelta, we do not even need to set a default learning rate, as it has been eliminated from the update rule.
+
+Implementation is something like this, 
+
+.. math::
+
+  v_t = \rho v_{t-1} + (1-\rho) \nabla_\theta^2 J( \theta) \\ 
+  \Delta\theta &= \dfrac{\sqrt{w_t + \epsilon}}{\sqrt{v_t + \epsilon}} \nabla_\theta J( \theta) \\
+  \theta &= \theta - \eta \Delta\theta \\ 
+  w_t = \rho w_{t-1} + (1-\rho) \Delta\theta^2
+
+.. literalinclude:: ../code/optimizers.py
+    :language: python
+    :pyobject: Adadelta
 
 Adam
 ----
@@ -143,7 +173,11 @@ RMSProp then divides the learning rate by this average to speed up convergence.
 SGD
 ---
 
-Stochastic Gradient Descent.
+SGD stands for Stochastic Gradient Descent.In Stochastic Gradient Descent, a few samples are selected randomly instead of the whole data set for each iteration. In Gradient Descent, there is a term called “batch” which denotes the total number of samples from a dataset that is used for calculating the gradient for each iteration. In typical Gradient Descent optimization, like Batch Gradient Descent, the batch is taken to be the whole dataset. Although, using the whole dataset is really useful for getting to the minima in a less noisy or less random manner, but the problem arises when our datasets get really huge.
+
+This problem is solved by Stochastic Gradient Descent. In SGD, it uses only a single sample to perform each iteration. The sample is randomly shuffled and selected for performing the iteration.
+
+Since only one sample from the dataset is chosen at random for each iteration, the path taken by the algorithm to reach the minima is usually noisier than your typical Gradient Descent algorithm. But that doesn’t matter all that much because the path taken by the algorithm does not matter, as long as we reach the minima and with significantly shorter training time.
 
 .. literalinclude:: ../code/optimizers.py
     :language: python

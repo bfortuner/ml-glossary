@@ -136,6 +136,46 @@ Returning to our cost function:
 
     f(m,b) =  \frac{1}{N} \sum_{i=1}^{n} (y_i - (mx_i + b))^2
 
+Using the following:
+
+.. math::
+
+    (y_i - (mx_i + b))^2 = A(B(m,b))
+
+We can split the derivative into
+
+.. math::
+
+    A(x) = x^2
+
+    \frac{df}{dx} = A'(x) = 2x
+
+and
+
+.. math::
+
+    B(m,b) = y_i - (mx_i + b) = y_i - mx_i - b
+
+    \frac{dx}{dm} = B'(m) = 0 - x_i - 0 = -x_i
+
+    \frac{dx}{db} = B'(b) = 0 - 0 - 1 = -1
+
+And then using the :ref:`chain_rule` which states:
+
+.. math::
+
+    \frac{df}{dm} = \frac{df}{dx} \frac{dx}{dm}
+
+    \frac{df}{db} = \frac{df}{dx} \frac{dx}{db}
+
+We then plug in each of the parts to get the following derivatives
+
+.. math::
+
+    \frac{df}{dm} = A'(B(m,f)) B'(m) = 2(y_i - (mx_i + b)) \cdot -x_i
+
+    \frac{df}{db} = A'(B(m,f)) B'(b) = 2(y_i - (mx_i + b)) \cdot -1
+
 We can calculate the gradient of this cost function as:
 
 .. math::

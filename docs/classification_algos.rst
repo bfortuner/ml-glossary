@@ -37,7 +37,7 @@ ID3 (`code example <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/
 
 C4.5 is the successor of ID3 and remove the restriction that the feature must be categorical by dynamically define a discrete attribute that partitions the continuous attribute in the discrete set of intervals.
 
-CART is similar to C4.5. But it differs in that it constructs binary tree and support regression problem.
+CART is similar to C4.5. But it differs in that it constructs binary tree and support regression problem[3].
 
 The main differences are shown in the follow table:
 
@@ -117,6 +117,9 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 .. [1] https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification
 .. [2] `Machine Learning in Action by Peter Harrington <https://www.manning.com/books/machine-learning-in-action>`__
+.. [3] `Scikit-learn Documentations: Tree algorithms: ID3, C4.5, C5.0 and CART <https://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart>`__
+
+
 
 
 

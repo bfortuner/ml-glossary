@@ -18,8 +18,40 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 Decision Trees
 ==============
+.. rubric:: Introduction
 
-ID3 decision tree: `code example <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/id3_decision_tree_simple.py>`__
+Decision tree works by successively splitting the dataset into small segments until the target variable are the same or until the dataset can no longer be split. It's a greedy algorithm which make the best decision at the given time without concern for the global optimality[2].
+
+The concept behind decision tree is straightforward. The following flowchart show a simple email classification system based on decision tree. If the address is "myEmployer.com", it will classify it to "Email to read when bored". Then if the email contains the word "hockey", this email will be classified as "Email from friends". Otherwise, it will be identified as "Spam: don't read".
+
+.. image:: images/decision_tree.png
+    :align: center
+
+The pseudo-code for decision tree is as follows:
+
+.. rubric:: ID3, C4.5 and CART
+
+There are various kinds of decision tree algorithms such as ID3 (Iterative Dichotomiser 3), C4.5 and CART (Classification and Regression Trees).
+
+ID3 (`code example <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/knn.py>`__) creates a multiway tree. For each node, it try to find the categorical feature that will yield the largest information gain for the target variable.
+
+C4.5 is the successor of ID3 and remove the restriction that the feature must be categorical by dynamically define a discrete attribute that partitions the continuous attribute in the discrete set of intervals.
+
+CART is similar to C4.5. But it differs in that it constructs binary tree and support regression problem.
+
+The main differences are shown in the follow table:
+
++-------------------+---------------------+------------------------------------------------------+----------------------------------------------+
+|     Dimensions    |         ID3         |                         C4.5                         |                     CART                     |
++-------------------+---------------------+------------------------------------------------------+----------------------------------------------+
+|  Split Criterion  |   Information gain  | Information gain ratio (Normalized information gain) | Gini coefficient for classification problems |
++-------------------+---------------------+------------------------------------------------------+----------------------------------------------+
+| Types of Features | Categorical feature |           Categorical & numerical features           |       Categorical & numerical features       |
++-------------------+---------------------+------------------------------------------------------+----------------------------------------------+
+|  Type of Problem  |    Classification   |                    Classification                    |          Classification & regression         |
++-------------------+---------------------+------------------------------------------------------+----------------------------------------------+
+|   Type of Tree    |     Mltiway tree    |                     Mltiway tree                     |                  Binary tree                 |
++-------------------+---------------------+------------------------------------------------------+----------------------------------------------+
 
 K-Nearest Neighbor
 ==================
@@ -84,6 +116,7 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 .. rubric:: References
 
 .. [1] https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification
+.. [2] `Machine Learning in Action by Peter Harrington <https://www.manning.com/books/machine-learning-in-action>`__
 
 
 

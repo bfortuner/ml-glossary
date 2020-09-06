@@ -201,15 +201,23 @@ class CART(ID3DecisionTree):
             node.set_attribute(split_col=split_col, child_cate_order=child_cate_order)
             return child_node_lst
 
-    # def get_information_entropy(self, data_ids):
-    #     res = 1
-    #     target_y = self.labels[data_ids]
-    #     total = len(target_y)
-    #     unique_y = np.unique(target_y)
-    #     for y in unique_y:
-    #         num = len(np.where(target_y==y))
-    #         res -= (num/float(total))**2
-    #     return res
+    def get_split_criterion(self, node, child_node_lst):
+        # gain = node.information_entropy
+        gain = 0
+        total = len(node.data_ids)
+        for child_node in child_node_lst:
+            gain = len(child_node.data_ids) / float(total) * child_node.information_entropy
+        return gain
+
+    def get_information_entropy(self, data_ids):
+        res = 1
+        target_y = self.labels[data_ids]
+        total = len(target_y)
+        unique_y = np.unique(target_y)
+        for y in unique_y:
+            num = len(np.where(target_y==y))
+            res -= (num/float(total))**2
+        return res
 
     def get_nex_node(self, node: TreeNode, x: np.array):
         col_value = x[node.split_col]

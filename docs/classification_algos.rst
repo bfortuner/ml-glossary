@@ -11,10 +11,6 @@ Bayesian
 
 Overlaps..
 
-Boosting
-========
-
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 Decision Trees
 ==============
@@ -105,6 +101,17 @@ Random Forests
 ==============
 
 Random Forest Classifier using ID3 Tree: `code example <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/random_forest_classifier.py>`__
+.. rubric:: Introduction
+Decision Tree typical exhibit high variance and tends to overfit the train data. To solve this problem, ensemble learning is introduced by combining several base estimators[4]. Ensemble learning includes bagging and boosting, of which Random Forest utilizes bagging method. We'll introduce boosting in the next section.
+
+Random Forest utilize bagging algorithms by grouping several decision tree classifiers (i.e. CART, ID3 or C4.5 tree) independently and then average their prediction. Besides bagging algorithms, when splitting node during the construction of the tree, the best split is found either from a random subset of dataset or features. These two algorithms introduce two source of randomness which will reduce the variance of classifier.
+
+.. rubric:: Code
+
+Boosting
+========
+
+Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 Support Vector Machines
 =======================
@@ -118,6 +125,11 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 .. [1] https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification
 .. [2] `Machine Learning in Action by Peter Harrington <https://www.manning.com/books/machine-learning-in-action>`__
 .. [3] `Scikit-learn Documentations: Tree algorithms: ID3, C4.5, C5.0 and CART <https://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart>`__
+.. [4] `Scikit-learn Documentations: Ensemble Method <https://scikit-learn.org/stable/modules/ensemble.html#>`__
+.. [5] `An Introduction to Statistical Learning with Applications in R <https://www.amazon.cn/dp/1461471370>`__
+
+
+
 
 
 

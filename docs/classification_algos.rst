@@ -23,7 +23,15 @@ The concept behind decision tree is straightforward. The following flowchart sho
 .. image:: images/decision_tree.png
     :align: center
 
-The pseudo-code for decision tree is as follows:
+The decision tree learning algorithm recursively learns the tree as follows[6]:
+
+1. Assign all training instances to the root of the tree. Set current node to root node.
+2. Find the split feature and split value based on the split criterion such as information gain, information gain ratio or gini coefficient.
+3. Partition all data instances at the node based on the split feature and split feature value.
+4. Denote each partition as a child node of the current node.
+5. For each child node:
+    1. If the child node is “pure” (has instances from only one class), tag it as a leaf and return.
+    2. Else, set the child node as the current node and recurse to step 2.
 
 .. rubric:: ID3, C4.5 and CART
 
@@ -127,9 +135,18 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 .. [3] `Scikit-learn Documentations: Tree algorithms: ID3, C4.5, C5.0 and CART <https://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart>`__
 .. [4] `Scikit-learn Documentations: Ensemble Method <https://scikit-learn.org/stable/modules/ensemble.html#>`__
 .. [5] `An Introduction to Statistical Learning with Applications in R <https://www.amazon.cn/dp/1461471370>`__
+.. [6] `Decision Trees <https://www.cs.cmu.edu/~bhiksha/courses/10-601/decisiontrees/>`__
 
 
 
+ def get_impurity(self, data_ids):
+        res = 0
+        target_y = self.labels[data_ids]
+        mean_y = np.mean(target_y)
+        total = len(target_y)
+        for y in target_y:
+            res += (y - mean_y)**2/total
+        return res
 
 
 

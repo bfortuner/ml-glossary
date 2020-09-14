@@ -50,7 +50,9 @@ class DecisionTree(metaclass=ABCMeta):
         queue = [self.root]
         while queue:
             node = queue.pop(0)
-            if node.depth>self.max_depth:
+            if len(node.data_ids) == 0:
+                print()
+            if node.depth>self.max_depth or len(node.data_ids)==1:
                 self.set_label(node)
             else:
                 child_nodes = self.split_node(node)
@@ -96,6 +98,17 @@ class DecisionTree(metaclass=ABCMeta):
         target_label = stats.mode(target_Y).mode[0]
         node.set_label(label=target_label)
 
+    @classmethod
+    def split_node(self, node):
+        pass
+
+    @classmethod
+    def get_nex_node(self, node, x):
+        pass
+
+
+class ID3DecisionTree(DecisionTree):
+
     def split_node(self, node):
         child_node_lst = []
         child_cate_order = []
@@ -126,13 +139,6 @@ class DecisionTree(metaclass=ABCMeta):
             node.set_attribute(split_col=split_col, child_cate_order=child_cate_order)
             return child_node_lst
 
-    @classmethod
-    def get_nex_node(self, node, x):
-        pass
-
-
-class ID3DecisionTree(DecisionTree):
-
     def get_split_criterion(self, node, child_node_lst):
         return self._get_information_gain(node, child_node_lst)
 
@@ -157,7 +163,7 @@ class C45DecisionTree(ID3DecisionTree):
         return res
 
 
-class CART(ID3DecisionTree):
+class CART(DecisionTree):
 
     def __init__(self, max_depth, min_sample_leaf, tree_type="classification", min_split_criterion=1e-4, verbose=False):
         super(CART, self).__init__(max_depth=max_depth, min_sample_leaf=min_sample_leaf, min_split_criterion=min_split_criterion
@@ -167,56 +173,61 @@ class CART(ID3DecisionTree):
     def split_node(self, node: TreeNode) -> List[TreeNode]:
         child_node_lst = []
         child_cate_order = None
-        informatin_gain = 0
+        gini_index = float("inf")
         split_col = None
         for col_idx in range(self.feature_num):
             current_child_cate_order = list(np.unique(self.data[node.data_ids][:, col_idx]))
             current_child_cate_order.sort()
             for col_value in current_child_cate_order:
-                # current_child_node_lst = []
-
                 left_data_idx = np.intersect1d(node.data_ids, np.where(self.data[:, col_idx]<=col_value))
                 right_data_idx = np.intersect1d(node.data_ids, np.where(self.data[:, col_idx]>col_value))
-                left_tree = TreeNode(
-                        data_idx=left_data_idx,
-                        depth=node.depth+1,
-                        information_entropy=self.get_information_entropy(left_data_idx)
-                    )
-                right_tree = TreeNode(
-                        data_idx=right_data_idx,
-                        depth=node.depth+1,
-                        information_entropy=self.get_information_entropy(right_data_idx)
-                    )
-                current_child_node_lst = [left_tree, right_tree]
-                current_gain = self.get_split_criterion(node, current_child_node_lst)
-                if current_gain > informatin_gain:
-                    informatin_gain = current_gain
+                current_child_node_lst = []
+                if len(left_data_idx) != 0:
+                    left_tree = TreeNode(
+                            data_idx=left_data_idx,
+                            depth=node.depth+1,
+                            information_entropy=self.get_information_entropy(left_data_idx)
+                        )
+                    current_child_node_lst.append(left_tree)
+                if len(right_data_idx) != 0:
+                    right_tree = TreeNode(
+                            data_idx=right_data_idx,
+                            depth=node.depth+1,
+                            information_entropy=self.get_information_entropy(right_data_idx)
+                        )
+                    current_child_node_lst.append(right_tree)
+                current_gini_index = self.get_split_criterion(node, current_child_node_lst)
+                if current_gini_index < gini_index:
+                    gini_index = current_gini_index
                     child_node_lst = current_child_node_lst
                     child_cate_order = col_value
                     split_col = col_idx
-        if informatin_gain<self.min_split_criterion:
-            return
-        else:
-            node.child = child_node_lst
-            node.set_attribute(split_col=split_col, child_cate_order=child_cate_order)
-            return child_node_lst
+        node.child = child_node_lst
+        node.set_attribute(split_col=split_col, child_cate_order=child_cate_order)
+        return child_node_lst
 
-    def get_split_criterion(self, node, child_node_lst):
-        # gain = node.information_entropy
-        gain = 0
+    def get_split_criterion(self, node, child_node_lst, regression=False):
         total = len(node.data_ids)
+        total_gini_index = 0
         for child_node in child_node_lst:
-            gain = len(child_node.data_ids) / float(total) * child_node.information_entropy
-        return gain
+            gini_index = self.get_impurity(child_node.data_ids, regression)
+            total_gini_index += len(child_node.data_ids) / float(total) * gini_index
+        return total_gini_index
 
-    def get_information_entropy(self, data_ids):
-        res = 1
+    def get_impurity(self, data_ids, regression=False):
         target_y = self.labels[data_ids]
         total = len(target_y)
-        unique_y = np.unique(target_y)
-        for y in unique_y:
-            num = len(np.where(target_y==y))
-            res -= (num/float(total))**2
+        if regression:
+            res = 0
+            mean_y = np.mean(target_y)
+            for y in target_y:
+                res += (y - mean_y) ** 2 / total
+        else:
+            res = 1
+            unique_y = np.unique(target_y)
+            for y in unique_y:
+                num = len(np.where(target_y==y)[0])
+                res -= (num/float(total))**2
         return res
 
     def get_nex_node(self, node: TreeNode, x: np.array):

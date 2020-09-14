@@ -221,6 +221,46 @@ class RandomForestClassification():
         feat_choose = np.random.choice(range(n_feat_dat),size=n_feat_choose,replace=False).tolist()
         feat_choose = sorted(feat_choose) # Important to sort this in order otherwise will confuse the model
         print("feat_chosen:{}".format(feat_choose))
-
-
         return  X[:,feat_choose],y,feat_choose
+
+
+if __name__ == "__main__":
+    # ID3: only categorical features
+    from sklearn.model_selection import train_test_split
+    from sklearn.metrics import classification_report
+    from sklearn import datasets
+    from sklearn.tree import DecisionTreeClassifier
+    dataset = datasets.load_iris()
+    all_categorical_feature = True
+
+    # convert continuous feature to categorical features
+    if all_categorical_feature:
+        f = lambda x: int(x)
+        func = np.vectorize(f)
+        X = func(dataset.data)
+    else:
+        X = dataset.data
+
+    Y = dataset.target
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, train_size=0.8)
+    # config
+    max_depth = 3
+    min_sample_leaf = 4
+
+    model = DecisionTreeClassifier(criterion="entropy", max_depth=max_depth, min_samples_leaf=min_sample_leaf)
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    print(classification_report(y_true=y_test, y_pred=y_pred))
+    #
+    # model = ID3DecisionTree(max_depth=max_depth, min_sample_leaf=min_sample_leaf, verbose=True)
+    # model = C45DecisionTree(max_depth=max_depth, min_sample_leaf=min_sample_leaf, verbose=True)
+    model = RandomForestClassification(
+        n_tree=5,
+        min_leaf_num=min_sample_leaf,
+        n_workers=5
+    )
+    model.fit_rf(X_train, y_train)
+    y_pred = model.predict_rf(X_test)
+    print(classification_report(y_true=y_test, y_pred=y_pred))
+
+

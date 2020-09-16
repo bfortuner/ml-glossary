@@ -204,12 +204,6 @@ Random Forests
 ==============
 
 Random Forest Classifier using ID3 Tree: `code example <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/random_forest_classifier.py>`__
-.. rubric:: Introduction
-Decision Tree typical exhibit high variance and tends to overfit the train data. To solve this problem, ensemble learning is introduced by combining several base estimators [#sklearnensemble]_. Ensemble learning includes bagging and boosting, of which Random Forest utilizes bagging method. We'll introduce boosting in the next section.
-
-Random Forest utilize bagging algorithms by grouping several decision tree classifiers (i.e. CART, ID3 or C4.5 tree) independently and then average their prediction. Besides bagging algorithms, when splitting node during the construction of the tree, the best split is found either from a random subset of dataset or features. These two algorithms introduce two source of randomness which will reduce the variance of classifier.
-
-.. rubric:: Code
 
 Boosting
 ========

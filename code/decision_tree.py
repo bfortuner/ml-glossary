@@ -5,14 +5,10 @@ from typing import List
 
 
 class TreeNode:
-    def __init__(self, data_idx, depth, information_entropy, child_lst=[]):
-        """
-
-        """
-        self.data_ids = data_idx
+    def __init__(self, data_idx, depth, child_lst=[]):
+        self.data_idx = data_idx
         self.depth = depth
         self.child = child_lst
-        self.information_entropy = information_entropy
         self.label = None
         self.split_col = None
         self.child_cate_order = None
@@ -46,13 +42,11 @@ class DecisionTree(metaclass=ABCMeta):
         num_sample, num_feature = X.shape
         self.feature_num = num_feature
         data_idx = list(range(num_sample))
-        self.root = TreeNode(data_idx=data_idx, information_entropy=self.get_information_entropy(data_ids=data_idx), depth=0, child_lst=[])
+        self.root = TreeNode(data_idx=data_idx, depth=0, child_lst=[])
         queue = [self.root]
         while queue:
             node = queue.pop(0)
-            if len(node.data_ids) == 0:
-                print()
-            if node.depth>self.max_depth or len(node.data_ids)==1:
+            if node.depth>self.max_depth or len(node.data_idx)==1:
                 self.set_label(node)
             else:
                 child_nodes = self.split_node(node)
@@ -72,29 +66,12 @@ class DecisionTree(metaclass=ABCMeta):
             labels.append(node.label)
         return labels
 
-    def get_information_entropy(self, data_ids):
-        target_Y = self.labels[data_ids]
-        total = len(target_Y)
-        unique, count = np.unique(target_Y, return_counts=True)
-        res = 0
-        for c in count:
-            p = float(c)/total
-            res -= p*np.log(p)
-        return res
-
     @classmethod
     def get_split_criterion(self, node, child_node_lst):
         pass
 
-    def _get_information_gain(self, node, child_node_lst):
-        gain = node.information_entropy
-        total = len(node.data_ids)
-        for child_node in child_node_lst:
-            gain -= len(child_node.data_ids)/float(total) * child_node.information_entropy
-        return gain
-
     def set_label(self, node):
-        target_Y = self.labels[node.data_ids]
+        target_Y = self.labels[node.data_idx]
         target_label = stats.mode(target_Y).mode[0]
         node.set_label(label=target_label)
 
@@ -115,15 +92,14 @@ class ID3DecisionTree(DecisionTree):
         informatin_gain = 0
         split_col = None
         for col_idx in range(self.feature_num):
-            current_child_cate_order = list(np.unique(self.data[node.data_ids][:, col_idx]))
+            current_child_cate_order = list(np.unique(self.data[node.data_idx][:, col_idx]))
             current_child_node_lst = []
             for col_value in current_child_cate_order:
-                data_idx = np.intersect1d(node.data_ids, np.where(self.data[:, col_idx] ==col_value))
+                data_idx = np.intersect1d(node.data_idx, np.where(self.data[:, col_idx] == col_value))
                 current_child_node_lst.append(
                     TreeNode(
                         data_idx=data_idx,
-                        depth=node.depth+1,
-                        information_entropy=self.get_information_entropy(data_idx)
+                        depth=node.depth+1
                     )
                 )
             current_gain = self.get_split_criterion(node, current_child_node_lst)
@@ -140,35 +116,61 @@ class ID3DecisionTree(DecisionTree):
             return child_node_lst
 
     def get_split_criterion(self, node, child_node_lst):
-        return self._get_information_gain(node, child_node_lst)
+        total = len(node.data_idx)
+        split_criterion = 0
+        for child_node in child_node_lst:
+            impurity = self.get_impurity(child_node.data_idx)
+            split_criterion += len(child_node.data_idx) / float(total) * impurity
+        return split_criterion
+
+    def get_impurity(self, data_ids):
+        target_Y = self.labels[data_ids]
+        total = len(target_Y)
+        unique, count = np.unique(target_Y, return_counts=True)
+        res = 0
+        for c in count:
+            p = float(c)/total
+            res -= p*np.log(p)
+        return res
 
     def get_nex_node(self, node, x):
-        return node.child[node.child_cate_order.index(x[node.split_col])]
+        try:
+            next_node = node.child[node.child_cate_order.index(x[node.split_col])]
+        except:
+            next_node = node.child[0]
+        return next_node
 
 
 class C45DecisionTree(ID3DecisionTree):
 
     def get_split_criterion(self, node, child_node_lst):
-        gain = self._get_information_gain(node, child_node_lst)
+        total = len(node.data_idx)
+        split_criterion = 0
+        for child_node in child_node_lst:
+            impurity = self.get_impurity(child_node.data_idx)
+            split_criterion += len(child_node.data_idx) / float(total) * impurity
         intrinsic_value = self._get_intrinsic_value(node, child_node_lst)
-        gain_ratio = gain/intrinsic_value
-        return gain_ratio
+        split_criterion= split_criterion/intrinsic_value
+        return split_criterion
 
     def _get_intrinsic_value(self, node, child_node_lst):
-        total = len(node.data_ids)
+        total = len(node.data_idx)
         res = 0
         for n in child_node_lst:
-            frac = len(n.data_ids)/float(total)
+            frac = len(n.data_idx) / float(total)
             res -=  frac * np.log(frac)
         return res
 
 
 class CART(DecisionTree):
 
-    def __init__(self, max_depth, min_sample_leaf, tree_type="classification", min_split_criterion=1e-4, verbose=False):
+    def __init__(self, max_depth, min_sample_leaf, split_criterion="gini", tree_type="classification", min_split_criterion=1e-4, verbose=False):
         super(CART, self).__init__(max_depth=max_depth, min_sample_leaf=min_sample_leaf, min_split_criterion=min_split_criterion
                                    , verbose=verbose)
         self.tree_type = tree_type
+        self.split_criterion = split_criterion
+        assert self.split_criterion in ["gini", "entropy"]
+        assert self.tree_type in ["classification", "regression"]
 
     def split_node(self, node: TreeNode) -> List[TreeNode]:
         child_node_lst = []
@@ -176,24 +178,22 @@ class CART(DecisionTree):
         gini_index = float("inf")
         split_col = None
         for col_idx in range(self.feature_num):
-            current_child_cate_order = list(np.unique(self.data[node.data_ids][:, col_idx]))
+            current_child_cate_order = list(np.unique(self.data[node.data_idx][:, col_idx]))
             current_child_cate_order.sort()
             for col_value in current_child_cate_order:
-                left_data_idx = np.intersect1d(node.data_ids, np.where(self.data[:, col_idx]<=col_value))
-                right_data_idx = np.intersect1d(node.data_ids, np.where(self.data[:, col_idx]>col_value))
+                left_data_idx = np.intersect1d(node.data_idx, np.where(self.data[:, col_idx] <= col_value))
+                right_data_idx = np.intersect1d(node.data_idx, np.where(self.data[:, col_idx] > col_value))
                 current_child_node_lst = []
                 if len(left_data_idx) != 0:
                     left_tree = TreeNode(
                             data_idx=left_data_idx,
                             depth=node.depth+1,
-                            information_entropy=self.get_information_entropy(left_data_idx)
                         )
                     current_child_node_lst.append(left_tree)
                 if len(right_data_idx) != 0:
                     right_tree = TreeNode(
                             data_idx=right_data_idx,
                             depth=node.depth+1,
-                            information_entropy=self.get_information_entropy(right_data_idx)
                         )
                     current_child_node_lst.append(right_tree)
                 current_gini_index = self.get_split_criterion(node, current_child_node_lst)
@@ -206,28 +206,35 @@ class CART(DecisionTree):
         node.set_attribute(split_col=split_col, child_cate_order=child_cate_order)
         return child_node_lst
 
-    def get_split_criterion(self, node, child_node_lst, regression=False):
-        total = len(node.data_ids)
-        total_gini_index = 0
+    def get_split_criterion(self, node, child_node_lst):
+        total = len(node.data_idx)
+        split_criterion = 0
         for child_node in child_node_lst:
-            gini_index = self.get_impurity(child_node.data_ids, regression)
-            total_gini_index += len(child_node.data_ids) / float(total) * gini_index
-        return total_gini_index
+            impurity = self.get_impurity(child_node.data_idx)
+            split_criterion += len(child_node.data_idx) / float(total) * impurity
+        return split_criterion
 
-    def get_impurity(self, data_ids, regression=False):
+    def get_impurity(self, data_ids):
         target_y = self.labels[data_ids]
         total = len(target_y)
-        if regression:
+        if self.tree_type == "regression":
             res = 0
             mean_y = np.mean(target_y)
             for y in target_y:
                 res += (y - mean_y) ** 2 / total
-        else:
-            res = 1
-            unique_y = np.unique(target_y)
-            for y in unique_y:
-                num = len(np.where(target_y==y)[0])
-                res -= (num/float(total))**2
+        elif self.tree_type == "classification":
+            if self.split_criterion == "gini":
+                res = 1
+                unique_y = np.unique(target_y)
+                for y in unique_y:
+                    num = len(np.where(target_y==y)[0])
+                    res -= (num/float(total))**2
+            elif self.split_criterion == "entropy":
+                unique, count = np.unique(target_y, return_counts=True)
+                res = 0
+                for c in count:
+                    p = float(c) / total
+                    res -= p * np.log(p)
         return res
 
     def get_nex_node(self, node: TreeNode, x: np.array):
@@ -242,11 +249,22 @@ class CART(DecisionTree):
 if __name__ == "__main__":
     # ID3: only categorical features
     from sklearn.model_selection import train_test_split
-    from sklearn.metrics import classification_report
+    from sklearn.metrics import classification_report, mean_squared_error
     from sklearn import datasets
-    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
     dataset = datasets.load_iris()
-    all_categorical_feature = False
+
+
+    # #############################
+    # ========== Config ==========
+    # #############################
+    all_categorical_feature = True
+    max_depth = 3
+    min_sample_leaf = 4
+    split_criterion = "entropy"
+    # tree_type = "classification"
+    tree_type = "regression"
+    # ###########################
 
     # convert continuous feature to categorical features
     if all_categorical_feature:
@@ -258,18 +276,24 @@ if __name__ == "__main__":
 
     Y = dataset.target
     X_train, X_test, y_train, y_test = train_test_split(X, Y, train_size=0.8)
-    # config
-    max_depth = 3
-    min_sample_leaf = 4
 
-    model = DecisionTreeClassifier(criterion="entropy", max_depth=max_depth, min_samples_leaf=min_sample_leaf)
+    if tree_type == "classification":
+        model = DecisionTreeClassifier(criterion=split_criterion, max_depth=max_depth, min_samples_leaf=min_sample_leaf)
+    else:
+        model = DecisionTreeRegressor(max_depth=max_depth, min_samples_leaf=min_sample_leaf)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
-    print(classification_report(y_true=y_test, y_pred=y_pred))
+    if tree_type == "classification":
+        print(classification_report(y_true=y_test, y_pred=y_pred))
+    else:
+        print(mean_squared_error(y_test, y_pred))
     #
     # model = ID3DecisionTree(max_depth=max_depth, min_sample_leaf=min_sample_leaf, verbose=True)
     # model = C45DecisionTree(max_depth=max_depth, min_sample_leaf=min_sample_leaf, verbose=True)
-    model = CART(max_depth=max_depth, min_sample_leaf=min_sample_leaf, verbose=True)
+    model = CART(max_depth=max_depth, min_sample_leaf=min_sample_leaf, verbose=True, tree_type=tree_type, split_criterion=split_criterion)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
-    print(classification_report(y_true=y_test, y_pred=y_pred))
+    if tree_type == "classification":
+        print(classification_report(y_true=y_test, y_pred=y_pred))
+    else:
+        print(mean_squared_error(y_test, y_pred))

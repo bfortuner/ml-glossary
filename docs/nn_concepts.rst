@@ -41,8 +41,7 @@ Synapses are like roads in a neural network. They connect inputs to neurons, neu
 Weights
 =======
 
-Explanation of weights (parameters)
-
+Weights are values that control the strength of the connection between two neurons. That is, inputs are typically multiplied by weights, and that defines how much influence the input will have on the output. In other words: when the inputs are transmitted between neurons, the weights are applied to the inputs along with an additional value (the bias) 
 
 .. _nn_bias:
 

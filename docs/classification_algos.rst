@@ -43,7 +43,7 @@ C4.5 is the successor of ID3 and remove the restriction that the feature must be
 
 CART is similar to C4.5. But it differs in that it constructs binary tree and support regression problem [#sklearntree]_.
 
-The main differences are shown in the follow table:
+The main differences are shown in the following table:
 
 +-------------------+---------------------+------------------------------------------------------+----------------------------------------------+
 |     Dimensions    |         ID3         |                         C4.5                         |                     CART                     |
@@ -113,7 +113,7 @@ First, we create the base class `TreeNode class <https://github.com/bfortuner/ml
                         queue.extend(child_nodes)
 ..
 
-For CART algorithm, when constructing the binary tree, it will try search for the feature and threshold that will yield the largest gain or the least impurity. The split criterion is a combination of the child nodes' impurity. For the child nodes' impurity, gini coefficient or information gain are adopted in classification. For regression problem, mean-square-error or mean-absolute-error are used. Example codes are showed below. For more details about the formulas, please refer to `Mathematical formulation for decision tree in scikit-learn documentation <https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation>`__
+The CART algorithm, when constructing the binary tree, will try searching for the feature and threshold that will yield the largest gain or the least impurity. The split criterion is a combination of the child nodes' impurity. For the child nodes' impurity, gini coefficient or information gain are adopted in classification. For regression problem, mean-square-error or mean-absolute-error are used. Example codes are showed below. For more details about the formulas, please refer to `Mathematical formulation for decision tree in scikit-learn documentation <https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation>`__
 
 .. code-block:: python
 

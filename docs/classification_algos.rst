@@ -37,7 +37,7 @@ There are various kinds of decision tree algorithms such as ID3 (Iterative Dicho
     2. Else, set the child node as the current node and recurse to step 2.
 
 
-ID3 creates a multiway tree. For each node, it try to find the categorical feature that will yield the largest information gain for the target variable.
+ID3 creates a multiway tree. For each node, it trys to find the categorical feature that will yield the largest information gain for the target variable.
 
 C4.5 is the successor of ID3 and remove the restriction that the feature must be categorical by dynamically define a discrete attribute that partitions the continuous attribute in the discrete set of intervals.
 

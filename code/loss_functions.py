@@ -41,7 +41,7 @@ def KLDivergence(yHat, y):
 
 
 def L1(yHat, y):
-    return np.sum(np.absolute(yHat - y))
+    return np.sum(np.absolute(yHat - y)) / y.size
 
 
 def L2(yHat, y):

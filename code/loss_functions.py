@@ -24,7 +24,7 @@ def Dice(yHat, y):
 
 
 def Hinge(yHat, y):
-    return np.max(0, 1 - yHat * y)
+    return np.max(0, y - (1-2*y)*yHat)
 
 
 def Huber(yHat, y, delta=1.):

@@ -274,7 +274,7 @@ ROC (Receiver Operating Characteristic) Curve
 .. _glossary_segmentation:
 
 Segmentation
-  Contribute a definition!
+  It is the process of partitioning a data set into multiple distinct sets. This separation is done such that the members of the same set are similar to each otherand different from the members of other sets.
 
 .. _glossary_specificity:
 

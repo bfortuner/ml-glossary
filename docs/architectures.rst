@@ -60,25 +60,40 @@ An example implementation in PyTorch.
 
 GAN
 ===
+A Generative Adversarial Network (GAN) is a type of network which creates novel tensors (often images, voices, etc.). The generative portion of the architecture competes with the discriminator part of the architecture in a zero-sum game. The goal of the generative network is to create novel tensors which the adversarial network attempts to classify as real or fake. The goal of the generative network is generate tensors where the discriminator network determines that the tensor has a 50% chance of being fake and a 50% chance of being real.
 
-TODO: Description of GAN use case and basic architecture. Figure from [3].
+Figure from [3].
 
 .. image:: images/gan.png
       :align: center
 
 .. rubric:: Model
 
-TODO: An example implementation in PyTorch.
+An example implementation in PyTorch.
+
+
+.. rubric:: Generator
+
+.. literalinclude:: ../code/gan.py
+      :pyobject: Generator
+      
+.. rubric:: Discriminator
+
+.. literalinclude:: ../code/gan.py
+      :pyobject: Discriminator
+
 
 .. rubric:: Training
 
-TODO
+.. literalinclude:: ../code/gan.py
+      :pyobject: train
 
 .. rubric:: Further reading
 
 - `Generative Adversarial Networks <http://guertl.me/post/162759264070/generative-adversarial-networks>`_
 - `Deep Learning Book <http://www.deeplearningbook.org/contents/generative_models.html>`_
-
+- `PyTorch DCGAN Example <https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html>`_
+- `Original Paper <https://papers.nips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf>`_
 
 MLP
 ===

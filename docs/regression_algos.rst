@@ -16,6 +16,7 @@ OLS is the method with which linear regression is performed. The square of the d
     l = \sum_{i=1}^n (y_i - \bar{y})^2
 
 
+
 Polynomial
 ==========
 
@@ -44,6 +45,7 @@ Ridge regression is similar to lasso regression, but the regularization term use
 .. math::
 
     l = \sum_{i=1}^n (y_i - \tilde{y})^2 + \alpha \sum_{j=1}^p w^2_j
+
 
 
 Stepwise

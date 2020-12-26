@@ -4,36 +4,50 @@
 Regression Algorithms
 =====================
 
+.. contents:: :local:
 
-Lasso
-=====
-
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
-
-Linear
-======
-
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 Ordinary Least Squares
 ======================
 
 Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
+
 Polynomial
 ==========
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Polynomial regression is a modification of linear regression where the existing features are mapped to a polynomial form. The problem is still a linear regression problem, but the input vector is now mapped to a higher dimensional vector which serves as a pseudo-input vector of sorts.
+
+.. math::
+
+    \textbf{x} = (x_0, x_1) \rightarrow \textbf{x'} = (x_0, x^2_0, x_1, x^2_1, x_0x_1)
+
+
+Lasso
+=====
+
+Lasso Regression tries to reduce the ordinary least squares error similar to vanilla regression, but adds an extra term. The sum of the :math:`L_1` norm for every data point multiplied by a hyperparameter :math:`\alpha` is used. This reduces model complexity and prevents overfitting. 
+
+.. math::
+
+    l = \sum_{i=1}^n (y_i - \tilde{y})^2 + \alpha \sum_{j=1}^p |w_j|
+
 
 Ridge
 =====
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Ridge regression is similar to lasso regression, but the regularization term uses the :math:`L_2` norm instead.
+
+.. math::
+
+    l = \sum_{i=1}^n (y_i - \tilde{y})^2 + \alpha \sum_{j=1}^p w^2_j
+
 
 Splines
 =======
 
 Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+
 
 Stepwise
 ========

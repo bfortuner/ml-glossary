@@ -11,6 +11,8 @@ Reinforcement Learning concept:https://www.geeksforgeeks.org/what-is-reinforceme
 
 Reinforcement Learning Algorithms:https://medium.com/@SmartLabAI/reinforcement-learning-algorithms-an-intuitive-overview-904e2dff5bbc
 
+Programmatic and a theoretical introduction to reinforcement learning:https://spinningup.openai.com/
+
 
 
 

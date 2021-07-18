@@ -22,20 +22,18 @@ It is a Techniques for combating overfitting and improving training.
 Data Augmentation
 =================
 
-Having more data (dataset / samples) is a best way to get better consistent estimators (ML model). In the real world getting a large volume of useful data for training a model is cumbersome and labelling is an extremely tedious task. 
+Having more data is the surest way to get better consistent estimators (ML model). Unfortunately, in the real world getting a large volume of useful data for training a model is cumbersome and labelling is an extremely tedious (or expensive) task. 
 
-Either labelling requires more manual annotation, example - For creating a better image classifier we can use Mturk and involve more man power to generate dataset or doing survey in social media and asking people to participate and generate dataset.  
-Above process can yield good dataset however those are difficult to carry and expensive.  Having small dataset will lead to the well know Over fitting problem.  
+'Gold standard' labelling requires more manual annotation. For example, in order to develop a better image classifier we can use Mturk and involve more man power to generate dataset, or we could crowdsource by posting on social media and asking people to contribute.  
+The above process can yield good datasets; however, those are difficult to carry and expensive. On the other hand, having a small dataset will lead to the well-known problem of overfitting.  
 
-Data Augmentation is one of the interesting regularization technique to resolve the above problem. The concept is very simple, this technique generates new training data from given original dataset. Dataset Augmentation provides a cheap and easy way to
-increase the amount of your training data.
+Data Augmentation is one interesting regularization technique to resolve the above problem. The concept is very simple, this technique generates new training data from given original dataset. Dataset Augmentation provides a cheap and easy way to increase the volume of training data.
 
 This technique can be used for both NLP and CV. 
 
 In CV we can use the techniques like Jitter, PCA and Flipping. Similarly in NLP we can use the techniques like Synonym Replacement,Random Insertion, Random Deletion and Word Embeddings. 
 
-
-It is worth knowing that Keras' provided ImageDataGenerator for generating Data Augmentation. 
+Many software libraries contain tools for data augmentation. For example, Keras provides the ImageDataGenerator for augmenting image datasets. 
 
 Sample code for random deletion
 
@@ -65,7 +63,7 @@ Sample code for random deletion
 		return new_words
 	
 
-Furthermore, when comparing two machine learning algorithms train both with either augmented or non-augmented dataset. Otherwise, no subjective decision can be made on which algorithm performed better
+Furthermore, when comparing two machine learning algorithms, it is important to train both with either augmented or non-augmented dataset. Otherwise, no subjective decision can be made on which algorithm performed better
 
 .. rubric:: Further reading
 
@@ -78,7 +76,7 @@ Dropout
 
 .. rubric:: What is Dropout? 
 
-Dropout is a regularization technique for reducing overfitting in neural networks by preventing complex co-adaptations on training data
+Dropout is a regularization technique for reducing overfitting in neural networks by preventing complex co-adaptations on training data.
 
 Dropout is a technique where randomly selected neurons are ignored during training. They are “dropped-out” randomly. This means that their contribution to the activation of downstream neurons is temporally removed on the forward pass and any weight updates are not applied to the neuron on the backward pass.
 

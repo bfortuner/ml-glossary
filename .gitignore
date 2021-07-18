@@ -4,3 +4,4 @@ _build/
 docs/_build/
 venv/
 .idea
+sphinxenv/

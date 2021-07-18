@@ -85,7 +85,7 @@ ELU is very similiar to RELU except negative inputs. They are both in identity f
 ReLU
 ====
 
-A recent invention which stands for Rectified Linear Units. The formula is deceptively simple: :math:`max(0,z)`. Despite its name and appearance, it’s not linear and provides the same benefits as Sigmoid but with better performance.
+A recent invention which stands for Rectified Linear Units. The formula is deceptively simple: :math:`max(0,z)`. Despite its name and appearance, it’s not linear and provides the same benefits as Sigmoid (i.e. the ability to learn nonlinear functions), but with better performance.
 
 +-------------------------------------------------------+------------------------------------------------------+
 | Function                                              | Derivative                                           |
@@ -112,10 +112,10 @@ A recent invention which stands for Rectified Linear Units. The formula is decep
 
 .. rubric:: Cons
 
-- One of its limitation is that it should only be used within Hidden layers of a Neural Network Model.
-- Some gradients can be fragile during training and can die. It can cause a weight update which will makes it never activate on any data point again. Simply saying that ReLu could result in Dead Neurons.
-- In another words, For activations in the region (x<0) of ReLu, gradient will be 0 because of which the weights will not get adjusted during descent. That means, those neurons which go into that state will stop responding to variations in error/ input ( simply because gradient is 0, nothing changes ). This is called dying ReLu problem.
-- The range of ReLu is [0, inf). This means it can blow up the activation.
+- One of its limitations is that it should only be used within hidden layers of a neural network model.
+- Some gradients can be fragile during training and can die. It can cause a weight update which will makes it never activate on any data point again. In other words, ReLu can result in dead neurons.
+- In another words, For activations in the region (x<0) of ReLu, gradient will be 0 because of which the weights will not get adjusted during descent. That means, those neurons which go into that state will stop responding to variations in error/ input (simply because gradient is 0, nothing changes). This is called the dying ReLu problem.
+- The range of ReLu is :math:`[0, \infty)`. This means it can blow up the activation.
 
 .. rubric:: Further reading
 

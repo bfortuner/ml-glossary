@@ -10,7 +10,11 @@ Regression Algorithms
 Ordinary Least Squares
 ======================
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+OLS is the method with which linear regression is performed. The square of the difference from the mean is taken for every data point, and the summed loss function is to be minimized.
+
+.. math::
+    l = \sum_{i=1}^n (y_i - \bar{y})^2
+
 
 
 Polynomial
@@ -43,17 +47,16 @@ Ridge regression is similar to lasso regression, but the regularization term use
     l = \sum_{i=1}^n (y_i - \tilde{y})^2 + \alpha \sum_{j=1}^p w^2_j
 
 
-Splines
-=======
-
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
-
 
 Stepwise
 ========
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Stepwise regression or spline regression helps us fit a piece wise function to the data. It is usually used with linear models, but it can be generalized to higher degrees as well. The regression equation takes the form of
 
+.. math::
+    y = ax + b(x-\bar{x})H_{\alpha}+c
+ 
+where :math:`H_{\alpha}` is the shifted Heaviside step function, having its discontinuity at :math:`\alpha`.
 
 
 .. rubric:: References

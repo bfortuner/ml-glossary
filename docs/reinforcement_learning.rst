@@ -10,7 +10,12 @@ There are different problem types and algorithms, but all reinforcement learning
 
   * an **agent** - the algorithm or "AI" responsible for making decisions
 
+<<<<<<< HEAD
   * an **environment**, consisting of different **states** in which the agent may find itself
+=======
+Programmatic and a theoretical introduction to reinforcement learning:https://spinningup.openai.com/
+
+>>>>>>> upstream/master
 
   * a **reward** signal which is returned by the environment as a function of the current state
 
@@ -27,7 +32,7 @@ In most algorithms, expected cumulative reward is discounted by some factor :mat
 Note on Terminology
 -------------------
 
-For mostly historical reasons, engineering and operations research use different words to talk about the same concepts. For example, XXX.\ :sup:`1`
+For mostly historical reasons, engineering and operations research use different words to talk about the same concepts. For example, the general field of reinforcement learning itself is sometimes referred to as optimal control, approximate dynamic programming, or neuro-dynamic programming.\ :sup:`1`
 
 Eploration vs. Exploitation
 ---------------------------

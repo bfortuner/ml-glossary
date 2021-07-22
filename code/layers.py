@@ -1,5 +1,7 @@
 import math
 import numpy as np
+from scipy.special import softmax
+from typing import List
 
 
 def BatchNorm():
@@ -36,6 +38,53 @@ def BatchNorm():
         dbeta = np.sum(dout, axis=0)
 
         return dX, dgamma, dbeta
+
+
+class RNN:
+    """
+    rnn = RNN()
+    rnn.forward(input_vector = [[1, 3, 4], [4, 5, 6]])
+    """
+    def __init__(self, input_dim: int, hidden_dim: int, output_dim: int, batch_size=1) -> None:
+        """
+
+        """
+        self.input_dim = input_dim
+        self.hidden_dim = hidden_dim
+        self.out_dim = output_dim
+        self.batch_size = batch_size
+        self.hidden_state = None
+        self.params = None
+        # initialization
+        self._init_params()
+        self._init_hidden_state()
+
+    def _init_params(self) -> List[np.array]:
+        """
+        """
+        scale = 0.01
+        Waa = np.random.normal(scale=scale, size=[self.hidden_state, self.input_dim])
+        Wax = np.random.normal(scale=scale, size=[self.hidden_state, self.hidden_dim])
+        Wy = np.random.normal(scale=scale, size=[self.out_dim, self.hidden_dim])
+        ba = np.zeros(shape=[1, self.hidden_dim])
+        by = np.zeros(shape=[1, self.out_dim])
+        return [Waa, Wax, Wy, ba, by]
+
+    def _init_hidden_state(self) -> np.array:
+        return np.zeros(shape=[self.batch_size, self.hidden_dim])
+
+    def forward(self, input_vector: List[np.array]) -> List[np.array]:
+        Waa, Wax, Wy, ba, by = self.params
+        output_vector = []
+        for vector in input_vector:
+            self.hidden_state = np.tanh(
+                np.dot(self.hidden_state,???) + np.dot(Wax, vector) + ba
+            )
+            y = softmax(
+                np.dot(Wy, self.hidden_state) + by
+            )
+            output_vector.append(y)
+        return output_vector
 
 
 def Adagrad(data):

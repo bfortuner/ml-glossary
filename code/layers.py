@@ -41,10 +41,6 @@ def BatchNorm():
 
 
 class RNN:
-    """
-    rnn = RNN()
-    rnn.forward(input_vector = [[1, 3, 4], [4, 5, 6]])
-    """
     def __init__(self, input_dim: int, hidden_dim: int, output_dim: int, batch_size=1) -> None:
         """
 
@@ -53,32 +49,34 @@ class RNN:
         self.hidden_dim = hidden_dim
         self.out_dim = output_dim
         self.batch_size = batch_size
-        self.hidden_state = None
-        self.params = None
         # initialization
-        self._init_params()
-        self._init_hidden_state()
+        self.params = self._init_params()
+        self.hidden_state = self._init_hidden_state()
 
     def _init_params(self) -> List[np.array]:
         """
         """
         scale = 0.01
-        Waa = np.random.normal(scale=scale, size=[self.hidden_state, self.input_dim])
-        Wax = np.random.normal(scale=scale, size=[self.hidden_state, self.hidden_dim])
+        Waa = np.random.normal(scale=scale, size=[self.hidden_dim, self.hidden_dim])
+        Wax = np.random.normal(scale=scale, size=[self.hidden_dim, self.input_dim])
         Wy = np.random.normal(scale=scale, size=[self.out_dim, self.hidden_dim])
-        ba = np.zeros(shape=[1, self.hidden_dim])
-        by = np.zeros(shape=[1, self.out_dim])
+        ba = np.zeros(shape=self.hidden_dim)
+        by = np.zeros(shape=self.out_dim)
         return [Waa, Wax, Wy, ba, by]
 
     def _init_hidden_state(self) -> np.array:
-        return np.zeros(shape=[self.batch_size, self.hidden_dim])
+        return np.zeros(shape=[self.hidden_dim, self.batch_size])
 
     def forward(self, input_vector: List[np.array]) -> List[np.array]:
+        """
+        Input vector:
+            dimension: [num_steps, self.input_dim, self.batch_size]
+        """
         Waa, Wax, Wy, ba, by = self.params
         output_vector = []
         for vector in input_vector:
             self.hidden_state = np.tanh(
-                np.dot(self.hidden_state,???) + np.dot(Wax, vector) + ba
+                np.dot(Waa, self.hidden_state) + np.dot(Wax, vector) + ba
             )
             y = softmax(
                 np.dot(Wy, self.hidden_state) + by
@@ -103,14 +101,37 @@ def RMSProp(data):
     pass
 
 
-def SGD(data, batch_size, lr):
-    N = len(data)
-    np.random.shuffle(data)
-    mini_batches = np.array([data[i:i+batch_size]
-     for i in range(0, N, batch_size)])
-    for X,y in mini_batches:
-        backprop(X, y, lr)
+# def SGD(data, batch_size, lr):
+#     N = len(data)
+#     np.random.shuffle(data)
+#     mini_batches = np.array([data[i:i+batch_size]
+#      for i in range(0, N, batch_size)])
+#     for X,y in mini_batches:
+#         backprop(X, y, lr)
 
 
 def SGD_Momentum():
     pass
+
+
+if __name__ == "__main__":
+    input_data = np.array([
+        [
+            [1, 3]
+            , [2, 4]
+            , [3, 6]
+        ]
+        , [
+            [4, 3]
+            , [3, 4]
+            , [1, 5]
+        ]
+    ])
+    batch_size = 2
+    input_dim = 3
+    output_dim = 4
+    hidden_dim = 5
+    time_step = 2
+    rnn = RNN(input_dim=input_dim, batch_size=batch_size, output_dim=output_dim, hidden_dim=hidden_dim)
+    output_vector = rnn.forward(input_vector=input_data)
+    print(output_vector)

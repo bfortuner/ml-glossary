@@ -186,8 +186,10 @@ Average pooling layer calculates the average of pixels contained in the window.
 
 RNN
 ---
-
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+RNN layer is used for sequence model. The structure is as follows:
+.. image:: images/rnn_layer.png
+       :align: center
+       :width: 512 px
 
 
 .. rubric:: References

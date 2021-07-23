@@ -42,9 +42,6 @@ def BatchNorm():
 
 class RNN:
     def __init__(self, input_dim: int, hidden_dim: int, output_dim: int, batch_size=1) -> None:
-        """
-
-        """
         self.input_dim = input_dim
         self.hidden_dim = hidden_dim
         self.out_dim = output_dim
@@ -54,23 +51,23 @@ class RNN:
         self.hidden_state = self._init_hidden_state()
 
     def _init_params(self) -> List[np.array]:
-        """
-        """
         scale = 0.01
         Waa = np.random.normal(scale=scale, size=[self.hidden_dim, self.hidden_dim])
         Wax = np.random.normal(scale=scale, size=[self.hidden_dim, self.input_dim])
         Wy = np.random.normal(scale=scale, size=[self.out_dim, self.hidden_dim])
-        ba = np.zeros(shape=self.hidden_dim)
-        by = np.zeros(shape=self.out_dim)
+        ba = np.zeros(shape=[self.hidden_dim, 1])
+        by = np.zeros(shape=[self.out_dim, 1])
         return [Waa, Wax, Wy, ba, by]
 
     def _init_hidden_state(self) -> np.array:
         return np.zeros(shape=[self.hidden_dim, self.batch_size])
 
-    def forward(self, input_vector: List[np.array]) -> List[np.array]:
+    def forward(self, input_vector: np.array) -> np.array:
         """
-        Input vector:
+        input_vector:
             dimension: [num_steps, self.input_dim, self.batch_size]
+        out_vector:
+            dimension: [num_steps, self.output_dim, self.batch_size]
         """
         Waa, Wax, Wy, ba, by = self.params
         output_vector = []
@@ -82,7 +79,7 @@ class RNN:
                 np.dot(Wy, self.hidden_state) + by
             )
             output_vector.append(y)
-        return output_vector
+        return np.array(output_vector)
 
 
 def Adagrad(data):
@@ -134,4 +131,6 @@ if __name__ == "__main__":
     time_step = 2
     rnn = RNN(input_dim=input_dim, batch_size=batch_size, output_dim=output_dim, hidden_dim=hidden_dim)
     output_vector = rnn.forward(input_vector=input_data)
-    print(output_vector)
+    print("RNN:")
+    print(f"Input data dimensions: {input_data.shape}")
+    print(f"Output data dimensions {output_vector.shape}")

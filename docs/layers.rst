@@ -138,13 +138,6 @@ Linear
 
 Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
-
-LSTM
-----
-
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
-
-
 Pooling
 -------
 
@@ -195,6 +188,7 @@ The structure is as follows:
        :width: 512 px
 
 .. rubric:: Code
+
 For detail code, refer to `layers.py <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/layers.py>`__
 
 .. code-block:: python
@@ -267,6 +261,158 @@ For detail code, refer to `layers.py <https://github.com/bfortuner/ml-cheatsheet
         ##  RNN:
         ## Input data dimensions: (2, 3, 2)
         ## Output data dimensions (2, 4, 2)
+
+
+
+GRU
+---
+GRU (Gated Recurrent Unit) supports the gating of hidden state:
+
+1. Reset gate controls how much of previous hidden state we might still want to remember
+2. Update gate controls how much of current hidden state is just a copy of previous state
+
+The structure and math are as follow:
+
+.. image:: images/gru_structure.png
+       :align: center
+       :width: 512 px
+.. rubric:: Code
+For detail code, refer to `layers.py <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/layers.py>`__
+
+.. code-block:: python
+
+    class GRU:
+        def __init__(self, input_dim: int, hidden_dim: int, output_dim: int, batch_size=1) -> None:
+            self.input_dim = input_dim
+            self.hidden_dim = hidden_dim
+            self.out_dim = output_dim
+            self.batch_size = batch_size
+            # initialization
+            self.params = self._init_params()
+            self.hidden_state = self._init_hidden_state()
+
+        def _init_params(self) -> List[np.array]:
+            scale = 0.01
+            def param_single_layer():
+                w = np.random.normal(scale=scale, size=(self.hidden_dim, self.hidden_dim+input_dim))
+                b = np.zeros(shape=[self.hidden_dim, 1])
+                return w, b
+
+            # reset, update gate
+            Wr, br = param_single_layer()
+            Wu, bu = param_single_layer()
+            # output layer
+            Wy = np.random.normal(scale=scale, size=[self.out_dim, self.hidden_dim])
+            by = np.zeros(shape=[self.out_dim, 1])
+            return [Wr, br, Wu, bu, Wy, by]
+
+        def _init_hidden_state(self) -> np.array:
+            return np.zeros(shape=[self.hidden_dim, self.batch_size])
+
+        def forward(self, input_vector: np.array) -> np.array:
+            """
+            input_vector:
+                dimension: [num_steps, self.input_dim, self.batch_size]
+            out_vector:
+                dimension: [num_steps, self.output_dim, self.batch_size]
+            """
+            Wr, br, Wu, bu, Wy, by = self.params
+            output_vector = []
+            for vector in input_vector:
+                # expit in scipy is sigmoid function
+                reset_gate = expit(
+                    np.dot(Wr, np.concatenate([self.hidden_state, vector], axis=0)) + br
+                )
+                update_gate = expit(
+                    np.dot(Wu, np.concatenate([self.hidden_state, vector], axis=0)) + bu
+                )
+                candidate_hidden = np.tanh(
+                    reset_gate * self.hidden_state
+                )
+                self.hidden_state = update_gate * self.hidden_state + (1-update_gate) * candidate_hidden
+                y = softmax(
+                    np.dot(Wy, self.hidden_state) + by
+                )
+                output_vector.append(y)
+            return np.array(output_vector)
+LSTM
+----
+
+In order to address the **long-term information preservation** and **shor-term skipping** in latent variable model, we introduced LSTM. In LSTM, we introduce the memory cell that has the same shape as the hidden state, which is actually a fancy version of a hidden state, engineered to record additional information.
+
+The structure and math are as follow:
+
+.. image:: images/lstm_structure.png
+       :align: center
+       :width: 512 px
+
+.. rubric:: Code
+For detail code, refer to `layers.py <https://github.com/bfortuner/ml-cheatsheet/blob/master/code/layers.py>`__
+
+.. code-block:: python
+
+    class LSTM:
+        def __init__(self, input_dim: int, hidden_dim: int, output_dim: int, batch_size=1) -> None:
+            self.input_dim = input_dim
+            self.hidden_dim = hidden_dim
+            self.out_dim = output_dim
+            self.batch_size = batch_size
+            # initialization
+            self.params = self._init_params()
+            self.hidden_state = self._init_hidden_state()
+            self.memory_state = self._init_hidden_state()
+
+        def _init_params(self) -> List[np.array]:
+            scale = 0.01
+            def param_single_layer():
+                w = np.random.normal(scale=scale, size=(self.hidden_dim, self.hidden_dim+input_dim))
+                b = np.zeros(shape=[self.hidden_dim, 1])
+                return w, b
+
+            # forget, input, output gate + candidate memory state
+            Wf, bf = param_single_layer()
+            Wi, bi = param_single_layer()
+            Wo, bo = param_single_layer()
+            Wc, bc = param_single_layer()
+            # output layer
+            Wy = np.random.normal(scale=scale, size=[self.out_dim, self.hidden_dim])
+            by = np.zeros(shape=[self.out_dim, 1])
+            return [Wf, bf, Wi, bi, Wo, bo, Wc, bc, Wy, by]
+
+        def _init_hidden_state(self) -> np.array:
+            return np.zeros(shape=[self.hidden_dim, self.batch_size])
+
+        def forward(self, input_vector: np.array) -> np.array:
+            """
+            input_vector:
+                dimension: [num_steps, self.input_dim, self.batch_size]
+            out_vector:
+                dimension: [num_steps, self.output_dim, self.batch_size]
+            """
+            Wf, bf, Wi, bi, Wo, bo, Wc, bc, Wy, by = self.params
+            output_vector = []
+            for vector in input_vector:
+                # expit in scipy is sigmoid function
+                foget_gate = expit(
+                    np.dot(Wf, np.concatenate([self.hidden_state, vector], axis=0)) + bf
+                )
+                input_gate = expit(
+                    np.dot(Wi, np.concatenate([self.hidden_state, vector], axis=0)) + bi
+                )
+                output_gate = expit(
+                    np.dot(Wo, np.concatenate([self.hidden_state, vector], axis=0)) + bo
+                )
+                candidate_memory = np.tanh(
+                    np.dot(Wc, np.concatenate([self.hidden_state, vector], axis=0)) + bc
+                )
+                self.memory_state = foget_gate * self.memory_state + input_gate * candidate_memory
+                self.hidden_state = output_gate * np.tanh(self.memory_state)
+                y = softmax(
+                    np.dot(Wy, self.hidden_state) + by
+                )
+                output_vector.append(y)
+            return np.array(output_vector)
+
 
 
 

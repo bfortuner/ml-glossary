@@ -35,14 +35,55 @@ An example implementation in PyTorch.
 CNN
 ===
 
-TODO: Description of CNN use case and basic architecture. Figure from [2].
+The *convolutional neural network*, or *CNN*, is a feed-forward neural network
+which has at least one convolutional layer. This type of deep neural network
+is used for processing structured arrays of data. It is distinguished from other
+neural networks by its superior performance with speech, audio, and
+especially, image data. For the latter data type, CNNs are commonly employed
+in computer vision tasks, like image classification, since they are
+especially good at finding out patterns from the input images, such as lines,
+circles, or more complex objects, e.g., human faces.
 
-.. image:: images/cnn.jpeg
+Convolutional neural networks comprise many convolutional layers, stacked one
+on top of the other, in a sequence. The sequential architecture of CNNs
+allows them to learn hierarchical features. Every layer can recognize shapes,
+and the deeper the network goes, the more complex are the shapes which can be
+recognized. The design of convolutional layers in a CNN reflects the
+structure of the human visual cortex. In fact, our visual cortex is similarly
+made of different layers, which process an image in our sight by sequentially identifying more and more complex features.
+
+The CNN architecture is made up of three main distinct layers:
+
+#. Convolutional layer
+#. Pooling layer
+#. Fully-connected (FC) layer
+
+.. figure:: images/cnn.jpg
       :align: center
+      :width: 600 px
+
+      **Overview of CNN architecture.** The architecture of CNNs follows this
+      structure, but with a greater number of layers for each layer’s type. The
+      convolutional and pooling layers are layers peculiar to CNNs, while the
+      fully-connected layer, activation function and output layer, are also
+      present in regular feed-forward neural networks. Source: [2]
+
+When working with image data, the CNN architecture accepts as input a 3D
+volume, or a 1D vector depending if the image data is in RGB format, for the
+first case, or in grayscale format, for the latter. Then it transforms the input
+through different equations, and it outputs a class. The convolutional layer
+is the first layer of the convolutional neural network. While this first
+layer can be followed by more convolutional layers, or pooling layers, the
+fully-connected layer remains the last layer of the network, which outputs
+the result. At every subsequent convolutional layer, the CNN increases its
+complexity, and it can identify greater portions in the image. In the first
+layers, the algorithm can recognize simpler features such as color or edges.
+Deeper in the network, it becomes able to identify both larger objects in the image and more complex ones. In the last layers, before the image reaches the final FC layer, the CNN identifies the full object in the image.
+
 
 .. rubric:: Model
 
-An example implementation in PyTorch.
+An example implementation of a CNN in PyTorch.
 
 .. literalinclude:: ../code/cnn.py
       :pyobject: CNN
@@ -207,6 +248,6 @@ An example implementation in PyTorch of a Convolutional Variational Autoencoder.
 .. rubric:: References
 
 .. [1] https://hackernoon.com/autoencoders-deep-learning-bits-1-11731e200694
-.. [2] http://cs231n.github.io/convolutional-networks
+.. [2] https://iq.opengenus.org/basics-of-machine-learning-image-classification-techniques/
 .. [3] http://guertl.me/post/162759264070/generative-adversarial-networks
 .. [4] http://kvfrans.com/variational-autoencoders-explained

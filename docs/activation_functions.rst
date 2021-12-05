@@ -57,7 +57,7 @@ ELU is very similiar to RELU except negative inputs. They are both in identity f
 +-------------------------------------------------------+------------------------------------------------------+
 | .. math::                                             | .. math::                                            |
 |      R(z) = \begin{Bmatrix} z & z > 0 \\              |       R'(z) = \begin{Bmatrix} 1 & z>0 \\             |
-|       α.( e^z – 1) & z <= 0 \end{Bmatrix}             |       α.e^z & z<0 \end{Bmatrix}                      |
+|       α.( np.exp(z) – 1) & z <= 0 \end{Bmatrix}             |       α.e^z & z<0 \end{Bmatrix}                      |
 +-------------------------------------------------------+------------------------------------------------------+
 | .. image:: images/elu.png                             | .. image:: images/elu_prime.png                      |
 |       :align: center                                  |      :align: center                                  |

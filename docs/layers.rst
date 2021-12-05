@@ -176,11 +176,11 @@ Average pooling layer calculates the average of pixels contained in the window.
 Fully-connected/Linear
 ----------------------
 
-A fully-connected layer, also known as linear, in a neural network is a
-type of layer where all the inputs from one layer are connected to every
+In a neural network, a *fully-connected layer*, also known as *linear* layer,
+is a type of layer where all the inputs from one layer are connected to every
 activation unit of the next layer.
-In most popular machine learning models, the last few layers are full
-connected layers. Indeed, this layer performs the task of
+In most popular machine learning models, the last few layers in the network are
+fully-connected ones. Indeed, this type of layer performs the task of
 outputting a class prediction, based on the features learned in the previous
 layers.
 
@@ -191,17 +191,22 @@ layers.
        Example of a fully-connected layer, with four input nodes and eight
        output nodes. Source [4].
 
-It takes as input a vector of nodes, activated in the previous convolutional layers. The vector passes through one or more dense layers, before being sent to the output layer.
+The fully-connected layer receives in input a vector of nodes, activated in
+the previous convolutional layers. This vector passes through one or more
+dense layers, before being sent to the output layer.
 Before it reaches the output layer, an activation function is used for
 making a prediction. While the convolutional and pooling layers generally use
-a ReLU function, the fully-connected layer can use two types of activation
+a ReLU function, the fully-connected layer can use *two types* of activation
 functions, based on the type of the classification problem:
 
-* Sigmoid: A logistic function, used for binary classification problems
-* Softmax: A more generalized logistic activation function, it ensures that
-the values in the output layer sum up to 1. Commonly used for multi-class classification.
+* **Sigmoid:** A logistic function, used for binary classification problems.
+* **Softmax:** A more generalized logistic activation function, it ensures that
+  the values in the output layer sum up to 1. Commonly used for multi-class
+  classification.
 
-The activation function outputs a vector equal to the number of classes. The output vector will yield a probability from 1 to 0 for each class.
+The activation function outputs a vector whose dimension is equal to the number
+of classes to be predicted. The output vector yields a probability from 1
+to 0 for each class.
 
 
 RNN

@@ -88,4 +88,4 @@ To solve for the gradient, we iterate through our data points using our new :mat
 
 .. rubric:: References
 
-.. [1] http://sebastianruder.com/optimizing-gradient-descent/
+.. [1] http://ruder.io/optimizing-gradient-descent

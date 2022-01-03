@@ -9,10 +9,83 @@ Architectures
 Autoencoder
 ===========
 
-TODO: Description of Autoencoder use case and basic architecture. Figure from [1].
+An autoencoder is a type of feedforward neural network that attempts to copy
+its input to its output. Internally, it has a hidden layer, **h**, that
+describes a **code**, used to represent the input. The network consists of
+two parts:
 
-.. image:: images/autoencoder.png
+* An *encoder* function: :math:`h = f(x)`.
+* A *decoder* function, that produces a reconstruction: :math:`r = g(h)`.
+
+The figure below shows the presented architecture.
+
+.. figure:: images/autoencoder_architecture.png
+       :align: center
+       :width: 200 px
+
+       Source [#autoenc]_
+
+The autoencoder compresses the input into a lower-dimensional code, and then
+it reconstructs the output from this representation. The code is a compact
+"summary", or "compression", of the input, and it is also called the
+*latent-space
+representation*.
+
+If an autoencoder simply learned to set :math:`g(f(x))=x` everywhere, then it would
+not be very
+useful; instead, autoencoders are designed to be unable to learn to copy
+perfectly. They are restricted in ways that allow them to copy only
+approximately, and to copy only input that resembles the training data.
+Because the model is forced to prioritize which aspects of the input to copy,
+it learns useful properties of the data.
+
+In order to build an autoencoder, three things are needed: an encoding
+method, a decoding method, and a loss function to compare the output with the
+target.
+
+Both the encoder and the decoder are fully-connected feedforward neural
+networks. The code is a single layer of an artificial neural network, with
+the dimensionality of our choice. The number of nodes in the code layer (the
+*code size*) is a *hyperparameter* to be set before training the autoencoder.
+
+The figure below shows the autoencoder architecture. First, the input passes
+through the encoder, which is a fully-connected neural network, in order to
+produce the code. The decoder, which has the similar neural network
+structure, then produces the output by using the code only. The aim is to
+get an output identical to the input.
+
+.. figure:: images/autoencoder_2.png
       :align: center
+      :width: 500 px
+
+      Source [#2a]_
+
+Traditionally, autoencoders were used for dimensionality reduction or feature
+learning. More recently, theoretical connections between autoencoders and
+latent variable models have brought autoencoders to the forefront of
+generative modeling.
+As a compression method, autoencoders do not perform better than their
+alternatives. And the fact that autoencoders are data-specific makes them
+impractical as a general technique.
+
+In general, autoencoders have three common use cases:
+
+* **Data denoising:** It should be noted that denoising autoencoders are not
+  meant to automatically denoise an image, instead they were invented to help
+  the hidden layers of the autoencoder learn more robust filters, and reduce
+  the the risk of overfitting.
+* **Dimensionality reduction:** Visualizing high-dimensional data is
+  challenging. t-SNE [#tsne]_ is the most commonly used method, but struggles
+  with large number of dimensions (typically above 32).
+  Therefore, autoencoders can be used as a preprocessing step to reduce the
+  dimensionality, and this compressed representation is used by t-SNE to
+  visualize the data in 2D space.
+* **Variational Autoencoders (VAE):** this is a more modern and complex
+  use-case of autoencoders. VAE learns the parameters of the probability
+  distribution modeling the input data, instead of learning an arbitrary
+  function in the case of vanilla autoencoders. By sampling points from this
+  distribution we can also use the VAE as a generative model [#vae]_.
+
 
 .. rubric:: Model
 
@@ -78,7 +151,9 @@ fully-connected layer remains the last layer of the network, which outputs
 the result. At every subsequent convolutional layer, the CNN increases its
 complexity, and it can identify greater portions in the image. In the first
 layers, the algorithm can recognize simpler features such as color or edges.
-Deeper in the network, it becomes able to identify both larger objects in the image and more complex ones. In the last layers, before the image reaches the final FC layer, the CNN identifies the full object in the image.
+Deeper in the network, it becomes able to identify both larger objects in the
+image and more complex ones. In the last layers, before the image reaches the
+final FC layer, the CNN identifies the full object in the image.
 
 
 .. rubric:: Model
@@ -251,3 +326,14 @@ An example implementation in PyTorch of a Convolutional Variational Autoencoder.
 .. [2] https://iq.opengenus.org/basics-of-machine-learning-image-classification-techniques/
 .. [3] http://guertl.me/post/162759264070/generative-adversarial-networks
 .. [4] http://kvfrans.com/variational-autoencoders-explained
+
+.. [#2a] `Applied Deep Learning - Part 3: Autoencoders
+<https://towardsdatascience
+.com/applied-deep-learning-part-3-autoencoders-1c083af4d798/>`__
+
+.. [#autoenc] `Deep Learning Book - Autoencoders <https://www.deeplearningbook
+.org/contents/autoencoders.html/>`__
+
+.. [#tsne] `t-SNE <https://distill.pub/2016/misread-tsne/>`__
+
+.. [#vae] `VAE <https://kvfrans.com/variational-autoencoders-explained/>`__

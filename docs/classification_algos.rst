@@ -210,10 +210,128 @@ Boosting
 
 Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
-Support Vector Machines
-=======================
+Support Vector Machine
+======================
+*Support Vector Machine*, or *SVM*, is one of the most popular supervised
+learning algorithms, and it can be used both for classification as well as
+regression problems. However, in machine learning, it is primarily used for
+classification problems.
+In the SVM algorithm, each data item is plotted as a point in *n-dimensional*
+space, where *n* is the number of features we have at hand, and the value of
+each feature is the value of a particular coordinate.
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+The goal of the SVM algorithm is to create the best line, or decision
+boundary, that can segregate the n-dimensional space into distinct classes, so
+that we can easily put any new data point in the correct category, in the
+future. This best decision boundary is called a hyperplane.
+The best separation is achieved by the hyperplane that has the largest
+distance to the nearest training-data point of any class. Indeed, there are
+many hyperplanes that might classify the data. Aas reasonable choice for the
+best hyperplane is the one that represents the largest separation, or margin,
+between the two classes.
+
+The SVM algorithm chooses the extreme points that help in creating the
+hyperplane. These extreme cases are called support vectors, while the SVM
+classifier is the frontier, or hyperplane, that best segregates the distinct
+classes.
+
+The diagram below shows two distinct classes, denoted respectively with blue
+and green points. The *maximum-margin hyperplane* is the distance between
+the two parallel hyperplanes: *positive hyperplane* and *negative hyperplane*,
+shown by dashed lines. The maximum-margin hyperplane is chosen in a way that
+the distance between the two classes is maximised.
+
+.. figure:: images/svm.png
+      :align: center
+      :width: 400 px
+
+      **Support Vector Machine:** Two different categories classified
+      using a decision boundary, or hyperplane. Source [#svm]_
+
+Support Vector Machine can be of two types:
+
+* **Linear SVM:** A linear SVM is used for linearly separable data, which is
+  the case of a dataset that can be classified into two distinct classes by
+  using a single straight line.
+
+* **Non-linear SVM:** A non-linear SVM is used for non-linearly separated data,
+  which means that a dataset cannot be classified by using a straight line.
+
+.. rubric:: Linear SVM
+
+Let's suppose we have a dataset that has two classes, stars and circles. The
+dataset has two features, *x1* and *x2*. We want a classifier that can
+classify the pair (*x1*, *x2*) of coordinates in either stars or circles.
+Consider the figure below.
+
+.. figure:: images/svm_linear.png
+      :align: center
+      :width: 400 px
+
+      Source [#svm2]_
+
+Since it is a *2-dimensional* space, we can separate these two classes by
+using a straight line. The figure shows that we have three hyperplanes, A,
+B, and C, which are all segregating the classes well. How can we identify the
+right hyperplane?
+The SVM algorithm finds the closest point of the lines from both of the
+classes. These points are called support vectors.
+The distance between the support vectors and the hyperplane is referred as the
+*margin*. The goal of SVM is to maximize this margin. The hyperplane with
+maximum margin is called the optimal hyperplane.
+From the figure above, we see that the margin for hyperplane C is higher
+when compared to both A and B. Therefore, we name C as the (right)
+hyperplane.
+
+.. rubric:: Non-linear SVM
+
+When the data is linearly arranged, we can separate it by using a straight
+line. However, for non-linear data, we cannot draw a single straight line.
+Let's consider the figure below.
+
+.. figure:: images/svm_nonlinear_1.png
+      :align: center
+      :width: 300 px
+
+      Source [#svm2]_
+
+In order to separate the circles from the stars, we need to
+introduce an additional feature. In case of linear data, we would use
+the
+two features *x* and *y*. For this non-linear data, we will add a third
+dimension, *z*. *z* is defined as :math:`z=x^2+y^2`. By adding the third
+feature, our space will become as below image.
+
+.. figure:: images/svm_nonlinear_2.png
+      :align: center
+      :width: 300 px
+
+      Source [#svm2]_
+
+In the above figure, all values for z will always be positive, because *z*
+is the squared sum of *x* and *y*. Now, the SVM classifier will divide the
+dataset into two distinct classes by finding a *linear* hyperplane between
+these two classes.
+
+Since now we are in a *3-dimensional* space, the hyperplane looks like a plane
+parallel to the x-axis. If we convert it in *2-dimensional* space with
+:math:`z=1`, then it will become as the figure below.
+
+.. figure:: images/svm_nonlinear_3.png
+      :align: center
+      :width: 300 px
+
+      Source [#svm2]_
+
+(Hence, in case of non-linear data, we obtain a circumference of
+:math:`radius=1`)
+
+In order to find the hyperplane with the SVM algorithm, we do not need to add
+this third dimension *z* manually: the SVM algorithm uses a technique called
+the "kernel trick". The SVM kernel is a function which takes a low
+dimensional input, and it transforms it to a higher dimensional space, i.e.,
+it converts non-linearly separable data to linearly separable data.
+
 
 
 
@@ -224,6 +342,9 @@ Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 .. [#sklearntree] `Scikit-learn Documentations: Tree algorithms: ID3, C4.5, C5.0 and CART <https://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart>`__
 .. [#sklearnensemble] `Scikit-learn Documentations: Ensemble Method <https://scikit-learn.org/stable/modules/ensemble.html#>`__
 .. [#decisiontrees] `Decision Trees <https://www.cs.cmu.edu/~bhiksha/courses/10-601/decisiontrees/>`__
+.. [#svm] `Support Vector Machine <https://www.javatpoint.com/machine-learning-support-vector-machine-algorithm>`__
+.. [#svm2] `Support Vector Machine <https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/>`__
+
 
 
 

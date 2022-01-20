@@ -133,10 +133,6 @@ All reference, images and code examples, unless mentioned otherwise, are from se
 .. [2]
 
 
-Linear
-------
-
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
 
 Pooling
 -------
@@ -175,6 +171,42 @@ Average pooling layer calculates the average of pixels contained in the window.
 .. image:: images/maxpool.png                       
        :align: center                              
        :width: 512 px  
+
+
+Fully-connected/Linear
+----------------------
+
+In a neural network, a *fully-connected layer*, also known as *linear* layer,
+is a type of layer where all the inputs from one layer are connected to every
+activation unit of the next layer.
+In most popular machine learning models, the last few layers in the network are
+fully-connected ones. Indeed, this type of layer performs the task of
+outputting a class prediction, based on the features learned in the previous
+layers.
+
+.. figure:: images/fc_layer.png
+       :align: center
+       :width: 400 px
+
+       Example of a fully-connected layer, with four input nodes and eight
+       output nodes. Source [4].
+
+The fully-connected layer receives in input a vector of nodes, activated in
+the previous convolutional layers. This vector passes through one or more
+dense layers, before being sent to the output layer.
+Before it reaches the output layer, an activation function is used for
+making a prediction. While the convolutional and pooling layers generally use
+a ReLU function, the fully-connected layer can use *two types* of activation
+functions, based on the type of the classification problem:
+
+* **Sigmoid:** A logistic function, used for binary classification problems.
+* **Softmax:** A more generalized logistic activation function, it ensures that
+  the values in the output layer sum up to 1. Commonly used for multi-class
+  classification.
+
+The activation function outputs a vector whose dimension is equal to the number
+of classes to be predicted. The output vector yields a probability from 1
+to 0 for each class.
 
 
 RNN
@@ -421,3 +453,4 @@ For detail code, refer to `layers.py <https://github.com/bfortuner/ml-cheatsheet
 .. [1] http://www.deeplearningbook.org/contents/convnets.html
 .. [2] “4.4.3, Fundamentals of Machine Learning: Adding Dropout.” `Deep Learning for Python <https://www.manning.com/books/deep-learning-with-python>`_, by Chollet, François. Manning Publications Co., 2018, pp. 109–110.
 .. [3] `Dive into Deep Learning https://d2l.ai/index.html`_, by Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.
+.. [4] https://docs.nvidia.com/deeplearning/performance/dl-performance-fully-connected/index.html#fullyconnected-layer

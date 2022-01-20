@@ -467,11 +467,10 @@ Again using the :ref:`chain_rule` we can compute the gradient--a vector of parti
       x2 = features[:,1]
       x3 = features[:,2]
 
-      # Use matrix cross product (*) to simultaneously
-      # calculate the derivative for each weight
-      d_w1 = -x1*(targets - predictions)
-      d_w2 = -x2*(targets - predictions)
-      d_w3 = -x3*(targets - predictions)
+      # Use dot product to calculate the derivative for each weight
+      d_w1 = -x1.dot(targets - predictions)
+      d_w2 = -x2.dot(targets - predictions)
+      d_w2 = -x2.dot(targets - predictions)
 
       # Multiply the mean derivative by the learning rate
       # and subtract from our weights (remember gradient points in direction of steepest ASCENT)

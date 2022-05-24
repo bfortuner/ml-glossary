@@ -6,16 +6,13 @@ Reinforcement Learning
 
 In machine learning, supervised is sometimes contrasted with unsupervised learning. This is a useful distinction, but there are some problem domains that have share characteristics with each without fitting exactly in either category. In cases where the algorithm does not have explicit labels but does receive a form of feedback, we are dealing with a third and distinct paradigm of machine learning - reinforcement learning.
 
+Programmatic and a theoretical introduction to reinforcement learning:https://spinningup.openai.com/
+
 There are different problem types and algorithms, but all reinforcement learning problems have the following aspects in common:
 
   * an **agent** - the algorithm or "AI" responsible for making decisions
 
-<<<<<<< HEAD
   * an **environment**, consisting of different **states** in which the agent may find itself
-=======
-Programmatic and a theoretical introduction to reinforcement learning:https://spinningup.openai.com/
-
->>>>>>> upstream/master
 
   * a **reward** signal which is returned by the environment as a function of the current state
 

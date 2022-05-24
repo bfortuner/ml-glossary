@@ -94,7 +94,7 @@ Deep Learning
 .. _glossary_dimension:
 
 Dimension
-  Dimension for machine learning and data scientist is differ from physics, here Dimension of data means how much feature you have in you data ocean(data-set). e.g in case of object detection application, flatten image size and color channel(e.g 28*28*3) is a feature of the input set. In case of house price prediction (maybe) house size is the data-set so we call it 1 dimentional data.
+  Dimension for machine learning and data scientist is different from physics. Here, dimension of data means how many features you have in your data ocean(data-set). e.g in case of object detection application, flatten image size and color channel(e.g 28*28*3) is a feature of the input set. In case of house price prediction (maybe) house size is the data-set so we call it 1 dimentional data.
 
 .. _glossary_epoch:
 

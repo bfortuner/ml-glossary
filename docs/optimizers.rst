@@ -186,6 +186,6 @@ Since only one sample from the dataset is chosen at random for each iteration, t
 
 .. rubric:: References
 
-.. [1] http://sebastianruder.com/optimizing-gradient-descent/
+.. [1] https://ruder.io/optimizing-gradient-descent/
 .. [2] http://www.deeplearningbook.org/contents/optimization.html
 .. [3] https://arxiv.org/pdf/1502.03167.pdf

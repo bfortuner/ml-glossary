@@ -96,6 +96,31 @@ Kullback-Leibler
 .. literalinclude:: ../code/loss_functions.py
       :pyobject: KLDivergence
 
+.. _rmse:
+
+RMSE
+========
+
+Root Mean Square Error
+
+.. math::
+
+    RMSE = \sqrt{\frac{1}{m}\sum^{m}_{i=1}(h(x^{(i)})-y^{(i)})^2}
+
+.. line-block::
+
+    RMSE - root mean square error
+    m - number of samples
+    :math:`x^{(i)}` - i-th sample from dataset
+    :math:`h(x^{(i)})` - prediction for i-th sample (thesis)
+    :math:`y^{(i)}` - ground truth label for i-th sample
+
+
+.. rubric:: Code
+
+.. literalinclude:: ../code/loss_functions.py
+      :pyobject: root_mean_square_error
+
 
 .. _mae:
 
@@ -103,6 +128,18 @@ MAE (L1)
 ========
 
 Mean Absolute Error, or L1 loss. Excellent overview below [6] and [10].
+
+.. math::
+
+    MAE = \frac{1}{m}\sum^{m}_{i=1}|h(x^{(i)})-y^{(i)}|
+
+.. line-block::
+
+    MAE - mean absolute error
+    m - number of samples
+    :math:`x^{(i)}` - i-th sample from dataset
+    :math:`h(x^{(i)})` - prediction for i-th sample (thesis)
+    :math:`y^{(i)}` - ground truth label for i-th sample
 
 .. rubric:: Code
 
@@ -116,6 +153,17 @@ MSE (L2)
 ========
 
 Mean Squared Error, or L2 loss. Excellent overview below [6] and [10].
+
+.. math::
+
+    MSE = \frac{1}{m}\sum^{m}_{i=1}(y^{(i)} - \hat{y}^{(i)})^2
+
+.. line-block::
+
+    MSE - mean square error
+    m - number of samples
+    :math:`y^{(i)}` - ground truth label for i-th sample
+    :math:`\hat{y}^{(i)}` - predicted label for i-th sample
 
 .. literalinclude:: ../code/loss_functions.py
     :language: python

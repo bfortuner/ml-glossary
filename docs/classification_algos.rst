@@ -198,7 +198,7 @@ Below is the Numpy implementation of K-Nearest Neighbor function. Refer to `code
 Logistic Regression
 ===================
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+please refer to  :ref:`logistic regresion <logistic_regression>`
 
 Random Forests
 ==============
@@ -208,7 +208,93 @@ Random Forest Classifier using ID3 Tree: `code example <https://github.com/bfort
 Boosting
 ========
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Boosting is a powerful approach to increase the predictive power
+of classification and regression models. However, the algorithm itself can not
+predict anything. It is built above other (weak) models to boost their accuracy.
+In this section we will explain it w.r.t. a classification problem.
+
+In order to gain an understanding about this topic, we will go briefly over ensembles and
+learning with weighted instances.
+
+
+.. rubric:: Excurse:
+1. **Ensembles**
+
+
+    Boosting belongs to the ensemble family which contains other techniques like
+    bagging (e.i. Random Forest classifier) and Stacking (refer to `mlxtend Documentations <http://rasbt.github.io/mlxtend/>`__).
+    The idea of ensembles is to use the wisdom of the crowd:
+
+    - a single classifier will not know everything.
+    -  multiple classifiers will know a lot.
+
+
+    One example that uses the wisdom of the crowd is Wikipedia.
+
+    The prerequisites for this technique are:
+
+        - different classifiers have different knowledge.
+        - different classifiers make different mistake.
+
+    we can fulfill the first prerequisite by using different  datasets that are collected
+    form different resources and in different times. In reality, this is most of the time impossible.
+    Normally, we have only one dataset. We can go around this by using cross validation (See Figure below) and
+    use one fold to train a classifier at a time.
+    The second prerequisite means that the classifiers may make different mistakes. Since we trained our
+    classifiers on different datasets or using cross-validation, this condition is already fulfilled.
+
+
+    .. figure:: images/grid_search_cross_validation.png
+        :align: center
+        :width: 400 px
+
+
+        Using cross-validation with ensembles.
+    
+
+    Now, we have multiple classifiers, we need a way to combine their results. This actually
+    the reason we have multiple ensemble techniques, they are all based on the same concept. They may differ
+    in some aspects, like weather to use weighted instances or not and how they combine the results for the
+    different classifiers. In general, for classification we use voting and for regression we average the results
+    of the classifiers. There are a lot of variations for voting and average methods, like weighted average.
+    Some will go further and use the classifications or the results from all of the classifier(aka. base-classifiers)
+    as features for an extra classifier (aka. meta classifier) to  predict the final result.
+
+
+2. **learning with weighted instances**
+
+
+    For classification algorithms such as KNN, we give the same weight to all instances,
+    which means they are equally important. In practice, instances contribute differently,
+    e.i., sensors that collect information have different quality and some are more
+    reliable than others. We want to encode this in our algorithms by assigning weights to different
+    instances and this can be done as follows:
+
+    - changing the classification algorithm (expensive)
+    - duplicate instances such that an instance with wight n is duplicated n times
+
+
+Coming back to the actual topic, we can implement boosting, if we train a set of classifiers (not parallel, as
+the case with Random forest) one after another. The first classifier is a created in a normal way. the  latter
+classifiers have to focus on the misclassified examples by previous ones. How we can achieve this? Well, we can assign
+weights to instances (learning with weighted instances). If a classifier misclassified an example, we assign higher
+weight to this example to get more focus from the next classifier(s). Correct examples stay un-touched. It was important
+to highlight that boosting is an ensemble technique, at the same time, something about boosting might be somehow
+confusing, in boosting we break the rule of using different datasets, since we want to focus on misclassified examples
+from previous models, we need to us all data we have to train all models. In this way, a misclassified instance from
+the first model, will be hopefully classified correctly from the second or the subsequent ones.
+
+
+.. figure:: images/boosting_error_iteration.png
+    :align: center
+    :width: 400 px
+
+
+    Error decreases with an increasing number of classifiers.
+
+An implementation of the Adaboost (one of the boosting algorithms) from scratch can
+be found here (`python-course.eu <https://python-course.eu/machine-learning/boosting-algorithm-in-python.php/>`__) with more details about the algorithm
+
 
 Support Vector Machine
 ======================
@@ -341,6 +427,7 @@ it converts non-linearly separable data to linearly separable data.
 .. [#mlinaction] `Machine Learning in Action by Peter Harrington <https://www.manning.com/books/machine-learning-in-action>`__
 .. [#sklearntree] `Scikit-learn Documentations: Tree algorithms: ID3, C4.5, C5.0 and CART <https://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart>`__
 .. [#sklearnensemble] `Scikit-learn Documentations: Ensemble Method <https://scikit-learn.org/stable/modules/ensemble.html#>`__
+.. [#boostingiteration] `Medium-article: what is Gradient Boosting <https://medium.com/analytics-vidhya/what-is-gradient-boosting-how-is-it-different-from-ada-boost-2d5ff5767cb2#>`__
 .. [#decisiontrees] `Decision Trees <https://www.cs.cmu.edu/~bhiksha/courses/10-601/decisiontrees/>`__
 .. [#svm] `Support Vector Machine <https://www.javatpoint.com/machine-learning-support-vector-machine-algorithm>`__
 .. [#svm2] `Support Vector Machine <https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/>`__

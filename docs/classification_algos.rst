@@ -237,7 +237,7 @@ learning with weighted instances.
         - different classifiers make different mistake.
 
     we can fulfill the first prerequisite by using different  datasets that are collected
-    form different resources and in different times. In reality, this is most of the time impossible.
+    form different resources and in different times. In practice, this is most of the time impossible.
     Normally, we have only one dataset. We can go around this by using cross validation (See Figure below) and
     use one fold to train a classifier at a time.
     The second prerequisite means that the classifiers may make different mistakes. Since we trained our
@@ -254,7 +254,7 @@ learning with weighted instances.
 
     Now, we have multiple classifiers, we need a way to combine their results. This actually
     the reason we have multiple ensemble techniques, they are all based on the same concept. They may differ
-    in some aspects, like weather to use weighted instances or not and how they combine the results for the
+    in some aspects, like whether to use weighted instances or not and how they combine the results for the
     different classifiers. In general, for classification we use voting and for regression we average the results
     of the classifiers. There are a lot of variations for voting and average methods, like weighted average.
     Some will go further and use the classifications or the results from all of the classifier(aka. base-classifiers)

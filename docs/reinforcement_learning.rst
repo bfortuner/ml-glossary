@@ -86,8 +86,79 @@ TODO
 Q-Learning
 ----------
 
-TODO
+Q Learning, a model-free RL algorithm, is to update Q values to the optimal by iteration. It is an off-policy method that select the optimal action based on the current estimated Q\* and does not follow the current policy.
 
+The algorithm of Q Learning is:
+
+	#. Initialize t = 0.
+	#. Start at initial state s\ :sub:`t` = 0.
+	#. The agent chooses a\ :sub:`t` = ɛ-greedy
+	   action.
+	#. For given a\ :sub:`t`, the agent retrieves
+	   the reward r\ :sub:`t+1` as well as the next
+	   state s\ :sub:`t+1`.
+	#. Get (but do not perform) the next action
+	   a\ :sub:`t+1` =
+	   argmax\ :sub:`a∈A`\ Q(s\ :sub:`t+1`, a).
+	#. Compute the TD target y\ :sub:`t` =
+	   r\ :sub:`t+1` + γ · Q(s\ :sub:`t+1`,
+	   a\ :sub:`t+1`), where γ is the discounted
+	   factor.
+	#. Calculate the TD error δ = y\ :sub:`t` −
+	   Q(s\ :sub:`t`, a\ :sub:`t`).
+	#. Update Q(s\ :sub:`t`, a\ :sub:`t`) ←
+	   Q(s\ :sub:`t`, a\ :sub:`t`) + α\ :sub:`t` ·
+	   δ, where α\ :sub:`t` is the step size
+	   (learning rate) at t.
+	#. Update t ← t + 1 and repeat step 3-9 until
+	   Q(s, a) converge.
+	   
+Epsilon-Greedy Algorithm
+
+.. math::
+
+	\begin{equation}
+	a_{t} = \begin{cases}
+	argmax_{a∈A} & \text{if } p = 1 - e \\
+	random\, action\ &\text{otherwise}
+	\end{cases}
+	\end{equation}
+
+The agent performs optimal action for exploitation or random action for exploration during training. It acts randomly in the beginning with the ɛ = 1 and chooses the best action based on the Q function with a decreasing ɛ capped at some small constant not equal to zero.
+
+Q-Table / Q-Matrix
+
+	+-------------+---------------+---------------+-----+---------------+
+	|             | a\ :sub:`1`   | a\ :sub:`2`   | ... | a\ :sub:`n`   |
+	+-------------+---------------+---------------+-----+---------------+
+	| s\ :sub:`1` | Q             | Q             | ... | Q             |
+	|             | (s\ :sub:`1`, | (s\ :sub:`1`, |     | (s\ :sub:`1`, |
+	|             | a\ :sub:`1`)  | a\ :sub:`2`)  |     | a\ :sub:`3`)  |
+	+-------------+---------------+---------------+-----+---------------+
+	| s\ :sub:`2` | Q             | Q             | ... | Q             |
+	|             | (s\ :sub:`2`, | (s\ :sub:`2`, |     | (s\ :sub:`2`, |
+	|             | a\ :sub:`1`)  | a\ :sub:`2`)  |     | a\ :sub:`3`)  |
+	+-------------+---------------+---------------+-----+---------------+
+	| ...         | ...           | ...           | ... | ...           |
+	+-------------+---------------+---------------+-----+---------------+
+	| s\ :sub:`m` | Q             | Q             | ... | Q             |
+	|             | (s\ :sub:`m`, | (s\ :sub:`m`, |     | (s\ :sub:`m`, |
+	|             | a\ :sub:`1`)  | a\ :sub:`2`)  |     | a\ :sub:`3`)  |
+	+-------------+---------------+---------------+-----+---------------+
+	
+It's a lookup table storing the action-value function Q(s, a) for state-action pairs where there are M states and n actions. We can initialize the Q(s, a) arbitrarily except s = terminal state. For s = final state, we set it equal to the reward on that state.
+
+Reasons of using Q Learning are:
+
+	-  It’s applicable for the discrete action space of our environment.
+	-  When we don’t have the true MDP model: transitional probability matrix and rewards (Model-Free Setting).
+	-  It's able to learn from incomplete episodes because of TD learning.
+
+Drawbacks of Q Learning are:
+
+	-  When the state space and action space are continuous and extremely large, due to the curse of dimensionality, it’s nearly impossible to maintain a Q-matrix when the data is large.
+	-  Using a Q-table is unable to infer optimal action for unseen states.
+	   
 Deep Q-Learning
 ---------------
 
@@ -96,7 +167,13 @@ Deep Q-learning pursues the same general methods as Q-learning. Its innovation i
 Examples of Applications
 ------------------------
 
-TODO
+  * `Getting Started With OpenAI Gym: Creating Custom Gym Environments <https://blog.paperspace.com/creating-custom-environments-openai-gym/>`_
+
+  * `What Is Q-Learning: The Best Guide To Understand Q-Learning (Simplilearn) <https://www.simplilearn.com/tutorials/machine-learning-tutorial/what-is-q-learning>`_
+
+  * `REINFORCEMENT LEARNING (DQN) TUTORIAL (PyTorch) <https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html>`_
+
+  * `QWOP Game AI (DQN/DDQN) <https://github.com/yatshunlee/qwop_RL>`_
 
 Links
 -----
@@ -106,6 +183,16 @@ Links
   * `Reinforcement learning (GeeksforGeeks) <https://www.geeksforgeeks.org/what-is-reinforcement-learning/>`_ 
 
   * `Reinforcement Learning Algorithms: An Intuitive Overview (SmartLabAI) <https://medium.com/@SmartLabAI/reinforcement-learning-algorithms-an-intuitive-overview-904e2dff5bbc>`_ 
+  
+  * `Q-learning(Wikipedia) <https://en.wikipedia.org/wiki/Q-learning>`_
+
+  * `Epsilon-Greedy Algorithm in Reinforcement Learning (GeeksforGeeks) <https://www.geeksforgeeks.org/epsilon-greedy-algorithm-in-reinforcement-learning/>`_
+
+  * `OpenAI Gym Documentation <https://www.gymlibrary.ml/>`_
+
+  * `Stable-Baselines3 Documentation <https://stable-baselines3.readthedocs.io/en/master/#>`_
+  
+  * `David Silver Teaching Material <https://www.davidsilver.uk/teaching/>`_
 
 
 
@@ -113,6 +200,8 @@ Links
 
 .. [1] https://en.wikipedia.org/wiki/Reinforcement_learning#Introduction
 .. [2] Reinforcement Learning: An Introduction (Sutton and Barto, 2018)
+.. [3] Silver, David. "Lecture 5: Model-Free Control." UCL, Computer Sci. Dep. Reinf Learn. Lect. (2015): 101-140.
+.. [4] En.wikipedia.org. 2022. Q-learning - Wikipedia. [online] Available at: <https://en.wikipedia.org/wiki/Q-learning> [Accessed 15 June 2022].
 
 
 

@@ -139,7 +139,15 @@ of the gradient on previous steps. This results in minimizing oscillations and f
 Nesterov Momentum
 -----------------
 
-Be the first to `contribute! <https://github.com/bfortuner/ml-cheatsheet>`__
+Nesterov momentum optimization is a minor but effective variation of the regular momentum optimization proposed by Yuri Nesterov. 
+The key concept is that the gradient of the cost function is measured ahead of the local position in the direction 
+of the momentum (at point :math:`W + \beta v_{dW}`). This Works since the momentum vector will be pointing in the correct direction and
+is generally faster than regular momentum optimization.
+
+.. math::
+
+    v_{dW} = \beta v_{dW} + (1 - \beta) \frac{\partial \mathcal{J} }{ \partial (W + \beta v_{dW}) } \\
+    W = W - \alpha v_{dW}
 
 
 Newton's Method

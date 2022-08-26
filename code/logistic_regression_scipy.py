@@ -18,11 +18,11 @@ scikit_log_reg.fit(features_train,labels_train)
 
 #Score is Mean Accuracy
 scikit_score = clf.score(features_test,labels_test)
-print 'Scikit score: ', scikit_score
+print('Scikit score: ',scikit_score)
 
 #Our Mean Accuracy
 observations, features, labels, weights = run()
 probabilities = predict(features, weights).flatten()
 classifications = classifier(probabilities)
 our_acc = accuracy(classifications,labels.flatten())
-print 'Our score: ',our_acc
+print('Our score: ',our_acc)

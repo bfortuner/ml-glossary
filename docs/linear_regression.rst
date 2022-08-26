@@ -349,13 +349,13 @@ Our input is a 200 x 3 matrix containing TV, Radio, and Newspaper data. Our outp
 ::
 
   def normalize(features):
-      **
+      '''
       features     -   (200, 3)
       features.T   -   (3, 200)
 
       We transpose the input matrix, swapping
       cols and rows to make vector math easier
-      **
+      '''
 
       for feature in features.T:
           fmean = np.mean(feature)
@@ -387,11 +387,12 @@ Our predict function outputs an estimate of sales given our current weights (coe
 ::
 
   def predict(features, weights):
-    **
+    '''
     features - (200, 3)
     weights - (3, 1)
     predictions - (200,1)
-    **
+    '''
+    
     predictions = np.dot(features, weights)
     return predictions
 
@@ -422,12 +423,13 @@ Now we need a cost function to audit how our model is performing. The math is th
 ::
 
   def cost_function(features, targets, weights):
-      **
+      '''
       features:(200,3)
       targets: (200,1)
       weights:(3,1)
       returns average squared error among predictions
-      **
+      '''
+      
       N = len(targets)
 
       predictions = predict(features, weights)
@@ -517,12 +519,13 @@ We use the same formula as above, but instead of operating on a single feature a
   ]
 
   def update_weights_vectorized(X, targets, weights, lr):
-      **
+      '''
       gradient = X.T * (predictions - targets) / N
       X: (200, 3)
       Targets: (200, 1)
       Weights: (3, 1)
-      **
+      '''
+      
       companies = len(X)
 
       #1 - Get Predictions

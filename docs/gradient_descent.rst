@@ -43,7 +43,7 @@ Given the cost function:
 
 .. math::
 
-  f(m,b) =  \frac{1}{N} \sum_{i=1}^{n} (y_i - (mx_i + b))^2
+  f(m,b) =  \frac{1}{N} \sum_{i=1}^{N} (y_i - (mx_i + b))^2
 
 The gradient can be calculated as:
 
@@ -88,4 +88,4 @@ To solve for the gradient, we iterate through our data points using our new :mat
 
 .. rubric:: References
 
-.. [1] http://sebastianruder.com/optimizing-gradient-descent/
+.. [1] http://ruder.io/optimizing-gradient-descent

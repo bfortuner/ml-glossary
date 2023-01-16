@@ -43,6 +43,8 @@ def KLDivergence(yHat, y):
 def L1(yHat, y):
     return np.sum(np.absolute(yHat - y)) / y.size
 
+def root_mean_square_error(y_hat: np.ndarray, y: np.ndarray) -> float:
+    return np.sqrt(np.sum((y_hat - y)**2) / y.size)
 
 def L2(yHat, y):
     return np.sum((yHat - y)**2)

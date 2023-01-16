@@ -514,7 +514,7 @@ Numpy
 
 Dot product
 -----------
-Numpy uses the function np.dot(A,B) for both vector and matrix multiplication. It has some other interesting features and gotchas so I encourage you to read the documentation here before use.
+Numpy uses the function np.dot(A,B) for both vector and matrix multiplication. It has some other interesting features and gotchas so I encourage you to read the documentation here before use. Also, to multiply two matrices A and B, you can use the expression A @ B.
 
 ::
 
@@ -529,7 +529,7 @@ Numpy uses the function np.dot(A,B) for both vector and matrix multiplication. I
   b.shape == (2,2)
 
   # Multiply
-  mm = np.dot(a,b)
+  mm = np.dot(a,b) # or a @ b
   mm == [13, 16]
   mm.shape == (1,2)
 

@@ -5,20 +5,42 @@ from typing import List
 
 
 class TreeNode:
-    def __init__(self, data_idx, depth, child_lst=[]):
+    def __init__(self, data_idx, depth, child_lst=None):
+        """
+        Initialize a TreeNode object.
+
+        Parameters:
+        - data_idx (int): Index of the data associated with the node.
+        - depth (int): Depth of the node in the tree.
+        - child_lst (list, optional): List of child nodes. Defaults to an empty list.
+        """
         self.data_idx = data_idx
         self.depth = depth
-        self.child = child_lst
+        self.child = child_lst if child_lst is not None else []
         self.label = None
         self.split_col = None
         self.child_cate_order = None
 
     def set_attribute(self, split_col, child_cate_order=None):
+        """
+        Set the attributes of the node.
+
+        Parameters:
+        - split_col: Column used for splitting the data.
+        - child_cate_order (list, optional): Order of child categories. Defaults to None.
+        """
         self.split_col = split_col
         self.child_cate_order = child_cate_order
 
     def set_label(self, label):
+        """
+        Set the label for the node.
+
+        Parameters:
+        - label: The label to be assigned to the node.
+        """
         self.label = label
+
 
 
 class DecisionTree(metaclass=ABCMeta):

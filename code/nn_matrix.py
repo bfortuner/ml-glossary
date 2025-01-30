@@ -12,6 +12,7 @@ def init_weights():
                 np.sqrt(2.0/INPUT_LAYER_SIZE)
     Wo = np.random.randn(HIDDEN_LAYER_SIZE, OUTPUT_LAYER_SIZE) * \
                 np.sqrt(2.0/HIDDEN_LAYER_SIZE)
+    return Wh, Wo
 
 
 def init_bias():

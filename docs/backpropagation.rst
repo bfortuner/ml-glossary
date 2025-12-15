@@ -22,13 +22,21 @@ A, B, and C are activation functions at different layers. Using the chain rule w
 
 .. math::
 
-  f'(x) = f'(A) \cdot A'(B) \cdot B'(C) \cdot C'(x)
+  \frac{df}{dx}
+  = A’(B(C(x))) \cdot B’(C(x)) \cdot C’(x)
 
-How about the derivative with respect to B? To find the derivative with respect to B you can pretend :math:`B(C(x))` is a constant, replace it with a placeholder variable B, and proceed to find the derivative normally with respect to B.
+How about the derivative with respect to B? To find the derivative with respect to B you can pretend :math:`B(C(x))` is a constant, replace it with a placeholder variable U, and proceed to find the derivative normally with respect to U.
 
 .. math::
 
-  f'(B) = f'(A) \cdot A'(B)
+  \frac{df}{dU} = A’(U)
+
+Substituting back:
+
+.. math::
+
+  \frac{df}{dB}
+  = A’(B(C(x)))
 
 This simple technique extends to any variable within a function and allows us to precisely pinpoint the exact impact each variable has on the total output.
 

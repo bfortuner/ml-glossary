@@ -35,55 +35,131 @@ Code example from `Agustinus Kristiadi <https://wiseodd.github.io/techblog/2016/
 Convolution
 -----------
 
-In CNN, a convolution is a linear operation that involves multiplication of weight (kernel/filter) with the input and it does most of the heavy lifting job.
+A convolution layer slides a small matrix of learnable weights, called a
+*kernel* (or *filter*), across the input and computes a dot product between
+the kernel and the input patch it currently covers. Each position produces
+one number, and together these numbers form a new matrix called a
+*feature map*. A layer usually learns many kernels, each producing its own
+feature map that responds to a different local pattern (an edge, a corner,
+a texture).
 
-Convolution layer consists of 2 major component 1. Kernel(Filter) 2. Stride 
+Convolution layers are preferred over fully-connected layers for
+grid-shaped data like images for two reasons:
 
-1. Kernel (Filter): A convolution layer can have more than one filter. The size of the filter should be smaller than the size of input dimension. It is intentional as it allows filter to be applied multiple times at difference point (position) on the input.Filters are helpful in understanding and identifying important features from given input. By applying different filters (more than one filter) on the same input helps in extracting different features from given input. Output from multiplying filter with the input gives Two dimensional array. As such, the output array from this operation is called "Feature Map".  
+* **Local connectivity** — each output value depends only on a small patch
+  of the input, so nearby pixels are processed together.
+* **Parameter sharing** — the same kernel is reused at every position, so
+  the layer needs far fewer weights and detects a pattern regardless of
+  where it appears in the input.
 
-2. Stride: This property controls the movement of filter over input. when the value is set to 1, then filter moves 1 column at a time over input. When the value is set to 2 then the filer jump 2 columns at a time as filter moves over the input. 
+The layer's main hyperparameters are the kernel size, the number of
+kernels, the *stride* (how many positions the kernel moves per step) and
+the *padding* (extra border of zeros added around the input).
 
+For a 2D input :math:`X` and a kernel :math:`K` of size
+:math:`k_h \times k_w`, the value of the feature map at position
+:math:`(i, j)` with stride :math:`s` is:
+
+.. math::
+
+  Z(i, j) = (X * K)(i, j) = \sum_{m=0}^{k_h - 1} \sum_{n=0}^{k_w - 1} X(i \cdot s + m,\ j \cdot s + n) \, K(m, n)
+
+Strictly speaking this operation is *cross-correlation*: a true
+convolution flips the kernel first. Because the kernel weights are
+learned, the flip makes no practical difference, so deep learning
+libraries implement it this way and call it convolution.
+
+For an input of width :math:`W`, kernel width :math:`k`, padding
+:math:`P` and stride :math:`s`, the output width is:
+
+.. math::
+
+  W_{out} = \left\lfloor \frac{W - k + 2P}{s} \right\rfloor + 1
+
+The same formula applies to the height.
 
 .. rubric:: Code
 
+The forward pass slides the kernel and takes dot products. The backward
+pass routes each output value's gradient back to the input patch and
+kernel weights that produced it.
+
 .. code-block:: python
 
-      # this code demonstate on how Convolution works
-      # Assume we have a image of 4 X 4 and a filter fo 2 X 2 and Stride = 1 
+      import numpy as np
       
-      def conv_filter_ouput(input_img_section,filter_value):
-            # this method perfromas the multiplication of input and filter 
-            # returns singular value
+      def conv2d_forward(X, K, stride=1):
+          """Slide the kernel K over input X and compute the dot product
+          at each position.
 
-            value = 0 
-            for i in range(len(filter_value)):
-                  for j in range(len(filter_value[0])):
-                        value = value + (input_img_section[i][j]*filter_value[i][j])
-            return value
+          :param X: input matrix of shape (height, width)
+          :param K: kernel (filter) of shape (k_height, k_width)
+          :param stride: how many positions the kernel moves per step
+          :return: feature map of shape (out_height, out_width)
+          """
+          k_height, k_width = K.shape
+          out_height = (X.shape[0] - k_height) // stride + 1
+          out_width = (X.shape[1] - k_width) // stride + 1
+          out = np.zeros((out_height, out_width))
 
-      img_input = [[260.745, 261.332, 112.27 , 262.351],
-       [260.302, 208.802, 139.05 , 230.709],
-       [261.775,  93.73 , 166.118, 122.847],
-       [259.56 , 232.038, 262.351, 228.937]]   
+          for i in range(out_height):
+              for j in range(out_width):
+                  # The input patch the kernel currently covers
+                  patch = X[i*stride : i*stride + k_height,
+                            j*stride : j*stride + k_width]
+                  # One output value = elementwise multiply, then sum
+                  out[i, j] = np.sum(patch * K)
+          return out
 
-      filter = [[1,0],
-         [0,1]]
-      
-      filterX,filterY = len(filter),len(filter[0])
-      filtered_result = [] 
-      for i in range(0,len(img_mx)-filterX+1):
-      clm = []
-      for j in range(0,len(img_mx[0])-filterY+1):
-            clm.append(conv_filter_ouput(img_mx[i:i+filterX,j:j+filterY],filter))
-      filtered_result.append(clm)
-      
-      print(filtered_result)
+      def conv2d_backward(X, K, d_out, stride=1):
+          """Given d_out (gradient of the loss w.r.t. the feature map),
+          compute the gradients w.r.t. the input and the kernel.
+
+          Each output value out[i, j] was produced by one input patch and
+          the kernel, so its gradient flows back to exactly those values.
+
+          :return: (dX, dK) — same shapes as X and K
+          """
+          k_height, k_width = K.shape
+          dX = np.zeros_like(X, dtype=float)
+          dK = np.zeros_like(K, dtype=float)
+
+          for i in range(d_out.shape[0]):
+              for j in range(d_out.shape[1]):
+                  patch = X[i*stride : i*stride + k_height,
+                            j*stride : j*stride + k_width]
+                  # The kernel saw this patch, scaled by the upstream gradient
+                  dK += patch * d_out[i, j]
+                  # The patch saw the kernel, scaled by the upstream gradient
+                  dX[i*stride : i*stride + k_height,
+                     j*stride : j*stride + k_width] += K * d_out[i, j]
+          return dX, dK
+
+      X = np.array([[260.745, 261.332, 112.27 , 262.351],
+                    [260.302, 208.802, 139.05 , 230.709],
+                    [261.775,  93.73 , 166.118, 122.847],
+                    [259.56 , 232.038, 262.351, 228.937]])
+
+      K = np.array([[1., 0.],
+                    [0., 1.]])
+
+      feature_map = conv2d_forward(X, K)
+      # [[469.547 400.382 342.979]
+      #  [354.032 374.92  261.897]
+      #  [493.813 356.081 395.055]]
+
+      # Backward pass with a dummy upstream gradient of ones,
+      # i.e. loss = sum of all feature map values
+      dX, dK = conv2d_backward(X, K, np.ones_like(feature_map))
 
 .. image:: images/cnn_filter_output.png
       :align: center
 
 .. rubric:: Further reading
-- `cs231n reference  <http://cs231n.github.io/convolutional-networks/>`_
+
+- `CS231n: Convolutional Neural Networks <https://cs231n.github.io/convolutional-networks/>`_
+- `Deep Learning Book, Chapter 9: Convolutional Networks <https://www.deeplearningbook.org/contents/convnets.html>`_
+- `A guide to convolution arithmetic for deep learning <https://arxiv.org/abs/1603.07285>`_
 
 Dropout
 -------

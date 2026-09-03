@@ -1,7 +1,7 @@
 # Machine Learning Glossary
 
 ## Looking for fellow maintainers!
-Apologies for my non-responsiveness. :( I've been heads down at Cruise, buiding ML infra for self-driving cars, and haven't reviewed this repo in forever. Looks like we're getting `54k monthly active users` now and I think the repo deserves more attention. Let me know if you would be interested in joining as a maintainer with priviledges to merge PRs. 
+Apologies for my non-responsiveness. :( I've been heads down at Cruise, building ML infra for self-driving cars, and haven't reviewed this repo in forever. Looks like we're getting `54k monthly active users` now and I think the repo deserves more attention. Let me know if you would be interested in joining as a maintainer with privileges to merge PRs. 
 
 [View The Glossary](http://ml-cheatsheet.readthedocs.io/en/latest/)
 
@@ -79,7 +79,7 @@ RST has more features. For large and complex documentation projects, it's the lo
 
 ## Top Contributors
 
-We're big fans of [Distill](http://distill.pub/prize) and we like their idea of offering prizes for high-quality submissions. We don't have as much money as they do, but we'd still like to reward contributors in some way for contributing to the glossary. For instance a cheatsheet cryptocurreny where tokens equal commits ;). Let us know if you have better ideas. In the end, this is an open-source project and we hope contributing to a repository of concise, accessible, machine learning knowledge is enough incentive on its own!
+We're big fans of [Distill](http://distill.pub/prize) and we like their idea of offering prizes for high-quality submissions. We don't have as much money as they do, but we'd still like to reward contributors in some way for contributing to the glossary. For instance a cheatsheet cryptocurrency where tokens equal commits ;). Let us know if you have better ideas. In the end, this is an open-source project and we hope contributing to a repository of concise, accessible, machine learning knowledge is enough incentive on its own!
 
 
 ## Tips and Tricks

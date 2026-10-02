@@ -22,7 +22,7 @@ A, B, and C are activation functions at different layers. Using the chain rule w
 
 .. math::
 
-  f'(x) = f'(A) \cdot A'(B) \cdot B'(C) \cdot C'(x)
+  f'(x) = A'(B) \cdot B'(C) \cdot C'(x)
 
 How about the derivative with respect to B? To find the derivative with respect to B you can pretend :math:`B(C(x))` is a constant, replace it with a placeholder variable B, and proceed to find the derivative normally with respect to B.
 
@@ -46,7 +46,7 @@ Given a network consisting of a single neuron, total cost could be calculated as
 
 .. math::
 
-  Cost = C(R(Z(X W)))
+  Cost = C(R(Z(W)))
 
 Using the chain rule we can easily find the derivative of Cost with respect to weight W.
 
